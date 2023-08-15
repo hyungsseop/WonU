@@ -47,9 +47,4 @@ npm install http-proxy-middleware --save # CORS 모듈
 -------------------------------------설정
 11. 폴더에 들어가서 - ./gradlew bootRun 실행
 ```
-=======
-# fisa
->>>>>>> 7e5f0525c51c14b735d49ac354bdeeb0c2ab3888
-=======
-# fisa
->>>>>>> 71e39142818af2978d214bbd44455371b1400bb7
+
