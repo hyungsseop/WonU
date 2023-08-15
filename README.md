@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Spring Boot와 React.js 연동
 
 ## Front-end
