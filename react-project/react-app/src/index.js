@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import store from './storage';
 import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
@@ -16,6 +15,5 @@ root.render(
       </Provider>
   </CookiesProvider>,
 );
-
 
 reportWebVitals();

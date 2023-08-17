@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.custom1-button {
+  background-color: #0066FF;
+  color: white;
+  align-items: center;
+  width: 60%;
+}
+
+
+.custom2-button {
+  background-color: black;
+  color: white;
+  align-items: center;
+  width: 60%;
+}
+
+.custom1-style {
+  color: black;
+  font-Size: 13;
+  font-Family: 'Roboto';
+  font-Weight: 600;
+  line-Height: 10;
+  word-Wrap: break-word;
+}

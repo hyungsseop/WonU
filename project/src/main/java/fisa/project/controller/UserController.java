@@ -24,19 +24,27 @@ public class UserController {
     @Autowired
     private TokenProvider tokenProvider;
 
-    @PostMapping("/signup")
+    @PostMapping("/regist")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
-            if(userDTO == null || userDTO.getPassword() == null ) {
+            // 회원가입 로직
+            if(userDTO == null || userDTO.getPassword() == null) {// || userDTO.getPassword().equals(userDTO.getPasswordCheck())) {
                 throw new RuntimeException("Invalid Password value.");
             }
-            // 요청을 이용해 저장할 유저 만들기
+            // 입력받은 dto를 entity 로 변환
             UserEntity user = UserEntity.builder()
+                    .userId(userDTO.getUserId())
                     .username(userDTO.getUsername())
                     .password(userDTO.getPassword())
+                    .gender(userDTO.getGender())
+                    .birthday(userDTO.getBirthday())
                     .build();
-            // 서비스를 이용해 리포지터리 에 유저 저장
+
+            // UserService로 보내 추가 로직 검사후 생성
             UserEntity registeredUser = userService.create(user);
+
+
+            //
             UserDTO responseUserDTO = UserDTO.builder()
                     .id(registeredUser.getId())
                     .username(registeredUser.getUsername())
@@ -54,10 +62,10 @@ public class UserController {
     }
 
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody UserDTO userDTO) {
         UserEntity user = userService.getByCredentials(
-                userDTO.getUsername(),
+                userDTO.getUserId(),
                 userDTO.getPassword());
 
         if(user != null) {

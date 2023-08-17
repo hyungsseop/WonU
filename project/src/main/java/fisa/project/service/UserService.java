@@ -24,7 +24,8 @@ public class UserService {
         }
         return userRepository.save(userEntity);
     }
-    public UserEntity getByCredentials(final String username, final String password) {
-        return userRepository.findByUsernameAndPassword(username, password);
+
+    public UserEntity getByCredentials(final String userId, final String password) {
+        return userRepository.findByUserIdAndPassword(userId, password);
     }
 }
