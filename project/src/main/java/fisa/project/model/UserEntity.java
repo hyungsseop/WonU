@@ -19,10 +19,21 @@ public class UserEntity {
     @GenericGenerator(name="system-uuid",strategy = "uuid")
     private String id;
 
-    @Column
+    @Column(nullable = false)
+    private String userId;
+
+    @Column(nullable = false)
     private String username;
 
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String gender;
+
+    @Column(nullable = false)
+    private String birthday;
+
     private String role;
     private String authProvider;
 

@@ -9,9 +9,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    private String token;
+public class UserDTO { // 회원가입(signup), 로그인(signin) controller에 사용
+    private String id; // 고유 ID
+    private String userId; // 사용자 ID
     private String username;
     private String password;
-    private String id;
+    private String passwordCheck; // password 확인
+    private String gender;
+    private String birthday;
+    private String token;
 }
