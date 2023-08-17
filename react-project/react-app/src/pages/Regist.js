@@ -1,7 +1,5 @@
 import React, { Component, useState } from "react";
 import { Navbar, Form, Button } from "react-bootstrap";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import {} from "./../App.css"
 
 class Regist extends Component {
@@ -11,9 +9,12 @@ class Regist extends Component {
     const joinPw = this.joinPw.value;
     const joinConfirmPw = this.joinConfirmPw.value;
     const joinPhonenum = this.joinPhonenum.value;
+    const birthDate = this.birthDate.value;
+    const gender = this.gender.value;
     const regExp1 = /^[a-zA-Z0-9]{4,12}$/;
     const regExp2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
-    const regExp3 = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
+    const regExp3 = /^[0-9]{10,14}$/;
+    const regExp4 = /^[0-9]{6}$/;
 
     if (joinName === "" || joinName === undefined) {
       this.setState({ joinNameError: "이름을 입력해주세요." });
@@ -50,33 +51,30 @@ class Regist extends Component {
       this.joinPhonenum.value = "";
       this.joinPhonenum.focus();
       return;
+    } else if (birthDate === "" || birthDate === undefined) {
+      this.setState({ birthDateError: "생년월일을 입력해주세요." });
+      this.birthDate.focus();
+      return;
+    } else if (!regExp4.test(birthDate)) {
+      this.setState({ birthDateError: "EX) 230423 6개의 숫자로 입력해주세요." });
+      this.birthDate.value = "";
+      this.birthDate.focus();
+      return;
+    } else if (gender === "" || gender === undefined) {
+      this.setState({ genderError: "성별을 입력해주세요. (남/여)" });
+      return;
     }
-
-    // 모든 유효성 검사를 통과하면 추가로 로직을 진행할 수 있습니다.
   };
 
-  // 달력 양식
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: null, // 선택된 날짜 상태 초기화
+      selectedDate: '', // 선택된 날짜 상태 초기화
       selectedGender: '', // 선택된 성별 상태 초기화
     };
   }
   
-  handleDateChange = (date) => {
-    this.setState({
-      selectedDate: date,
-    });
-  };
 
-
-  handleCheckboxChange = (event) => {
-    const selectedGender = event.target.value;
-    this.setState({
-      selectedGender: selectedGender,
-    });
-  };
 
 // 렌더해서 출력되는 화면
   render() {
@@ -91,7 +89,7 @@ class Regist extends Component {
       <Form style={formStyle}>
         <div style={{ width: "100%", textAlign: "center", color: "black", fontSize: 32, fontFamily: "Inter", fontWeight: 900, lineHeight: 2, wordWrap: "break-word" }}>가입정보 입력</div>
         <br />
-        <div style={{ width: "100%", textAlign: "left", color: "black", fontSize: 20, fontFamily: "Roboto", fontWeight: 600, lineHeight: 3, wordWrap: "break-word" }}>회원정보를 입력해주세요.</div>
+        <div style={{ width: "60%" , color: "black", fontSize: 20, fontFamily: "Roboto", fontWeight: 600, lineHeight: 3, wordWrap: "break-word",  margin: 'auto' }}>회원정보를 입력해주세요.</div>
         <Form.Group controlId="joinForm">
           <div>
             <Form.Control
@@ -100,7 +98,7 @@ class Regist extends Component {
               ref={(ref) => (this.joinName = ref)}
               placeholder="이름"
               className="custom1-style"
-              style={{ width: '60%', margin: 'auto' }}
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%', height: '60px', margin: 'auto' }}
               onChange={() => this.setState({ joinNameError: '' })}
             />
             <div className="error-message">{this.state.joinNameError}</div>
@@ -113,7 +111,7 @@ class Regist extends Component {
               ref={(ref) => (this.joinId = ref)}
               placeholder="아이디"
               className="custom1-style"
-              style={{ width: '60%', margin: 'auto' }}
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
               onChange={() => this.setState({ joinIdError: '' })}
             />
             <div className="error-message">{this.state.joinIdError}</div>
@@ -126,7 +124,7 @@ class Regist extends Component {
               ref={(ref) => (this.joinPw = ref)}
               placeholder="비밀번호"
               className="custom1-style"
-              style={{ width: '60%', margin: 'auto' }}
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
               onChange={() => this.setState({ joinPwError: '' })}
             />
             <div className="error-message">{this.state.joinPwError}</div>
@@ -139,71 +137,60 @@ class Regist extends Component {
               ref={(ref) => (this.joinConfirmPw = ref)}
               placeholder="비밀번호 확인"
               className="custom1-style"
-              style={{ width: '60%', margin: 'auto' }}
-              onChange={() => this.setState({ joinPwConError: '' })}
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
+              onChange={() => this.setState({ joinConfirmPw: '' })}
             />
-            <div className="error-message">{this.state.joinPwConError}</div>
+            <div className="error-message">{this.state.joinConfirmPwError}</div>
           </div>
           <br />
           <div>
             <Form.Control
               type="text"
-              maxLength="12"
+              maxLength="14"
               ref={(ref) => (this.joinPhonenum = ref)}
               placeholder="전화번호"
               className="custom1-style"
-              style={{ width: '60%', margin: 'auto' }}
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
               onChange={() => this.setState({ joinPhonenumError: '' })}
             />
             <div className="error-message">{this.state.joinPhonenumError}</div>
           </div>
           <br />
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',justifyContent: 'center' }}>
-          <label>생년월일:</label>
+          <div>
+            <Form.Control
+              type="text"
+              maxLength="6"
+              ref={(ref) => (this.birthDate = ref)}
+              placeholder="생년월일"
+              className="custom1-style"
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
+              onChange={() => this.setState({ DabirthDateError: '' })}
+            />
+            <div className="error-message">{this.state.birthDateError}</div>
+          </div>
           <br />
-          <DatePicker
-            selected={this.state.selectedDate}
-            onChange={this.handleDateChange}
-            dateFormat="yyyy/MM/dd" // 원하는 날짜 형식 설정
-            className="custom-datepicker"
-          />
-        </div>
+          <div>
+            <Form.Control
+              type="text"
+              maxLength="1"
+              ref={(ref) => (this.gender = ref)}
+              placeholder="성별"
+              className="custom1-style"
+              style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
+              onChange={() => this.setState({ genderError: '' })}
+            />
+            <div className="error-message">{this.state.genderError}</div>
+          </div>
         
-        <div>
-        <h2>Gender Selection</h2>
-        <label>
-          <input
-            type="checkbox"
-            value="Male"
-            checked={this.state.selectedGender === 'Male'}
-            onChange={this.handleCheckboxChange}
-          />
-          Male
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            value="Female"
-            checked={this.state.selectedGender === 'Female'}
-            onChange={this.handleCheckboxChange}
-          />
-          Female
-          </label>
-          <br />
-        {this.state.selectedGender && (
-          <p>You have selected: {this.state.selectedGender}</p>
-        )}
-      </div>
-
           <br></br>
           <Form.Group controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="이용약관 및 개인정보 수집에 동의합니다." />
-            </Form.Group>
+            <Form.Check type="checkbox" label="이용약관 및 개인정보 수집에 동의합니다." style={{ margin: 'auto', height: '60%', width: '60%', fontSize:'17px'}} />
+          </Form.Group>
           <br />
+
           <Button
             className="custom1-button"
-            style={{...buttonStyle, width: '60%', margin: 'auto', display:'block'}}
+            style={{...buttonStyle, width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
             onClick={this.join}
             variant="primary"
             type="button"
