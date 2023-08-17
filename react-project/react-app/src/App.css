@@ -41,15 +41,23 @@
   background-color: #0066FF;
   color: white;
   align-items: auto;
-  width: 70%;
+  width: 60%;
+  height: 60px;
+  font-size: 25px;
+  margin: auto;
+  display: block;
 }
 
 
 .custom2-button {
   background-color: black;
   color: white;
-  align-items: center;
+  align-items: auto;
   width: 60%;
+  height: 60px;
+  font-size: 25px;
+  margin: auto;
+  display: block;
 }
 
 .custom1-style {
@@ -68,7 +76,7 @@
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 1=px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.87);
   color: black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -77,6 +85,17 @@
   color: red;
   font-size: 15px;
   margin-top: 4px;
+  width: 60%;
+  margin: auto;
+}
+
+.font-regist {
+  color: black;
+  font-Size: 15px;
+  font-Family: 'Roboto';
+  font-Weight: 500;
+  line-Height: 20px;
+  word-Wrap: break-word;
   width: 60%;
   margin: auto;
 }
