@@ -13,6 +13,7 @@ npm start
 npm install react-router-dom --save # 라우터 모듈
 npm install axios --save # 서버와 통신하기 위한 모듈
 npm install http-proxy-middleware --save # CORS 모듈
+npm install react-scripts # 실행을 위한 모듈
 # npm install react-cookie
 # npm i redux react-redux @reduxjs/toolkit
 ```

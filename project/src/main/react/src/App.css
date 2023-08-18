@@ -53,9 +53,8 @@
   background-color: black;
   color: white;
   align-items: auto;
-  width: 60%;
-  height: 60px;
   font-size: 25px;
+  height: 60px;
   margin: auto;
   display: block;
 }
@@ -96,6 +95,12 @@
   font-Weight: 500;
   line-Height: 20px;
   word-Wrap: break-word;
+  width: 60%;
+  margin: auto;
+}
+
+.custom-tabs {
+  padding: 5px;
   width: 60%;
   margin: auto;
 }
