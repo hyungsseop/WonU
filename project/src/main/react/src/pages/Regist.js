@@ -1,9 +1,28 @@
 import React, { Component, useState } from "react";
-import { Navbar, Form, Button } from "react-bootstrap";
-import {} from "./../App.css"
+import { Navbar, Form, Button,Modal } from "react-bootstrap";
+import {} from "../App.css"
 const headers = { withCredentials: true };
 
 class Regist extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+      joinNameError: "",
+      joinIdError: "",
+      joinPwError: "",
+      joinPwConError: "",
+      joinPhonenumError: "",
+      birthDateError: "",
+      genderError: "",
+    };
+  }
+
+  // 모달 닫기 처리를 위한 메서드
+  handleClose = () => {
+    this.setState({ showModal: false });
+  };
+
   join = () => {
     const joinId = this.joinId.value;
     const joinName = this.joinName.value;
@@ -16,6 +35,16 @@ class Regist extends Component {
     const regExp2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
     const regExp3 = /^[0-9]{10,14}$/;
     const regExp4 = /^[0-9]{6}$/;
+
+    this.setState({
+      joinNameError: "",
+      joinIdError: "",
+      joinPwError: "",
+      joinPwConError: "",
+      joinPhonenumError: "",
+      birthDateError: "",
+      genderError: "",
+    });
 
     if (joinName === "" || joinName === undefined) {
       this.setState({ joinNameError: "이름을 입력해주세요." });
@@ -65,15 +94,8 @@ class Regist extends Component {
       this.setState({ genderError: "성별을 입력해주세요. (남/여)" });
       return;
     }
+    this.setState({ showModal: true });
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-  
-
 
 // 렌더해서 출력되는 화면
   render() {
@@ -190,7 +212,7 @@ class Regist extends Component {
           <Button
             className="custom1-button"
             style={{...buttonStyle, width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
-            onClick={this.regist}
+            onClick={this.join}
             variant="primary"
             type="button"
             block
@@ -199,6 +221,18 @@ class Regist extends Component {
           </Button>
           <br />
         </Form.Group>
+          {/* 가입 성공 모달 */}
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>가입 성공</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>회원 가입이 정상적으로 완료되었습니다.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={this.handleClose}>
+              확인
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Form>
     );
   }
