@@ -19,8 +19,15 @@ class Login extends Component {
       alert("비밀번호를 입력해주세요.");
       this.loginPw.focus();
       return;
+    } else if (loginId === "사용자가입력한아이디" && loginPw === "사용자가입력한비밀번호") {
+      // 아이디와 비밀번호가 맞는 경우에만 다음 페이지로 이동하는 로직
+      alert("로그인 성공!");
+      // 서버에서 코드 유효성 검증을 하는게 좋을거같아서 일단 남겨둘게요.
+      // 로그인이 성공적으로 되면 홈으로 돌아가도록 만들었슴당
+      this.props.history.push("/");
+    } else {
+      alert("아이디 또는 비밀번호가 잘못되었습니다.");
     }
-    // Login logic
   };
 
   render() {
@@ -54,12 +61,25 @@ class Login extends Component {
             placeholder="비밀번호"
             style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto'}}
           /><br></br>
-          <Button className="custom1-button" style={{ width: '60%', margin: 'auto', display:'block', fontSize: '25px'}} onClick={this.login} variant="primary" type="button" block>
-            로그인
+         <Button
+            className="custom1-button"
+            style={{  width: '60%', margin: 'auto', display: 'block', fontSize: '25px' }}
+            variant="primary"
+            type="button"
+            onClick={this.login}
+            block
+          > 로그인  
           </Button>
           <br></br>
-          <Button className="custom2-button" style={{width: '60%', margin: 'auto', display:'block', fontSize: '25px', backgroundColor:'black'}} variant="primary" type="button" block>
-            회원가입 하기
+          <Button
+            className="custom2-button"
+            style={{ width: '60%', margin: 'auto', display: 'block', fontSize: '25px', backgroundColor: 'black' }}
+            variant="primary"
+            type="button"
+            as={Link}
+            to="/regist"
+            block
+          > 회원가입 하기
           </Button>
         </Form.Group>
       </Form>

@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Navbar, Form, Button,Modal } from "react-bootstrap";
 import {} from "../App.css"
-const headers = { withCredentials: true };
+import { useHistory } from "react-router-dom"
 
 class Regist extends Component {
   constructor(props) {
@@ -44,6 +44,8 @@ class Regist extends Component {
       joinPhonenumError: "",
       birthDateError: "",
       genderError: "",
+      showModal: false,
+      isChecked: false, 
     });
 
     if (joinName === "" || joinName === undefined) {
@@ -93,9 +95,13 @@ class Regist extends Component {
     } else if (gender === "" || gender === undefined) {
       this.setState({ genderError: "성별을 입력해주세요. (남/여)" });
       return;
+    } else if (!this.state.isChecked) {
+      alert("이용약관에 동의해주세요.");
+      return;
     }
     this.setState({ showModal: true });
   };
+
 
 // 렌더해서 출력되는 화면
   render() {
@@ -161,7 +167,7 @@ class Regist extends Component {
               style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
               onChange={() => this.setState({ joinConfirmPw: '' })}
             />
-            <div className="error-message">{this.state.joinConfirmPwError}</div>
+            <div className="error-message">{this.state.joinPwConError}</div>
           </div>
           <br />
           <div>
@@ -205,7 +211,12 @@ class Regist extends Component {
         
           <br></br>
           <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="이용약관 개인정보 수집 및 이용, 마케팅 활용 선택에 모두 동의합니다." style={{ margin: 'auto', height: '60%', width: '60%', fontSize:'17px'}} />
+            <Form.Check
+              type="checkbox"
+              label="이용약관 개인정보 수집 및 이용, 마케팅 활용 선택에 모두 동의합니다."
+              style={{ margin: 'auto', height: '60%', width: '60%', fontSize:'17px'}}
+              onChange={(e) => this.setState({ isChecked: e.target.checked })}
+            />
           </Form.Group>
           <br />
 

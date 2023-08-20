@@ -1,9 +1,9 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-const Header = () => {
+const Header = ({ isLoggedIn }) => {
   return (
-
+  
     // 네비바는 예시로 넣어둔거에용!
 <Navbar bg="light" expand="lg">
       <Navbar.Brand href="/"><div style={{width: '100%', textAlign: 'center', color: '#0066FF', fontSize: 40, fontFamily: 'Inter', fontWeight: '800', lineHeight: 2, wordWrap: 'break-word'}}>WON</div></Navbar.Brand>
@@ -22,6 +22,27 @@ const Header = () => {
         <Nav>
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/regist">Sign Up</Nav.Link>
+        </Nav>
+        <Nav className="ml-auto">
+          {isLoggedIn ? (
+            <>
+              <Nav.Link href="/logout">
+               <Button variant="primary">로그아웃</Button>
+              </Nav.Link>
+              <Nav.Link href="/Mypage">
+                <Button variant="primary">마이페이지</Button>
+              </Nav.Link>
+            </>
+          ) : (
+            <>
+              <Nav.Link href="/login">
+               <Button variant="primary">로그인</Button>
+              </Nav.Link>
+              <Nav.Link href="/regist">
+                <Button variant="primary">회원가입</Button>
+              </Nav.Link>
+            </>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
