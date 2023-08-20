@@ -20,8 +20,8 @@ npm install react-scripts # 실행을 위한 모듈
 
 #### npm version
 ```
-  npm: '8.5.0',
-  node: '16.14.2',
+  npm: '9.6.7',
+  node: '18.17.1',
   react: '18.2.0'
 ```
 
