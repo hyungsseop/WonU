@@ -4,13 +4,14 @@ import { Navbar, Container, Nav, Card, Button, NavLink } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
 import Credit from './pages/Credit';
 
+
 function Header() {
   // let [card] = useState();
   // let navigate = useNavigate(); //훅
 
   return (
     <div className="Header">
-      {/* <div className="header_wrap"> */}
+      <div className="header_wrap">
         <div className="nav_logo">
           <Navbar bg="primary" data-bs-theme="dark" className="won-nav">
             <Container>
@@ -34,7 +35,7 @@ function Header() {
           </Navbar>
         </div>
       </div>
-    // </div>
+    </div>
   );
 }
 
