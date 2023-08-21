@@ -11,6 +11,12 @@ class Login extends Component {
     const loginId = this.loginId.value;
     const loginPw = this.loginPw.value;
 
+    // try {
+    //   const response = await axios.post('"http://localhost:8080/auth/login", {
+    //     username: loginId,
+    //     password: loginPw,
+    //   });
+
     if (loginId === "" || loginId === undefined) {
       alert("아이디를 입력해주세요.");
       this.loginId.focus();
@@ -86,5 +92,6 @@ class Login extends Component {
     );
   }
 }
-//
+
+
 export default Login;

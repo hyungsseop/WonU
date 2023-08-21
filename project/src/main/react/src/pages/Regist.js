@@ -1,7 +1,9 @@
 import React, { Component, useState } from "react";
-import { Navbar, Form, Button,Modal } from "react-bootstrap";
+import { Navbar, Form, Button, Modal } from "react-bootstrap";
 import {} from "../App.css"
-import { useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
+import axios from "axios";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Regist extends Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class Regist extends Component {
     this.setState({ showModal: false });
   };
 
-  join = () => {
+  join = ({history}) => {
     const joinId = this.joinId.value;
     const joinName = this.joinName.value;
     const joinPw = this.joinPw.value;
@@ -98,10 +100,29 @@ class Regist extends Component {
     } else if (!this.state.isChecked) {
       alert("이용약관에 동의해주세요.");
       return;
-    }
-    this.setState({ showModal: true });
-  };
+    }else {
+      const API = "http://localhost:8080/auth/regist";
 
+      axios.post(API,
+        {
+          "userId": joinId,
+          "username": joinName,
+          "password": joinPw,
+          "passwordCheck" : joinConfirmPw,
+          "gender" : gender,
+          "birthday" : birthDate
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        })
+        // 
+    }
+
+    this.setState({ showModal: true });
+    <a href="/login"></a>
+  };
 
 // 렌더해서 출력되는 화면
   render() {
@@ -230,23 +251,30 @@ class Regist extends Component {
           >
             가입하기
           </Button>
-          <br />
+          <br/>
         </Form.Group>
-          {/* 가입 성공 모달 */}
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
+        <Modal show={this.state.showModal}>
           <Modal.Header closeButton>
             <Modal.Title>가입 성공</Modal.Title>
           </Modal.Header>
           <Modal.Body>회원 가입이 정상적으로 완료되었습니다.</Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" onClick={this.handleClose}>
-              확인
-            </Button>
+          <Button
+            className="custom2-button"
+            style={{ width: '60%', margin: 'auto', display: 'block', fontSize: '25px', backgroundColor: 'black' }}
+            variant="primary"
+            type="button"
+            as={Link}
+            to="/login"
+            block
+          > 로그인 하기
+          </Button>
           </Modal.Footer>
         </Modal>
       </Form>
     );
   }
 }
+
 
 export default Regist;
