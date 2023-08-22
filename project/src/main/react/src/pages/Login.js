@@ -37,7 +37,7 @@ class Login extends Component {
           });
     
         if (response.status === 200) {
-          alert("로그인이 성공했습니다.");
+          localStorage.setItem("ACCESS_TOKEN",response.token)
           document.location.href = '/'
         } else {
           alert("로그인이 실패했습니다. 아이디와 비밀번호를 확인해주세요.");
