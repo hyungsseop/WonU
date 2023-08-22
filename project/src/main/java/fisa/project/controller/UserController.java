@@ -8,6 +8,8 @@ import fisa.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,8 @@ public class UserController {
     @Autowired
     private TokenProvider tokenProvider;
 
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @PostMapping("/regist")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
@@ -31,14 +35,18 @@ public class UserController {
             if(userDTO == null || userDTO.getPassword() == null) {// || userDTO.getPassword().equals(userDTO.getPasswordCheck())) {
                 throw new RuntimeException("Invalid Password value.");
             }
+
+
             // 입력받은 dto를 entity 로 변환
             UserEntity user = UserEntity.builder()
                     .userId(userDTO.getUserId())
                     .username(userDTO.getUsername())
-                    .password(userDTO.getPassword())
+                    .password(passwordEncoder.encode(userDTO.getPassword()))
                     .gender(userDTO.getGender())
                     .birthday(userDTO.getBirthday())
                     .build();
+
+
 
             // UserService로 보내 추가 로직 검사후 생성
             UserEntity registeredUser = userService.create(user);
@@ -65,8 +73,10 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody UserDTO userDTO) {
         UserEntity user = userService.getByCredentials(
-                userDTO.getUserId(),
-                userDTO.getPassword());
+            userDTO.getUserId(),
+            userDTO.getPassword(),
+            passwordEncoder
+    );
 
         if(user != null) {
             final String token = tokenProvider.create(user);
@@ -75,6 +85,7 @@ public class UserController {
                     .id(user.getId())
                     .token(token)
                     .build();
+            System.out.println(ResponseEntity.ok().body(responseUserDTO));
             return ResponseEntity.ok().body(responseUserDTO);
         } else {
             ResponseDTO responseDTO = ResponseDTO.builder()

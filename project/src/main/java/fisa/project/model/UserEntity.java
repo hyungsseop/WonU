@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Data
 @Entity
@@ -36,6 +37,5 @@ public class UserEntity {
 
     private String role;
     private String authProvider;
-
 
 }
