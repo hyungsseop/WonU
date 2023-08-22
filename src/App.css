@@ -1,0 +1,243 @@
+.App {
+  text-align: center;
+  padding-top: .4%;
+  
+}
+
+.header_wrap{
+  width: 1200px;
+  margin:0 auto;
+  padding: 46px;;
+}
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.custom1-button {
+  background-color: #0066FF;
+  color: white;
+  align-items: auto;
+  width: 60%;
+  height: 60px;
+  font-size: 25px;
+  margin: auto;
+  display: block;
+}
+
+
+.custom2-button {
+  background-color: black;
+  color: white;
+  align-items: auto;
+  font-size: 25px;
+  height: 60px;
+  margin: auto;
+  display: block;
+}
+
+.custom1-style {
+  color: black;
+  font-Size: 13;
+  font-Family: 'Roboto';
+  font-Weight: 600;
+  line-Height: 10;
+  word-Wrap: break-word;
+}
+
+.custom-datepicker {
+  width: 100%;
+  margin: auto;
+  padding: 6px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 1=px;
+  background-color: rgba(255, 255, 255, 0.87);
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: red;
+  font-size: 15px;
+  margin-top: 4px;
+  width: 60%;
+  margin: auto;
+}
+
+.font-regist {
+  color: black;
+  font-Size: 15px;
+  font-Family: 'Roboto';
+  font-Weight: 500;
+  line-Height: 20px;
+  word-Wrap: break-word;
+  width: 60%;
+  margin: auto;
+}
+
+.custom-tabs {
+  padding: 5px;
+  width: 60%;
+  margin: auto;
+}
+
+.main-bg {
+  height: 300px;
+  background-image: url('./slider01.jpg');
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+
+.won-font{
+  color: white;
+  text-align: center;
+  font-family: Inter;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 24px; /* 60% */
+}
+
+.won-nav {
+  max-width : 1440px;
+  margin: 0 auto;
+  display : flex;
+  color : white;
+  padding : 8px;
+  justify-content: space-around;
+}
+
+.main-bg {
+  height: 300px;
+  background-image: url('./slider01.jpg');
+  background-size: cover;
+  background-position: center;
+  max-width : 1200px;
+}
+
+.card-parent {
+  display: flex;
+  color: #000;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 117.647% */
+  letter-spacing: -0.24px;
+}
+
+.card-main{
+  width: 554px;
+  height: 325px;
+  border-radius: 15px;
+  opacity: 0.3;
+  background: #C3C6C9;
+  padding: 5px;
+  margin: 1px;
+}
+
+.card-main1{
+  width: 554px;
+  height: 325px;
+  border-radius: 15px;
+  opacity: 0.3;
+  background: #C3C6C9;
+  padding: 5px;
+  margin: 1px;
+}
+
+.card-product{
+  display:flex; 
+  height: 400px;
+  align-items: center;
+  padding: 0 0 0 0px;
+  width:100%;
+  height:max-content;
+  margin: 0 0 48px;
+  flex-direction: row;
+}
+
+/* .main-card-img{
+  background-image: url('./images/recom_io.jpg');
+} */
+
+d-block w-100{
+  height: 300px;
+  background-image: url('./slider01.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
