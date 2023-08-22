@@ -8,7 +8,6 @@ import Signin from './pages/Signin';
 import Regist from './pages/Regist';
 import Mypage from './pages/Mypage';
 import Credit from './pages/Credit';
-import Header from './Header';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

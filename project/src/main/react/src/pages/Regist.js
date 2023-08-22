@@ -33,7 +33,7 @@ class Regist extends Component {
     const joinPhonenum = this.joinPhonenum.value;
     const birthDate = this.birthDate.value;
     const gender = this.gender.value;
-    const regExp1 = /^[a-zA-Z0-9]{4,12}$/;
+    const regExp1 = /^[a-zA-Z0-9]{2,12}$/;
     const regExp2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
     const regExp3 = /^[0-9]{10,14}$/;
     const regExp4 = /^[0-9]{6}$/;
@@ -51,7 +51,7 @@ class Regist extends Component {
     });
 
     if (joinName === "" || joinName === undefined) {
-      this.setState({ joinNameError: "이름을 입력해주세요." });
+      this.setState({ joinNameError: "이름을 입력해주세요. 이름은 영어, 숫자를 섞어 최소 2자, 최대 1자 작성가능합니다." });
       this.joinName.focus();
       return;
     } else if (joinId === "" || joinId === undefined) {
@@ -64,16 +64,16 @@ class Regist extends Component {
       this.joinId.focus();
       return;
     } else if (joinPw === "" || joinPw === undefined) {
-      this.setState({ joinPwError: "비밀번호를 입력해주세요." });
+      this.setState({ joinPwError: "비밀번호를 입력해주세요. 비밀번호는 영어,숫자,특수문자를 섞어 8자 이상 16자 미만으로 작성해주세요." });
       this.joinPw.focus();
       return;
     } else if (!regExp2.test(joinPw)) {
-      this.setState({ joinPwError: "비밀번호의 양식에 맞에 입력해주세요." });
+      this.setState({ joinPwError: "비밀번호의 양식에 맞게 입력해주세요." });
       this.joinPw.value = "";
       this.joinPw.focus();
       return;
     } else if (joinConfirmPw !== joinPw) {
-      this.setState({ joinPwConError: "위의 비밀번호와 틀립니다. 다시 입력해주세요." });
+      this.setState({ joinPwConError: "비밀번호가 맞지 않습니다. 다시 입력해주세요." });
       this.joinConfirmPw.value = "";
       this.joinConfirmPw.focus();
       return;
@@ -99,6 +99,10 @@ class Regist extends Component {
       return;
     } else if (!this.state.isChecked) {
       alert("이용약관에 동의해주세요.");
+      return;
+    } else if (!this.state.isChecked || this.state.isChecked === undefined) {
+      this.setState({ joinName: "" });
+      this.joinName.focus();
       return;
     }else {
       const API = "http://localhost:8080/auth/regist";
@@ -253,7 +257,7 @@ class Regist extends Component {
           </Button>
           <br/>
         </Form.Group>
-        <Modal show={this.state.showModal}>
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>가입 성공</Modal.Title>
           </Modal.Header>

@@ -120,6 +120,8 @@
   background-image: url('./slider01.jpg');
   background-size: cover;
   background-position: center;
+  display: grid;
+  place-items: center;
 }
 
 .won-font{
@@ -146,6 +148,7 @@
   background-image: url('./slider01.jpg');
   background-size: cover;
   background-position: center;
+  max-width : 1200px;
 }
 
 .card-parent {
