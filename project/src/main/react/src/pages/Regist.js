@@ -1,9 +1,8 @@
-import React, { Component, useState } from "react";
-import { Navbar, Form, Button, Modal } from "react-bootstrap";
+import React, { Component } from "react";
+import { Form, Button, Modal } from "react-bootstrap";
 import {} from "../App.css"
 import { Link } from "react-router-dom"
 import axios from "axios";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class Regist extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class Regist extends Component {
     this.setState({ showModal: false });
   };
 
-  join = ({history}) => {
+  join = async ({history}) => {
     const joinId = this.joinId.value;
     const joinName = this.joinName.value;
     const joinPw = this.joinPw.value;
@@ -50,11 +49,11 @@ class Regist extends Component {
       isChecked: false, 
     });
 
-    if (joinName === "" || joinName === undefined) {
-      this.setState({ joinNameError: "이름을 입력해주세요. 이름은 영어, 숫자를 섞어 최소 2자, 최대 1자 작성가능합니다." });
+    if (joinName === "") {
+      this.setState({ joinNameError: "이름을 입력해주세요. 이름은 영어, 숫자를 섞어 최소 2자, 최대 12자 작성가능합니다." });
       this.joinName.focus();
       return;
-    } else if (joinId === "" || joinId === undefined) {
+    } else if (joinId === "" ) {
       this.setState({ joinIdError: "아이디를 입력해주세요." });
       this.joinId.focus();
       return;
@@ -63,7 +62,7 @@ class Regist extends Component {
       this.joinId.value = "";
       this.joinId.focus();
       return;
-    } else if (joinPw === "" || joinPw === undefined) {
+    } else if (joinPw === "") {
       this.setState({ joinPwError: "비밀번호를 입력해주세요. 비밀번호는 영어,숫자,특수문자를 섞어 8자 이상 16자 미만으로 작성해주세요." });
       this.joinPw.focus();
       return;
@@ -77,7 +76,7 @@ class Regist extends Component {
       this.joinConfirmPw.value = "";
       this.joinConfirmPw.focus();
       return;
-    } else if (joinPhonenum === "" || joinPhonenum === undefined) {
+    } else if (joinPhonenum === "") {
       this.setState({ joinPhonenumError: "휴대전화 번호를 입력해주세요." });
       return;
     } else if (!regExp3.test(joinPhonenum)) {
@@ -85,7 +84,7 @@ class Regist extends Component {
       this.joinPhonenum.value = "";
       this.joinPhonenum.focus();
       return;
-    } else if (birthDate === "" || birthDate === undefined) {
+    } else if (birthDate === "") {
       this.setState({ birthDateError: "생년월일을 입력해주세요." });
       this.birthDate.focus();
       return;
@@ -100,45 +99,38 @@ class Regist extends Component {
     } else if (!this.state.isChecked) {
       alert("이용약관에 동의해주세요.");
       return;
-    } else if (!this.state.isChecked || this.state.isChecked === undefined) {
-      this.setState({ joinName: "" });
-      this.joinName.focus();
-      return;
-    }else {
+    } else {
       const API = "http://localhost:8080/auth/regist";
-
-      axios.post(API,
-        {
-          "userId": joinId,
-          "username": joinName,
-          "password": joinPw,
-          "passwordCheck" : joinConfirmPw,
-          "gender" : gender,
-          "birthday" : birthDate
-        },
-        {
+    
+      try {
+        const response = await axios.post(API, {
+          userId: joinId,
+          username: joinName,
+          password: joinPw,
+          passwordCheck: joinConfirmPw,
+          gender: gender,
+          birthday: birthDate,
+        }, {
           headers: {
             'Content-Type': 'application/json',
           }
-        })
-        // 
+        });
+    
+        if (response.status === 200) {
+          this.setState({ showModal: true });
+        }
+      } catch (error) {
+        console.error("회원가입에 문제가 발생했습니다.", error);
+      }
     }
-
     this.setState({ showModal: true });
     <a href="/login"></a>
   };
 
 // 렌더해서 출력되는 화면
-  render() {
-    const formStyle = {
-      margin: 50,
-    };
-    const buttonStyle = {
-      marginTop: 10,
-    };
-
+  render() {    
     return (
-      <Form style={formStyle}>
+      <Form>
         <div style={{ width: "100%", textAlign: "center", color: "black", fontSize: 32, fontFamily: "Inter", fontWeight: 900, lineHeight: 2, wordWrap: "break-word" }}>가입정보 입력</div>
         <br />
         <div style={{ width: "60%" , color: "black", fontSize: 20, fontFamily: "Roboto", fontWeight: 600, lineHeight: 3, wordWrap: "break-word",  margin: 'auto' }}>회원정보를 입력해주세요.</div>
@@ -247,7 +239,7 @@ class Regist extends Component {
 
           <Button
             className="custom1-button"
-            style={{...buttonStyle, width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
+            style={{width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
             onClick={this.join}
             variant="primary"
             type="button"
@@ -264,8 +256,6 @@ class Regist extends Component {
           <Modal.Body>회원 가입이 정상적으로 완료되었습니다.</Modal.Body>
           <Modal.Footer>
           <Button
-            className="custom2-button"
-            style={{ width: '60%', margin: 'auto', display: 'block', fontSize: '25px', backgroundColor: 'black' }}
             variant="primary"
             type="button"
             as={Link}

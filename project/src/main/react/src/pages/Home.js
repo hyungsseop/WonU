@@ -43,26 +43,12 @@ function Home() {
                       나와 적합한 신용카드와 카드 분석 리포트까지 <br />
                       지금 바로 이용해보세요
                     </Card.Text>
-                    <Button href="/credit">회원 추천 받기</Button>
+                    <Button href="/credit/recommend">회원 추천 받기</Button>
                   </Card.Body>
                 </Card>
               </div>
               <br></br>
-              <div className="card-product">
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src="holder.js/100px180" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <li></li>
-                {/* ... */}
-              </div>
+              
             </>
           }
         />

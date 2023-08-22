@@ -8,6 +8,7 @@ import Signin from './pages/Signin';
 import Regist from './pages/Regist';
 import Mypage from './pages/Mypage';
 import Credit from './pages/Credit';
+import CardRe from './pages/Recommend/CardRe';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                   <Route path="/regist" element={<Regist />} />
                   <Route path="/mypage" element={<Mypage />} />
                   <Route path="/credit" element={<Credit />} />
+                  <Route path="/credit/recommend/cardre" element={<CardRe/>} />
               </Routes>
             </Router>
     );
