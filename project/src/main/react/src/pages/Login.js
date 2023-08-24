@@ -19,9 +19,11 @@ const Login = () => {
         }, {
         headers: { 'Content-Type': 'application/json' }
       });
-      console.log(response.data === userId);
 
       if (response.status === 200) {
+        console.log(response.data)
+        console.log(localStorage)
+        localStorage.setItem('login-token', response.data.token);
         alert("로그인 성공");
         document.location.href = '/';
 
