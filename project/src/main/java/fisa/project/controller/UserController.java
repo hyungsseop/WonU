@@ -28,7 +28,7 @@ public class UserController {
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @PostMapping("/Regist")
+    @PostMapping("/Signup")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
             // 회원가입 로직
