@@ -4,14 +4,6 @@
   
 }
 
-.header_wrap{
-  width: auto;
-  margin:0 auto;
-  padding: 46px;;
-}
-
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -56,8 +48,8 @@
   font-size: 25px;
   margin: auto;
   display: block;
+  margin: 'auto'
 }
-
 
 .custom2-button {
   background-color: black;
@@ -124,24 +116,6 @@
   place-items: center;
 }
 
-.won-font{
-  color: white;
-  text-align: center;
-  font-family: Inter;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 24px; /* 60% */
-}
-
-.won-nav {
-  max-width : 1440px;
-  margin: 0 auto;
-  display : flex;
-  color : white;
-  padding : 8px;
-  justify-content: space-around;
-}
 
 .main-bg {
   height: 300px;
@@ -215,17 +189,6 @@ d-block w-100{
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {

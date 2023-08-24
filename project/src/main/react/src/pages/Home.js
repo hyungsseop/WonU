@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import '../App.css';
-import { Navbar, Container, Nav, Card, Button, NavLink } from 'react-bootstrap';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
+import {Card, Button} from 'react-bootstrap';
+import { Routes, Route} from 'react-router-dom';
 import Credit from './Credit';
+import Header from './Header';
 
 function Home() {
   return (
+    <div>
+      <Header />
     <>
       <Routes>
         <Route
@@ -47,8 +49,6 @@ function Home() {
                   </Card.Body>
                 </Card>
               </div>
-              <br></br>
-              
             </>
           }
         />
@@ -58,6 +58,7 @@ function Home() {
         {/* 예: <Route path="/credit_modal" element={<CreditModal />} /> */}
       </Routes>
     </>
+    </div>
   );
 }
 
