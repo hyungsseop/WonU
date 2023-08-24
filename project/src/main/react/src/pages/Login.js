@@ -10,19 +10,21 @@ const API = "http://localhost:8080/auth/login";
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'onChange' });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({userId, userPw }) => {
     try {
-      const response = await axios.post(API, data, {
+      const response = await axios.post("http://localhost:8080/auth/login", 
+        {
+          userId:userId,
+          password:userPw
+        }, {
         headers: { 'Content-Type': 'application/json' }
       });
+      console.log(response.data === userId);
 
       if (response.status === 200) {
-        if (response.data.success) {
-          alert("로그인 성공");
-          document.location.href = '/';
-        } else {
-          alert("로그인 실패. 아이디와 비밀번호를 확인하세요.");
-        }
+        alert("로그인 성공");
+        document.location.href = '/';
+
       } else {
         alert("서버 오류. 나중에 다시 시도해주세요.");
       }

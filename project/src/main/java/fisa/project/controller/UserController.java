@@ -28,15 +28,13 @@ public class UserController {
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @PostMapping("/Signup")
+    @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
             // 회원가입 로직
             if(userDTO == null || userDTO.getPassword() == null) {// || userDTO.getPassword().equals(userDTO.getPasswordCheck())) {
                 throw new RuntimeException("Invalid Password value.");
             }
-
-
             // 입력받은 dto를 entity 로 변환
             UserEntity user = UserEntity.builder()
                     .userId(userDTO.getUserId())
@@ -45,13 +43,8 @@ public class UserController {
                     .gender(userDTO.getGender())
                     .birthday(userDTO.getBirthday())
                     .build();
-
-
-
             // UserService로 보내 추가 로직 검사후 생성
             UserEntity registeredUser = userService.create(user);
-
-
             //
             UserDTO responseUserDTO = UserDTO.builder()
                     .id(registeredUser.getId())
@@ -68,8 +61,6 @@ public class UserController {
                     .body(responseDTO);
         }
     }
-
-
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody UserDTO userDTO) {
         UserEntity user = userService.getByCredentials(
@@ -77,12 +68,10 @@ public class UserController {
             userDTO.getPassword(),
             passwordEncoder
     );
-
         if(user != null) {
             final String token = tokenProvider.create(user);
             final UserDTO responseUserDTO = UserDTO.builder()
-                    .username(user.getUsername())
-                    .id(user.getId())
+                    .userId(user.getUserId())
                     .token(token)
                     .build();
             System.out.println(ResponseEntity.ok().body(responseUserDTO));
@@ -96,6 +85,4 @@ public class UserController {
                     .body(responseDTO);
         }
     }
-
-
 }

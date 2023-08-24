@@ -22,6 +22,7 @@ function App() {
                   <Route path="/credit" element={<Credit />} />
                   <Route path="/header" element={<Header/>} />
                   <Route path="/header2" element={<Header2/>} />
+
               </Routes>
             </Router>
     );

@@ -38,9 +38,9 @@ const Signup = () => {
       );
   
       console.log("회원가입에 성공했습니다.", response.data);
+      alert("회원가입 성공");
+      document.location.href = '/login';
   
-      // Reset form
-      reset();
     } catch (error) {
       console.error("회원가입에 실패했습니다. 잠시후 다시 시도해주세요.", error);
     }

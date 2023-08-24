@@ -1,8 +1,26 @@
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
 import React, { Component } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import {} from "../App.css"
 import { Link } from "react-router-dom"
 import axios from "axios";
+=======
+import React, { Component, useState } from "react";
+import { Navbar, Form, Button } from "react-bootstrap";
+import {} from "./../App.css"
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+import React, { Component, useState } from "react";
+import { Navbar, Form, Button } from "react-bootstrap";
+import {} from "./../App.css"
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+import React, { Component, useState } from "react";
+import { Navbar, Form, Button } from "react-bootstrap";
+import {} from "./../App.css"
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
 
 class Regist extends Component {
   constructor(props) {
@@ -62,8 +80,13 @@ class Regist extends Component {
       this.joinId.value = "";
       this.joinId.focus();
       return;
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
     } else if (joinPw === "") {
       this.setState({ joinPwError: "비밀번호를 입력해주세요. 비밀번호는 영어,숫자,특수문자를 섞어 8자 이상 16자 미만으로 작성해주세요." });
+=======
+    } else if (joinPw === "" || joinPw === undefined) {
+      this.setState({ joinPwError: "비밀번호를 입력해주세요." });
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
       this.joinPw.focus();
       return;
     } else if (!regExp2.test(joinPw)) {
@@ -128,7 +151,24 @@ class Regist extends Component {
   };
 
 // 렌더해서 출력되는 화면
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
   render() {    
+=======
+=======
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+  render() {
+    const formStyle = {
+      margin: 50,
+    };
+    const buttonStyle = {
+      marginTop: 10,
+    };
+
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
     return (
       <Form>
         <div style={{ width: "100%", textAlign: "center", color: "black", fontSize: 32, fontFamily: "Inter", fontWeight: 900, lineHeight: 2, wordWrap: "break-word" }}>가입정보 입력</div>
@@ -184,7 +224,19 @@ class Regist extends Component {
               style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
               onChange={() => this.setState({ joinConfirmPw: '' })}
             />
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
             <div className="error-message">{this.state.joinPwConError}</div>
+=======
+            <div className="error-message">{this.state.joinConfirmPwError}</div>
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+            <div className="error-message">{this.state.joinConfirmPwError}</div>
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+            <div className="error-message">{this.state.joinConfirmPwError}</div>
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
           </div>
           <br />
           <div>
@@ -239,7 +291,19 @@ class Regist extends Component {
 
           <Button
             className="custom1-button"
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
             style={{width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
+=======
+            style={{...buttonStyle, width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+            style={{...buttonStyle, width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+            style={{...buttonStyle, width: '60%', margin: 'auto', display:'block', fontSize: '25px'}}
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
             onClick={this.join}
             variant="primary"
             type="button"
@@ -270,5 +334,17 @@ class Regist extends Component {
   }
 }
 
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
+<<<<<<< Updated upstream:project/src/main/react/project/src/main/react/src/pages/Regist.js
 
 export default Regist;
+=======
+export default Regist;
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+export default Regist;
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
+=======
+export default Regist;
+>>>>>>> Stashed changes:project/src/main/react/src/pages/Regist.js
