@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Signup from './pages/Signup';
-import Regist from './pages/Regist';
 import Mypage from './pages/Mypage';
 import Credit from './pages/Credit';
 import Header from './pages/Header';
@@ -19,7 +18,6 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/logout" element={<Logout />} />
                   <Route path="/signup" element={<Signup />} />
-                  <Route path="/regist" element={<Regist />} />
                   <Route path="/mypage" element={<Mypage />} />
                   <Route path="/credit" element={<Credit />} />
                   <Route path="/header" element={<Header/>} />
