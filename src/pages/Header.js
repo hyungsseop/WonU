@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import './App.css';
+import "./css/Header.css";
 import { Navbar, Container, Nav, Card, Button, NavLink } from 'react-bootstrap';
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
-import Credit from './pages/Credit';
+import Credit from './Credit';
 
 
 function Header() {
-  // let [card] = useState();
-  // let navigate = useNavigate(); //훅
 
   return (
     <div className="Header">
@@ -27,7 +25,7 @@ function Header() {
                 <Nav.Link href="deposit">예적금</Nav.Link>
               </Nav>
               <form class="d-flex">
-                <Nav.Link href="regist">회원가입</Nav.Link>
+                <Nav.Link href="signup">회원가입</Nav.Link>
                 <li></li>
                 <Nav.Link href="login">로그인</Nav.Link>
               </form>

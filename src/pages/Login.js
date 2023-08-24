@@ -1,113 +1,94 @@
-import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import {} from "../App.css"
-import { Link,  useNavigate} from 'react-router-dom';
+import React from "react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
+import "./css/Login.css";
+import Header2 from './Header2';
 
-class Login extends Component {
-  
 
-  login = async () => {
-    const loginId = this.loginId.value;
-    const loginPw = this.loginPw.value;
+const API = "http://localhost:8080/auth/login";
 
-    if (loginId === "" || loginId === undefined) {
-      alert("아이디를 입력해주세요.");
-      this.loginId.focus();
-      return;
-    } else if (loginPw === "" || loginPw === undefined) {
-      alert("비밀번호를 입력해주세요.");
-      this.loginPw.focus();
-      return;
-    } else {
-      const API = "http://localhost:8080/auth/login"; // Change to your login endpoint
-    
-      try {
-        const response = await axios.post(API,
-          {
-            "userId": loginId,
-            "password": loginPw,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          });
-    
-        if (response.status === 200) {
-          alert("로그인이 성공했습니다.");
-          document.location.href = '/'
+const Login = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'onChange' });
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(API, data, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (response.status === 200) {
+        if (response.data.success) {
+          alert("로그인 성공");
+          document.location.href = '/';
         } else {
-          alert("로그인이 실패했습니다. 아이디와 비밀번호를 확인해주세요.");
+          alert("로그인 실패. 아이디와 비밀번호를 확인하세요.");
         }
-      } catch (error) {
-        // Handle request error
-        alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      } else {
+        alert("서버 오류. 나중에 다시 시도해주세요.");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert("요청 오류: " + error.response.data.message);
+      } else {
+        alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");
       }
     }
-
-
-  };
-
-
-  render() {
-    const formStyle = {
-      margin: 100,
-    };
-
-    return (
-      <Form style={formStyle}>
-      <div style={{width: '100%', height: "100%", textAlign: 'center', color: 'black', fontSize: 30, fontFamily: 'Inter', fontWeight: '800', lineHeight: 2, wordWrap: 'break-word'}}>WON ID 로그인</div><br></br>  
-
-        <Tabs defaultActiveKey="개인회원" id="justify-tab-example" className="mb-4 custom-tabs" justify>
-          <Tab eventKey="개인회원" title="개인회원 로그인">
-          </Tab>
-          <Tab eventKey="기업회원" title="기업회원 로그인" disabled>
-          </Tab>
-        </Tabs>
-
-        <Form.Group controlId="loginForm" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Form.Control
-            type="id"
-            maxLength="100"
-            ref={ref => (this.loginId = ref)}
-            placeholder="아이디"
-            style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto' }}
-          /><br></br>
-          <Form.Control
-            type="password"
-            maxLength="20"
-            ref={ref => (this.loginPw = ref)}
-            placeholder="비밀번호"
-            style={{background: '#F5F5F8', fontSize: 20, width: '60%',height: '60px', margin: 'auto'}}
-          /><br></br>
-         <Button
-            className="custom1-button"
-            style={{  width: '60%', margin: 'auto', display: 'block', fontSize: '25px' }}
-            variant="primary"
-            type="button"
-            onClick={this.login}
-            block
-          > 로그인  
-          </Button>
-          <br></br>
-          <Button
-            className="custom2-button"
-            style={{ width: '60%', margin: 'auto', display: 'block', fontSize: '25px', backgroundColor: 'black' }}
-            variant="primary"
-            type="button"
-            as={Link}
-            to="/regist"
-            block
-          > 회원가입 하기
-          </Button>
-        </Form.Group>
-      </Form>
-    );
   }
-}
 
+  return (
+    <div>
+      <Header2  />
+    
+    <section className="col-4 offset-md-4 login2">
+      <div className="login-card">
+      <div className="login6">로그인</div>
+        <p className="login5">아이디와 비밀번호를 입력해주세요</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-3 login9">
+            <label htmlFor="userId" className="login11">
+              아이디
+            </label>
+            <input
+              type="text"
+              id="userId"
+              className={`login10 ${errors.userId ? 'is-invalid' : ''}`}
+              {...register("userId", { required: "아이디 항목은 필수 정보입니다" })}
+              placeholder="아이디를 입력해주세요"
+            />
+            {errors.userId && <div className="login3">{errors.userId.message}</div>}
+          </div>
+
+          <div className="mb-3 login9">
+            <label htmlFor="userPw" className="login11">
+              비밀번호
+            </label>
+            <input
+              type="password"
+              id="userPw"
+              className={`login10 ${errors.userPw ? 'is-invalid' : ''}`}
+              {...register("userPw", { required: "비밀번호 항목은 필수 정보입니다" })}
+              placeholder="비밀번호를 입력해주세요"
+            />
+            {errors.userPw && <div className="login3">{errors.userPw.message}</div>}
+          </div>
+
+          <div className="text-center">
+            <button type="submit" className="login7">
+              로그인
+            </button>
+          </div>
+
+          <p className="login12">
+            아직 회원이 아니신가요?{" "}
+            <a href="/signup" className="login-link-text">
+              회원 가입하러 가기
+            </a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </div>
+  );
+};
 
 export default Login;

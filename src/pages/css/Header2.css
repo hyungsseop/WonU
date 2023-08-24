@@ -1,0 +1,35 @@
+.header2_1{
+  max-width : 1440px;
+  margin: 0 auto;
+  display : flex;
+  color : blue;
+  padding : 8px;
+  justify-content: space-around;
+}
+
+.header2_2{
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header2_3{
+  color: blue;
+  text-align: center;
+  font-family: Inter;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 24px;
+}
+
+.navbar-brand {
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold;
+  color: blue; /* Adjust the color as needed */
+}

@@ -2,11 +2,13 @@ import { useState } from 'react';
 import '../App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Navbar, Container, Nav, Card, Button, Row, Col} from 'react-bootstrap';
-
+import Header from './Header';
 
 function Credit() {
-    
     return (
+      <div>
+        <Header />
+
       <div className='card-product'>
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="./images/taptap_samsung.png" />
@@ -55,7 +57,8 @@ function Credit() {
         </Card.Body>
       </Card>
       </div>
-    )
+      </div>
+    );
   }
 
 export default Credit;
