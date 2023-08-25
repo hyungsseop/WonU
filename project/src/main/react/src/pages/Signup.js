@@ -50,7 +50,6 @@ const Signup = () => {
 
   return (
     <div>
-    <Header2 />
     <section className="col-4 offset-md-4 signup2">
       <div className="signup-card">
       <div className="signup6">가입 정보 입력</div>

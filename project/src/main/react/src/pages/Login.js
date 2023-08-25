@@ -24,6 +24,7 @@ const Login = () => {
         console.log(response.data)
         console.log(localStorage)
         localStorage.setItem('login-token', response.data.token);
+        localStorage.setItem('login-id', response.data.userId)
         alert("로그인 성공");
         document.location.href = '/';
 
@@ -41,7 +42,6 @@ const Login = () => {
 
   return (
     <div>
-      <Header2  />
     
     <section className="col-4 offset-md-4 login2">
       <div className="login-card">

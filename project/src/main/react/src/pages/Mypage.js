@@ -1,10 +1,13 @@
+//Mypage.js
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./css/Mypage.css";
 import Header2 from "./Header2";
+import axios from "axios";
 
 const Mypage = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: 'onChange' });
+  const { register, handleSubmit, formState: { errors }, reset, onSubmit,watch } = useForm({ mode: 'onChange' });
 
   const userData = {
     userId: "예시 사용자",
@@ -14,15 +17,35 @@ const Mypage = () => {
     gender: "남성"
   };
 
-  const onSubmit = (data) => {
-    // 서버에서 사용자 데이터를 업데이트하는 로직을 여기에 구현
-    console.log("사용자 데이터가 업데이트되었습니다:", data);
-    reset();
-  };
+  // chat GPT가 알려준 서버랑 연결인데..!! 혹시나 해서 같이 넣었어
+  //   const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:8080/auth/mypage", 
+  //       {
+  //         userId: userData.userId,
+  //         newPassword: data.userPw,
+  //         phoneNumber: data.phoneNumber,
+  //         userBirth: data.userBirth,
+  //         gender: data.gender
+  //       }
+  //     );
+
+  //     if (response.status === 200) {
+  //       // 서버에서 성공적으로 처리된 경우에 대한 처리
+  //       console.log("Update successful");
+  //     } else {
+  //       // 서버에서 실패한 경우에 대한 처리
+  //       console.log("Update failed");
+  //     }
+  //   } catch (error) {
+  //     // 네트워크 오류나 예외 발생 시에 대한 처리
+  //     console.error("An error occurred", error);
+  //   }
+  // };
 
   return (
     <div>
-      <Header2 />
       <section className="col-4 offset-md-4 mypage2">
         <div className="mypage-card">
           <div className="mypage6">About ME</div>
@@ -41,23 +64,6 @@ const Mypage = () => {
             </div>
 
             <div className="mb-3 mypage9">
-              <label htmlFor="prevUserPw" className="mypage11">
-                비밀번호 확인
-              </label>
-              <input
-                type="password"
-                id="prevUserPw"
-                className={`mypage10 ${errors.prevUserPw ? 'is-invalid' : ''}`}
-                {...register("prevUserPw", {
-                  required: "현재 비밀번호를 입력해주세요.",
-                  // 이전 비밀번호 일치 여부를 서버에서 확인할 로직 추가하면 됨
-                })}
-              />
-              {errors.prevUserPw && <div className="mypage3">{errors.prevUserPw.message}</div>}
-            </div>
-
-
-            <div className="mb-3 mypage9">
               <label htmlFor="userPw" className="mypage11">
                 수정할 비밀번호
               </label>
@@ -74,6 +80,22 @@ const Mypage = () => {
                 })}
               />
               {errors.userPw && <div className="mypage3">{errors.userPw.message}</div>}
+            </div>
+
+            <div className="mb-3 mypage9">
+              <label htmlFor="prevUserPw" className="mypage11">
+                비밀번호 확인
+              </label>
+              <input
+                type="password"
+                id="confirmUserPw"
+                className={`mypage10 ${errors.confirmUserPw ? 'is-invalid' : ''}`}
+                {...register("confirmUserPw", {
+                  validate: value => value === watch('userPw') || '비밀번호가 일치하지 않습니다',
+                  required: "비밀번호 확인을 위해 다시 입력해주세요.",
+                })}
+              />
+              {errors.confirmUserPw && <div className="mypage3">{errors.confirmUserPw.message}</div>}
             </div>
             
             {/* 전화번호, 성별 및 생년월일 변경을 위한 필드 추가 */}

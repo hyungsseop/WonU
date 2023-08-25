@@ -1,5 +1,6 @@
 package fisa.project.service;
 
+import fisa.project.dto.UserDTO;
 import fisa.project.model.UserEntity;
 import fisa.project.persistence.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,11 @@ public class UserService {
         }
         return userRepository.save(userEntity);
     }
+
+    // usedId로
+//    public UserEntity userCheck(final UserEntity userEntity){
+//
+//    }
 
     public UserEntity getByCredentials(final String userId, final String password, final PasswordEncoder encoder) {
         final UserEntity originalUser = userRepository.findByUserId(userId);

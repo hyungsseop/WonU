@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -80,6 +77,28 @@ public class UserController {
             ResponseDTO responseDTO = ResponseDTO.builder()
                     .error("Login failed.")
                     .build();
+            return ResponseEntity
+                    .badRequest()
+                    .body(responseDTO);
+        }
+    }
+    @PostMapping("/mypagelogin")
+    public ResponseEntity<?> myPageLoginCheck(@RequestBody UserDTO userDTO){
+        UserEntity user = userService.getByCredentials(
+                userDTO.getUserId(),
+                userDTO.getPassword(),
+                passwordEncoder
+        );
+        if(user != null) {
+            final UserDTO responseUserDTO = UserDTO.builder()
+                    .userId(user.getUserId())
+                    .build();
+            System.out.println(ResponseEntity.ok().body(responseUserDTO));
+            return ResponseEntity.ok().body(responseUserDTO);
+        }
+        else { ResponseDTO responseDTO = ResponseDTO.builder()
+                .error("Login failed.")
+                .build();
             return ResponseEntity
                     .badRequest()
                     .body(responseDTO);

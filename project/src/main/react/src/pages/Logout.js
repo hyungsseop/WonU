@@ -1,6 +1,8 @@
-function Logout() {
-    localStorage.removeItem('login-token')
-    document.location.href = '/';
-  }
+const Logout = () => {
+  let token = localStorage.getItem('login-token')
 
-  export default Logout
+  localStorage.clear()
+  document.location.replace('/');
+}
+
+export default Logout
