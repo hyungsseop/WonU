@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.Search {
+    width: 30%; /* 원하는 너비를 여기에 설정하세요 */
+    padding: 10px;
+    margin-right: 0px; /* 텍스트 상자와 버튼 사이의 간격 */
+    border-radius: 0; /* 테두리를 완벽한 직사각형으로 만듭니다 */
+    border: 0px solid #ccc;
+}
+
+.search {
+    background-color: transparent; /* 버튼의 배경을 투명하게 만듭니다 */
+    border: none; /* 테두리를 제거합니다 */
+    cursor: pointer; /* 버튼 위에 호버할 때 커서를 포인터로 변경합니다 */
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+    height: 44px;
+}
+
+/* 버튼의 기본 포커스 윤곽선을 제거합니다 */
+.search:focus {
+    outline: none;
+}
+
+/* 선택적: 버튼에 호버 효과 추가 */
+.search:hover {
+    background-color: rgba(0,0,0,0.05); /* 호버시 약간의 회색색상 표시 */
+}

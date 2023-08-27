@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./css/Signup.css";
-import Header2 from './Header2';
 
 const Signup = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: 'onChange' });
@@ -56,28 +55,6 @@ const Signup = () => {
       <p className="signup5">회원정보를 입력해주세요</p>
         <form onSubmit={handleSubmit(onSubmit)} className="signup4">
   
-          {/* <div className="mb-3 signup9">
-            <label htmlFor="userId" className="signup11">아이디</label>
-            <input
-              type="text"
-              id="userId"
-              className={`signup10 ${errors.userId ? 'is-invalid' : ''}`}
-              {...register('userId', {
-                required: '아이디 항목은 필수 정보입니다',
-                pattern: {
-                  value: /^[A-Za-z0-9]{2,12}$/,
-                  message: '영문자와 숫자로 이루어진 2~12글자여야 합니다.'
-                }
-              })}
-                placeholder="아이디를 입력해주세요"
-            />
-            {errors.userId &&
-              <div className="signup3">
-                {errors.userId.message}
-              </div>
-            }
-          </div> */}
-
           <div className="mb-3 signup9">
             <label htmlFor="userId" className="signup11">
               아이디

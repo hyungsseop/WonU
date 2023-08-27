@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./css/Login.css";
-import Header2 from './Header2';
 
 
 const API = "http://localhost:8080/auth/login";

@@ -1,0 +1,33 @@
+/* Modal1.css */
+.custom-modal .modal-dialog {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+.custom-modal .modal-content {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #06F;
+  }
+  
+.custom-modal .modal-header {
+    border-bottom: none;
+}
+
+.custom-modal .modal-body {
+  border-top: none;
+  color: #FFF;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px; /* 136.364% */
+  letter-spacing: -0.24px;
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+}

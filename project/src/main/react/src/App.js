@@ -7,8 +7,9 @@ import Signup from './pages/Signup';
 import Mypage from './pages/Mypage';
 import Credit from './pages/Credit';
 import Header from './pages/Header';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import First from './pages/First';
+import Card from './list/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                   <Route path="/first" element={<First />} />
                   <Route path="/mypage" element={<Mypage />} />
                   <Route path="/credit" element={<Credit />} />
+                  <Route path="/Card" element={<Card />} />
               </Routes>
             </Router>
     );

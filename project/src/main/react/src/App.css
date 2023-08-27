@@ -204,3 +204,16 @@ d-block w-100{
   }
 }
 
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 뷰포트의 전체 높이를 차지 */
+  width: 100vw; /* 뷰포트의 전체 너비를 차지 */
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column; /* 자식 요소를 수직으로 배치 */
+  align-items: center; /* 자식 요소를 수평 중앙에 배치 */
+}

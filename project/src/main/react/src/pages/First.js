@@ -2,7 +2,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./css/Mypage.css";
-import Header2 from "./Header2";
 import axios from "axios";
 
 const First = () => {
