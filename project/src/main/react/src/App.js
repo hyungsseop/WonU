@@ -8,8 +8,9 @@ import Mypage from './pages/Mypage';
 import Credit from './pages/Credit';
 import Header from './pages/Header';
 import First from './pages/First';
-import Card from './list/Card';
+import Card from './Components/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Recommend from './pages/Recommend';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                   <Route path="/mypage" element={<Mypage />} />
                   <Route path="/credit" element={<Credit />} />
                   <Route path="/Card" element={<Card />} />
+                  <Route path="/Credit/recommend" element={<Recommend />} />
               </Routes>
             </Router>
     );

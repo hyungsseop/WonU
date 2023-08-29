@@ -3,6 +3,7 @@ import '../App.css';
 import {Card, Button} from 'react-bootstrap';
 import { Routes, Route} from 'react-router-dom';
 import Credit from './Credit';
+import Modal2 from '../Components/Modal2';
 
 function Home() {
   return (
@@ -45,7 +46,7 @@ function Home() {
                       나와 적합한 신용카드와 카드 분석 리포트까지 <br />
                       지금 바로 이용해보세요
                     </Card.Text>
-                    <Button href="/credit/recommend">회원 추천 받기</Button>
+                    <Modal2></Modal2>
                   </Card.Body>
                 </Card>
               </div>

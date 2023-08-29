@@ -1,0 +1,105 @@
+.modal2_1 .modal-dialog {
+    max-width: 70%;
+    width: 100%;
+    max-height: 70%;
+    height: 100%;
+    margin: auto;
+}
+
+.modal2_1 .modal-content {
+    border-radius: 0;
+}
+
+.modal2_1 .modal-header {
+    padding: 50px 15px;
+}
+
+.modal2_1 .modal-title {
+    text-align: center;
+    width: 100%;
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 700;
+    /* line-height: 20px; */
+}
+
+.modal2_1 .modal-body {
+    display: flex;
+    justify-content: left; 
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.modal2_1 .modal-footer {
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+}
+
+.modalButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.modalButton {
+    width: 150px;
+    height: 50px;
+    /* margin: 20px auto 0;   */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 반응 로딩 */
+
+/* Style the modal body with flexbox to arrange its children vertically */
+.Modal .Modal__Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center the children */
+    justify-content: center; /* Vertically center the children */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Style for the "WON" title */
+.title {
+    color: #06F;
+    text-align: center;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 60px;
+}
+
+/* Info text style */
+.info {
+    font-size: 1.2em; /* Medium size */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Note about timing */
+.note {
+    font-size: 0.9em; /* Smaller size */
+    color: #888888;
+    text-align: center;
+}
+
+body .loadingModal + .modal-backdrop {
+    opacity: 0.9 !important;
+    background-color: #000 !important;
+
+}
+
+
+
+

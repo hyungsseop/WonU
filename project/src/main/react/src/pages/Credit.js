@@ -1,13 +1,36 @@
 import { useState } from 'react';
-import '../App.css';
-import { BrowserRouter } from 'react-router-dom';
-import { Navbar, Container, ToggleButtonGroup, ToggleButton, button } from 'react-bootstrap';
-import Header from './Header';
+import { ToggleButtonGroup, ToggleButton} from 'react-bootstrap';
 import card_info from './data.js';
+import axios from 'axios';
+import './css/Credit.css';
 
 function Credit() {
 
-  let [card] = useState(card_info)
+  let [card] = useState(card_info);
+  const [selectedCardCompanys, setselectedCardCompanys] = useState([]);
+  const [selectedBenefits, setselectedBenefits] = useState([]);
+
+  const sendToggleValues = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/auth/credit', {
+        selectedCardCompanys,
+        selectedBenefits
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('선택된 값을 서버로 전송하는데 실패:', error);
+    }
+  }
+
+  const handleCardCompanyToggle = (value) => {
+    setselectedCardCompanys(value);
+    sendToggleValues();
+  }
+
+  const handleBenefitToggle = (value) => {
+    setselectedBenefits(value);
+    sendToggleValues();
+  }
 
   return (
     <div>
@@ -15,30 +38,33 @@ function Credit() {
         <br></br>
         <>
           <p>카드사</p>
-          <ToggleButtonGroup type="checkbox" defaultValue={[1, 3]} className="mb-2">
-            <ToggleButton id="tbg-check-0" value={0}>
+          <ToggleButtonGroup type="checkbox" defaultValue={[1, 3]} className="mb-2" onChange={handleCardCompanyToggle}>
+            <ToggleButton className="toggle-btn" id="tbg-check-0" value={0} active={selectedCardCompanys.includes(0)}>
               전체
             </ToggleButton>
-            <ToggleButton id="tbg-check-2" value={2}>
-              국민카드
+            <ToggleButton className="toggle-btn" id="tbg-check-1" value={1} active={selectedCardCompanys.includes(1)}>
+              우리카드
             </ToggleButton>
-            <ToggleButton id="tbg-check-3" value={3}>
+            <ToggleButton className="toggle-btn" id="tbg-check-2" value={2} active={selectedCardCompanys.includes(2)}>
+              KB국민카드
+            </ToggleButton>
+            <ToggleButton className="toggle-btn" id="tbg-check-3" value={3} active={selectedCardCompanys.includes(3)}>
               신한카드
             </ToggleButton>
-            <ToggleButton id="tbg-check-4" value={4}>
+            <ToggleButton className="toggle-btn" id="tbg-check-4" value={4} active={selectedCardCompanys.includes(4)}>
               현대카드
             </ToggleButton>
-            <ToggleButton id="tbg-check-5" value={5}>
+            <ToggleButton className="toggle-btn" id="tbg-check-5" value={5} active={selectedCardCompanys.includes(5)}>
               삼성카드
             </ToggleButton>
-            <ToggleButton id="tbg-check-6" value={6}>
-              삼성카드
+            <ToggleButton className="toggle-btn" id="tbg-check-6" value={6} active={selectedCardCompanys.includes(6)}>
+              롯데카드
             </ToggleButton>
           </ToggleButtonGroup>
           <br />
           <p>혜택</p>
-          <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-          <ToggleButton id="tbg-radio-0" value={0}>
+          <ToggleButtonGroup type="checkbox" defaultValue={[1, 3]} className="mb-2" onChange={handleBenefitToggle}>
+          <ToggleButton className="toggle-btn" id="tbg-radio-0" value={0} active={selectedBenefits.includes(0)}>
               전체
             </ToggleButton>
             <ToggleButton id="tbg-radio-1" value={1}>

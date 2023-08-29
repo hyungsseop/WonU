@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './Modal1.css';
-import { ModalHeader } from 'reactstrap';
 import Search from './Search';
 import { ModalBody, ModalFooter } from 'react-bootstrap';
 
