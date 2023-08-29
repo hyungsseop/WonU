@@ -1,6 +1,6 @@
-package fisa.project.persistence;
+package fisa.project.repository;
 
-import fisa.project.model.UserEntity;
+import fisa.project.domain.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

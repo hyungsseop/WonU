@@ -1,8 +1,7 @@
 package fisa.project.service;
 
-import fisa.project.dto.UserDTO;
-import fisa.project.model.UserEntity;
-import fisa.project.persistence.UserRepository;
+import fisa.project.domain.User;
+import fisa.project.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,29 +14,30 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserEntity create(final UserEntity userEntity) {
-        if (userEntity == null || userEntity.getUsername() == null) {
+    public User create(final User user) {
+        if (user == null || user.getUsername() == null) {
             throw new RuntimeException("Invalid arguments");
         }
-        final String username = userEntity.getUsername();
+        final String username = user.getUsername();
         if (userRepository.existsByUsername(username)) {
             log.warn("중복회원", username);
             throw new RuntimeException("중복회원");
         }
-        return userRepository.save(userEntity);
+        return userRepository.save(user);
     }
 
     // usedId로
-//    public UserEntity userCheck(final UserEntity userEntity){
+//    public User userCheck(final User userEntity){
 //
 //    }
 
-    public UserEntity getByCredentials(final String userId, final String password, final PasswordEncoder encoder) {
-        final UserEntity originalUser = userRepository.findByUserId(userId);
+    public User getByCredentials(final String userId, final String password, final PasswordEncoder encoder) {
+        final User originalUser = userRepository.findByUserId(userId);
 
         if(originalUser != null && encoder.matches(password, originalUser.getPassword())){
             return originalUser;
         }
         return null;
     }
+
 }

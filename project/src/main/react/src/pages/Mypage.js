@@ -1,47 +1,68 @@
 //Mypage.js
 
 import React from "react";
+import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import "./css/Mypage.css";
 import axios from "axios";
 
 const Mypage = () => {
-  const { register, handleSubmit, formState: { errors }, reset, onSubmit,watch } = useForm({ mode: 'onChange' });
+  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({ mode: 'onChange' });
+
 
   const userData = {
-    userId: "예시 사용자",
-    userPw: "********",
-    phoneNumber: "1234567890",
-    userBirth: "010203",
-    gender: "남성"
+    userId: localStorage.getItem("login-id"),
+    userPw: "",
+    phoneNumber: "",
+    userBirth: "",
+    gender: ""
   };
 
-  // chat GPT가 알려준 서버랑 연결인데..!! 혹시나 해서 같이 넣었어
-  //   const onSubmit = async (data) => {
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:8080/auth/mypage", 
-  //       {
-  //         userId: userData.userId,
-  //         newPassword: data.userPw,
-  //         phoneNumber: data.phoneNumber,
-  //         userBirth: data.userBirth,
-  //         gender: data.gender
-  //       }
-  //     );
+  useEffect(() => {
+    let completed = false; 
+    async function get() {
+      const response = await axios.get(
+        `http://localhost:8080/auth/mypage/${userData.userId}`
+      );
+      if (!completed) {
+        userData.userId = response.data.userId
+        userData.userBirth = response.data.userBirth
+        userData.gender = response.data.gender
+        userData.phoneNumber = "01001010101"
+        console.log("Update successful");
+      };
+    }
+    get();
+    return () => {
+      completed = true;
+    };
+    //query가 변할때 useEffect를 실행해야하는 시점이다
+  }, []);
 
-  //     if (response.status === 200) {
-  //       // 서버에서 성공적으로 처리된 경우에 대한 처리
-  //       console.log("Update successful");
-  //     } else {
-  //       // 서버에서 실패한 경우에 대한 처리
-  //       console.log("Update failed");
-  //     }
-  //   } catch (error) {
-  //     // 네트워크 오류나 예외 발생 시에 대한 처리
-  //     console.error("An error occurred", error);
-  //   }
-  // };
+
+  // chat GPT가 알려준 서버랑 연결인데..!! 혹시나 해서 같이 넣었어
+    const onSubmit = async ({userId}) => {
+    try {
+      const response = axios.post(
+        `http://localhost:8080/auth/mypageupdate/${userId}`, 
+      );
+
+      if (response.status === 200) {
+        // 서버에서 성공적으로 처리된 경우에 대한 처리
+        console.log("Update successful");
+        // userData.userId = response.data.userId
+        // userData.userBirth = response.data.userBirth
+        // userData.gender = response.data.gender
+        // userData.phoneNumber = "01001010101"
+      } else {
+        // 서버에서 실패한 경우에 대한 처리
+        console.log("Update failed");
+      }
+    } catch (error) {
+      // 네트워크 오류나 예외 발생 시에 대한 처리
+      console.error("An error occurred", error);
+    }
+  };
 
   return (
     <div>

@@ -1,8 +1,9 @@
 package fisa.project.controller;
 
+import fisa.project.domain.User;
 import fisa.project.dto.ResponseDTO;
 import fisa.project.dto.UserDTO;
-import fisa.project.model.UserEntity;
+import fisa.project.repository.UserRepository;
 import fisa.project.security.TokenProvider;
 import fisa.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,9 @@ public class UserController {
     private UserService userService;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private TokenProvider tokenProvider;
 
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -33,7 +37,7 @@ public class UserController {
                 throw new RuntimeException("Invalid Password value.");
             }
             // 입력받은 dto를 entity 로 변환
-            UserEntity user = UserEntity.builder()
+            User user = User.builder()
                     .userId(userDTO.getUserId())
                     .username(userDTO.getUsername())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
@@ -41,7 +45,7 @@ public class UserController {
                     .birthday(userDTO.getBirthday())
                     .build();
             // UserService로 보내 추가 로직 검사후 생성
-            UserEntity registeredUser = userService.create(user);
+            User registeredUser = userService.create(user);
             //
             UserDTO responseUserDTO = UserDTO.builder()
                     .id(registeredUser.getId())
@@ -60,7 +64,7 @@ public class UserController {
     }
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody UserDTO userDTO) {
-        UserEntity user = userService.getByCredentials(
+        User user = userService.getByCredentials(
             userDTO.getUserId(),
             userDTO.getPassword(),
             passwordEncoder
@@ -84,7 +88,7 @@ public class UserController {
     }
     @PostMapping("/mypagelogin")
     public ResponseEntity<?> myPageLoginCheck(@RequestBody UserDTO userDTO){
-        UserEntity user = userService.getByCredentials(
+        User user = userService.getByCredentials(
                 userDTO.getUserId(),
                 userDTO.getPassword(),
                 passwordEncoder
@@ -103,5 +107,17 @@ public class UserController {
                     .badRequest()
                     .body(responseDTO);
         }
+    }
+
+    @GetMapping("/mypage/{userId}")
+    public ResponseEntity<?> myPageInfo(@PathVariable("userId") String userId){
+        User user = userRepository.findByUserId(userId);
+        final UserDTO responseUserDTO = UserDTO.builder()
+                .userId(user.getUserId())
+                .username(user.getUsername())
+                .birthday(user.getBirthday())
+                .gender(user.getGender())
+                .build();
+        return ResponseEntity.ok().body(responseUserDTO);
     }
 }

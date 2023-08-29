@@ -1,7 +1,7 @@
 package fisa.project.service;
 
-import fisa.project.model.UserEntity;
-import fisa.project.persistence.UserRepository;
+import fisa.project.domain.UserEntity;
+import fisa.project.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

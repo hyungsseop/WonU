@@ -1,4 +1,4 @@
-package fisa.project.model;
+package fisa.project.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

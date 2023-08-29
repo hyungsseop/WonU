@@ -2,7 +2,7 @@ package fisa.project.controller;
 
 import fisa.project.dto.ResponseDTO;
 import fisa.project.dto.UserDTO;
-import fisa.project.model.UserEntity;
+import fisa.project.domain.UserEntity;
 import fisa.project.security.TokenProvider;
 import fisa.project.service.UserService;
 import lombok.extern.slf4j.Slf4j;
