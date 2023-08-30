@@ -1,37 +1,39 @@
 //Mypage.js
 
 import React from "react";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import "./css/Mypage.css";
 import axios from "axios";
 
 const Mypage = () => {
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({ mode: 'onChange' });
-
-
-  const userData = {
-    userId: localStorage.getItem("login-id"),
-    userPw: "",
-    phoneNumber: "",
-    userBirth: "",
-    gender: ""
-  };
+  const [userData, setUserData] = useState({
+    userId: localStorage.getItem('login-id'),
+    userPw: '',
+    phoneNumber: '',
+    userBirth: '',
+    gender: ''
+  });
+  
+  const { register, handleSubmit, formState: { errors }, watch } = useForm({ mode: 'onChange' });
 
   useEffect(() => {
-    let completed = false; 
-    async function get() {
-      const response = await axios.get(
-        `http://localhost:8080/auth/mypage/${userData.userId}`
-      );
+    let completed = false;
+    
+    const get = async () => {
+      const response = await axios.get(`http://localhost:8080/auth/mypage/${userData.userId}`);
+      
       if (!completed) {
-        userData.userId = response.data.userId
-        userData.userBirth = response.data.userBirth
-        userData.gender = response.data.gender
-        userData.phoneNumber = "01001010101"
-        console.log("Update successful");
-      };
-    }
+        setUserData({
+          userId: response.data.userId,
+          userBirth: response.data.birthday,
+          gender: response.data.gender,
+          phoneNumber: '01001010101' // Placeholder, update as needed
+        });
+        
+        console.log('Update successful');
+      }
+    };
     get();
     return () => {
       completed = true;
@@ -39,8 +41,6 @@ const Mypage = () => {
     //query가 변할때 useEffect를 실행해야하는 시점이다
   }, []);
 
-
-  // chat GPT가 알려준 서버랑 연결인데..!! 혹시나 해서 같이 넣었어
     const onSubmit = async ({userId}) => {
     try {
       const response = axios.post(
@@ -126,6 +126,7 @@ const Mypage = () => {
               <input
                 type="text"
                 id="phoneNumber"
+                defaultValue={userData.phoneNumber}
                 className={`mypage10 ${errors.phoneNumber ? 'is-invalid' : ''}`}
                 {...register('phoneNumber', {
                   required: '휴대폰 번호 필드는 필수 입력 정보입니다.',
@@ -134,7 +135,8 @@ const Mypage = () => {
                     message: '숫자 10~11자여야 합니다.'
                   }
                 })}
-                defaultValue={userData.phoneNumber}
+                
+
               />
               {errors.phoneNumber && <div className="mypage3">{errors.phoneNumber.message}</div>}
             </div>
@@ -146,6 +148,7 @@ const Mypage = () => {
               <input
                 type="text"
                 id="userBirth"
+                defaultValue={userData.userBirth}
                 className={`mypage10 ${errors.userBirth ? 'is-invalid' : ''}`}
                 {...register('userBirth', {
                   required: '생년월일 필드는 필수 정보입니다',
@@ -154,7 +157,7 @@ const Mypage = () => {
                     message: '숫자 6자여야 합니다.'
                   }
                 })}
-                defaultValue={userData.userBirth}
+                
               />
               {errors.userBirth && <div className="mypage3">{errors.userBirth.message}</div>}
             </div>
@@ -168,20 +171,22 @@ const Mypage = () => {
                   <input
                     type="radio"
                     value="male"
+                    checked={userData.gender === 'male'}
+                    onChange={e => setUserData({...userData, gender: e.target.value})}
                     {...register('gender', {
                       required: '성별을 선택해주세요.'
                     })}
-                    defaultChecked={userData.gender === '남성'}
                   /> 남성
                 </label><br></br>
                 <label>
                   <input
                     type="radio"
                     value="female"
+                    checked={userData.gender === 'female'}
+                    onChange={e => setUserData({...userData, gender: e.target.value})}
                     {...register('gender', {
                       required: '성별을 선택해주세요.'
                     })}
-                    defaultChecked={userData.gender === '여성'}
                   /> 여성
                 </label>
               </div>

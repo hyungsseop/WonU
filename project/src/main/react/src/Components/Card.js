@@ -72,7 +72,6 @@ function Card() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
     /><br></br>
-
     {cards.filter(card => card.card_name.toLowerCase().includes(searchTerm.toLowerCase())).map(card => (
         <CardComponent key={card.card_name} {...card} />
     ))}

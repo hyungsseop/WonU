@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./css/Signup.css";
+import Modal from 'react-bootstrap/Modal';
 
 const Signup = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: 'onChange' });
   const [isUserIdAvailable, setUserIdAvailable] = useState(true);
-  const checkUserIdAvailability = async (userId) => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/auth/check-userId?userId=${userId}`
-        );
-        return response.data.available; 
-      } catch (error) {
-        console.error("아이디 가용성을 확인중입니다.", error);
-        return false;
-      }
-    };
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    document.location.href = '/login';
+  };
+
+  const handleCloseErrorModal = () => {
+    setShowErrorModal(false);
+  };
 
   const onSubmit = async ({ userId, userPw, userName, userBirth, phoneNumber, gender }) => {
     try {
@@ -37,9 +38,7 @@ const Signup = () => {
       );
   
       console.log("회원가입에 성공했습니다.", response.data);
-      alert("회원가입 성공");
-      document.location.href = '/login';
-  
+      setShowSuccessModal(true); // Show the success modal
     } catch (error) {
       console.error("회원가입에 실패했습니다. 잠시후 다시 시도해주세요.", error);
     }
@@ -225,6 +224,25 @@ const Signup = () => {
         </form>
       </div>
     </section>
+    <Modal show={showSuccessModal} onHide={handleCloseSuccessModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>회원가입 성공</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>회원가입에 성공했습니다.</Modal.Body>
+        <Modal.Footer>
+          <button onClick={handleCloseSuccessModal}>확인</button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showErrorModal} onHide={handleCloseErrorModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>회원가입 오류</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>중복된 아이디가 존재하여 회원가입이 불가능합니다. 다른 ID를 선택해주세요.</Modal.Body>
+        <Modal.Footer>
+          <button onClick={handleCloseErrorModal}>확인</button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

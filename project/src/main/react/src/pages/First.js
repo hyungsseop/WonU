@@ -3,10 +3,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./css/Mypage.css";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const First = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: 'onChange' });
-
+  const navigate = useNavigate();
   // const userData = {
   //   userId: "예시 사용자",
   //   userPw: "********",
@@ -17,7 +18,7 @@ const First = () => {
   const onSubmit = async ({prevUserPw}) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/mypagelogin", // Replace with your server's API endpoint
+        "http://localhost:8080/auth/mypagelogin",
         {
           userId: localStorage.getItem("login-id"),
           password: prevUserPw
@@ -26,14 +27,15 @@ const First = () => {
       });
         console.log(response);
       if (response.status === 200) {
-        document.location.href = '/mypage';
+        localStorage.setItem('userData', JSON.stringify(response.data)); //이거 고침
+        navigate('/mypage');  
       } else {
         alert("비밀번호가 일치하지 않습니다.");
       }
     } catch (error) {
         if (error.response) {
-        //   alert("요청 오류: " + error.response.data.message);
-        //   document.location.href = '/mypage';
+          // alert("요청 오류: " + error.response.data.message);
+          // document.location.href = '/mypage';
         } else {
           console.log(error);
           alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");

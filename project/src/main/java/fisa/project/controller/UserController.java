@@ -65,10 +65,10 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody UserDTO userDTO) {
         User user = userService.getByCredentials(
-            userDTO.getUserId(),
-            userDTO.getPassword(),
-            passwordEncoder
-    );
+                userDTO.getUserId(),
+                userDTO.getPassword(),
+                passwordEncoder
+        );
         if(user != null) {
             final String token = tokenProvider.create(user);
             final UserDTO responseUserDTO = UserDTO.builder()
