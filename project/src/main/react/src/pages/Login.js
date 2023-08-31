@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./css/Login.css";
 
@@ -24,7 +25,7 @@ const Login = () => {
         console.log(localStorage)
         localStorage.setItem('login-token', response.data.token);
         localStorage.setItem('login-id', response.data.userId)
-        alert("로그인 성공");
+        alert("로그인에 성공했습니다.");
         document.location.href = '/';
 
       } else {
@@ -32,7 +33,7 @@ const Login = () => {
       }
     } catch (error) {
       if (error.response) {
-        alert("요청 오류: " + error.response.data.message);
+        alert("아이디와 비밀번호가 일치하지 .");
       } else {
         alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");
       }
@@ -81,12 +82,12 @@ const Login = () => {
             </button>
           </div>
 
-          <p className="login12">
+          <div className="login12">
             아직 회원이 아니신가요?{" "}
-            <a href="/signup" className="login-link-text">
+            <Link to= "/signup" className="login13">
               회원 가입하러 가기
-            </a>
-          </p>
+            </Link>
+          </div>
         </form>
       </div>
     </section>

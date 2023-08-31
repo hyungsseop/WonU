@@ -74,6 +74,16 @@
 
 .login12{
   line-height: 30px;
+  font-size: 16px;
   text-align: center;
 }
 
+.login13{
+  color: #000;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 18px;
+  text-decoration: none;
+}

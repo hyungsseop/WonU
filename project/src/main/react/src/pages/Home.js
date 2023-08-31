@@ -4,11 +4,10 @@ import {Card, Button} from 'react-bootstrap';
 import { Routes, Route} from 'react-router-dom';
 import Credit from './Credit';
 import Modal2 from '../Components/Modal2';
-
 function Home() {
   return (
     <div>
-    <div className="home-container">
+    {/* <div className="home-container"> */}
       <Routes>
         <Route
           path="/"
@@ -16,7 +15,6 @@ function Home() {
             <>
               <br />
               <div className="main-bg"></div>
-
               <br />
               <div className="card-parent">
                 <Card style={{ width: '36rem' }}>
@@ -34,7 +32,6 @@ function Home() {
                   
                   </Card.Body>
                 </Card>
-                <li></li>
                 <Card style={{ width: '36rem' }}>
                   <Card.Img
                     variant="top"
@@ -59,7 +56,6 @@ function Home() {
         {/* 예: <Route path="/credit_modal" element={<CreditModal />} /> */}
       </Routes>
       </div>
-    </div>
   );
 }
 

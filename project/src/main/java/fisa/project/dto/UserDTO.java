@@ -16,6 +16,7 @@ public class UserDTO { // 회원가입(signup), 로그인(signin) controller에 
     private String username;
     private String password;
     private String passwordCheck; // password 확인
+    private String phoneNumber;
     private String gender;
     private String birthday;
     private String token;

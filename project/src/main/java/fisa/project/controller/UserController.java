@@ -113,11 +113,44 @@ public class UserController {
     public ResponseEntity<?> myPageInfo(@PathVariable("userId") String userId){
         User user = userRepository.findByUserId(userId);
         final UserDTO responseUserDTO = UserDTO.builder()
+                .id(user.getId())
                 .userId(user.getUserId())
                 .username(user.getUsername())
                 .birthday(user.getBirthday())
+                .phoneNumber(user.getPhoneNumber())
                 .gender(user.getGender())
                 .build();
         return ResponseEntity.ok().body(responseUserDTO);
+    }
+
+    @PutMapping("/mypageupdate")
+    public ResponseEntity<?> myPageUpdate(@RequestBody UserDTO userDTO){
+        String clientToken = userDTO.getId();
+        final User originalUser = userRepository.findByUserId(userDTO.getUserId());
+        System.out.println(clientToken);
+        System.out.println(originalUser.getId());
+        if(originalUser.getId().equals(clientToken)){
+            User user = User.builder()
+                    .userId(userDTO.getUserId())
+                    .username(userDTO.getUsername())
+                    .password(passwordEncoder.encode(userDTO.getPassword()))
+                    .phoneNumber(userDTO.getPhoneNumber())
+                    .gender(userDTO.getGender())
+                    .birthday(userDTO.getBirthday())
+                    .build();
+
+            userService.updateUser(user);
+            System.out.println(ResponseEntity.ok().body(""));
+            return ResponseEntity.ok().body("");
+        }
+        else { ResponseDTO responseDTO = ResponseDTO.builder()
+                .error("My page update failed.")
+                .build();
+            return ResponseEntity
+                    .badRequest()
+                    .body(responseDTO);
+        }
+
+
     }
 }

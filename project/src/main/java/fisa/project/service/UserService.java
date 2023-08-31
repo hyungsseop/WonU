@@ -40,4 +40,16 @@ public class UserService {
         return null;
     }
 
+    public User updateUser(final User user) {
+        User originalUser = userRepository.findByUserId(user.getUserId());
+        if (user.getPassword() != null) {
+            originalUser.setPassword(user.getPassword());
+        }
+        originalUser.setUsername(user.getUsername());
+        originalUser.setBirthday(user.getBirthday());
+        originalUser.setPhoneNumber(user.getPhoneNumber());
+        originalUser.setGender(user.getGender());
+
+        return userRepository.save(originalUser);
+    }
 }

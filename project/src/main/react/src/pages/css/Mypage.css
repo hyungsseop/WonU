@@ -9,7 +9,6 @@
     height: 100vh;
     position: absolute;
     top: 20%;
-    font-style: italic;
   }
     
   .mypage3 {
@@ -51,6 +50,12 @@
     flex-shrink: 0;
   }
   
+  .mypage9 {
+    background-color:  #F5F5F8;
+    line-height: 30px;
+  }
+
+
   /* 입력창 양식 */
   .mypage10{
     width: 100%;
@@ -78,3 +83,14 @@
     text-align: center;
   }
   
+  .mypage13 {
+    text-align: right;
+  }
+  
+  .mypage14 {
+    cursor: pointer;
+    color: #C4C4C4;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+  }

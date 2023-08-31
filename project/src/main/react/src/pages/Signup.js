@@ -38,12 +38,18 @@ const Signup = () => {
       );
   
       console.log("회원가입에 성공했습니다.", response.data);
-      setShowSuccessModal(true); // Show the success modal
+      setShowSuccessModal(true);
     } catch (error) {
       console.error("회원가입에 실패했습니다. 잠시후 다시 시도해주세요.", error);
+      setShowErrorModal(true);
+      if (error.response) {
+        console.log('Error response:', error.response); 
+        if (error.response.data === 'Duplicate ID' || error.response.status === 400) {
+          setShowErrorModal(true);
+        }
+      }
     }
-  };
-
+  }
 
 
   return (
@@ -54,7 +60,7 @@ const Signup = () => {
       <p className="signup5">회원정보를 입력해주세요</p>
         <form onSubmit={handleSubmit(onSubmit)} className="signup4">
   
-          <div className="mb-3 signup9">
+          <div className="mb-3">
             <label htmlFor="userId" className="signup11">
               아이디
             </label>
@@ -80,7 +86,7 @@ const Signup = () => {
           </div>
 
 
-          <div className="mb-3 signup9">
+          <div className="mb-3">
             <label htmlFor="userName" className="signup11">이름</label>
             <input
               type="text"
@@ -102,7 +108,7 @@ const Signup = () => {
             }
           </div>
 
-          <div className="mb-3 signup9">
+          <div className="mb-3">
             <label htmlFor="userPw" className="signup11">비밀번호</label>
             <input
               type="password"
@@ -147,7 +153,7 @@ const Signup = () => {
           </div>
 
 
-          <div className="mb-3 signup9">
+          <div className="mb-3">
             <label htmlFor="userBirth" className="signup11">생년월일</label>
             <input
               type="text"
@@ -156,8 +162,8 @@ const Signup = () => {
               {...register('userBirth', {
                 required: '생년월일 항목은 필수 입력 정보입니다',
                 pattern: {
-                  value: /^[0-9]{6}$/,
-                  message: '숫자 6글자여야 합니다.'
+                  value: /^[0-9]{8}$/,
+                  message: '숫자 8글자여야 합니다.'
                 }
               })}
                 placeholder="생년월일을 입력해주세요"
@@ -169,9 +175,10 @@ const Signup = () => {
             }
           </div>
 
-          <div className="mb-3 signup9">
+          <div className="mb-3">
             <label htmlFor="gender" className="signup11">성별</label>
             <div>
+              <div className="signup9">
               <label>
                 <input
                   type="radio"
@@ -181,7 +188,7 @@ const Signup = () => {
                   })}
                 /> 남성
               </label><br></br>
-              <label>
+              <label >
                 <input
                   type="radio"
                   value="female" 
@@ -190,6 +197,7 @@ const Signup = () => {
                   })}
                 /> 여성
               </label>
+              </div>
             </div>
             {errors.gender &&
               <div className="signup3">
@@ -198,7 +206,7 @@ const Signup = () => {
             }
           </div>
             
-          <div className="mb-3 signup9">
+          <div className="mb-3">
             <label className="form-check-label">
               <input
                 type="checkbox"
@@ -224,7 +232,7 @@ const Signup = () => {
         </form>
       </div>
     </section>
-    <Modal show={showSuccessModal} onHide={handleCloseSuccessModal}>
+    <Modal show={showSuccessModal} onHide={handleCloseSuccessModal} >
         <Modal.Header closeButton>
           <Modal.Title>회원가입 성공</Modal.Title>
         </Modal.Header>
@@ -238,7 +246,11 @@ const Signup = () => {
         <Modal.Header closeButton>
           <Modal.Title>회원가입 오류</Modal.Title>
         </Modal.Header>
-        <Modal.Body>중복된 아이디가 존재하여 회원가입이 불가능합니다. 다른 ID를 선택해주세요.</Modal.Body>
+        <Modal.Body>
+          중복된 아이디가 존재하여 회원가입이 불가능합니다.
+          <br/> 
+          다른 ID를 입력해주세요.
+          </Modal.Body>
         <Modal.Footer>
           <button onClick={handleCloseErrorModal}>확인</button>
         </Modal.Footer>

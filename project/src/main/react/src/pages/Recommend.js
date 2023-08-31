@@ -6,13 +6,18 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './css/Recommend.css';
 import Star from '../Components/Star';
+import { useNavigate } from 'react-router-dom';
 
 function Recommend(props) {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const handleGoHome = () => {
+    navigate('/');
+  };
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
-
+  
 
 
   const cards = [
@@ -83,7 +88,7 @@ function Recommend(props) {
           ))}
         </div><br/>
         <div className="footer-section">
-          <Button variant="primary" className="button1">추천 다시 받기</Button>
+          <Button variant="primary" className="button1" onClick={handleGoHome}>추천 다시 받기</Button>
           <Button variant="primary" className="button2" onClick={handleShowModal}>마음에 들어요</Button>
         </div>
           <Modal show={showModal} onHide={handleCloseModal}>

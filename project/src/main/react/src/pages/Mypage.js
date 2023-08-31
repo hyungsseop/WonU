@@ -43,24 +43,31 @@ const Mypage = () => {
 
     const onSubmit = async ({userId}) => {
     try {
-      const response = axios.post(
+      const response = await axios.post(
         `http://localhost:8080/auth/mypageupdate/${userId}`, 
       );
 
       if (response.status === 200) {
         // 서버에서 성공적으로 처리된 경우에 대한 처리
-        console.log("Update successful");
-        // userData.userId = response.data.userId
-        // userData.userBirth = response.data.userBirth
-        // userData.gender = response.data.gender
-        // userData.phoneNumber = "01001010101"
+        console.log("업데이트에 성공했습니다.");
+        alert("회원정보 업데이트에 성공했습니다.");
+        window.location.href = '/';
+  
+        // Update the userData state
+        setUserData(prevData => ({
+          ...prevData,
+          userId: response.data.userId,
+          userBirth: response.data.birthday,
+          gender: response.data.gender,
+          phoneNumber: response.data.phoneNumber || "01001010101"
+        }));
       } else {
         // 서버에서 실패한 경우에 대한 처리
-        console.log("Update failed");
+        console.log("회원 정보 수정에 실패했습니다.");
       }
     } catch (error) {
       // 네트워크 오류나 예외 발생 시에 대한 처리
-      console.error("An error occurred", error);
+      console.error("에러나 예외가 발생했습니다.", error);
     }
   };
 
@@ -70,7 +77,7 @@ const Mypage = () => {
         <div className="mypage-card">
           <div className="mypage6">About ME</div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="userId" className="mypage11">
                 아이디
               </label>
@@ -83,7 +90,7 @@ const Mypage = () => {
               />
             </div>
 
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="userPw" className="mypage11">
                 수정할 비밀번호
               </label>
@@ -102,7 +109,7 @@ const Mypage = () => {
               {errors.userPw && <div className="mypage3">{errors.userPw.message}</div>}
             </div>
 
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="prevUserPw" className="mypage11">
                 비밀번호 확인
               </label>
@@ -119,7 +126,7 @@ const Mypage = () => {
             </div>
             
             {/* 전화번호, 성별 및 생년월일 변경을 위한 필드 추가 */}
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="phoneNumber" className="mypage11">
                 전화번호
               </label>
@@ -141,7 +148,7 @@ const Mypage = () => {
               {errors.phoneNumber && <div className="mypage3">{errors.phoneNumber.message}</div>}
             </div>
 
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="userBirth" className="mypage11">
                 생년월일
               </label>
@@ -162,11 +169,11 @@ const Mypage = () => {
               {errors.userBirth && <div className="mypage3">{errors.userBirth.message}</div>}
             </div>
 
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="gender" className="mypage11">
                 성별
               </label>
-              <div>
+              <div className="mypage9">
                 <label>
                   <input
                     type="radio"
@@ -191,11 +198,15 @@ const Mypage = () => {
                 </label>
               </div>
               {errors.gender && <div className="mypage3">{errors.gender.message}</div>}
-            </div>
-            
+            </div>  
+
+            <div className="mypage13">
+              <span onClick={() => window.confirm("정말 탈퇴하시겠습니까?")} className="mypage14">회원 탈퇴하기</span>
+            </div><br/>
+
             <div className="text-center">
               <button type="submit" className="mypage7">
-                회원 정보 수정
+                변경 사항 확정
               </button>
             </div>
           </form>

@@ -3,6 +3,14 @@
   background-color: #f5f5f5 !important;
   color: #333 !important;
   border: 1px solid #ccc !important;
+  margin-right: 10px;
+}
+
+.toggle-btn1 {
+  background-color: #f5f5f5 !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+  margin-right: 10px;
 }
 
 /* 활성화됐을 때의 ToggleButton 색상 */
@@ -38,4 +46,16 @@
   background-color: #007BFF !important; /* 예: 파란색 */
   color: #FFF !important; /* 예: 흰색 텍스트 */
   border: 1px solid #0056b3 !important; /* 예: 어두운 파란색 경계선 */
+}
+
+.card_list {
+ padding: 15px;
+ margin: 15px;
+ display: inline-block;
+ width: 220px;
+}
+
+.p {
+  justify-content: center;
+  text-align: center;
 }

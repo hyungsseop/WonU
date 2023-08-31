@@ -50,7 +50,7 @@ const First = () => {
         <div className="mypage-card">
           <div className="mypage6">About ME</div>
           <form onSubmit={handleSubmit(onSubmit)}> 
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="userId" className="mypage11">
                 아이디
               </label>
@@ -63,7 +63,7 @@ const First = () => {
               />
             </div>
 
-            <div className="mb-3 mypage9">
+            <div className="mb-3">
               <label htmlFor="prevUserPw" className="mypage11">
                 비밀번호 확인
               </label>

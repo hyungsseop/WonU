@@ -1,0 +1,56 @@
+/* .modal-content {
+    width: 100%; 
+    max-width: 90%;
+    height: 500px; 
+    margin: 0 auto;
+}
+
+
+.modal_header {
+    
+  
+}
+
+
+.modal_body {
+    
+  
+}
+.modal_pareng {
+    display: flex;
+}
+.modal_child {
+    padding: 1rem;
+    margin: 1rem;
+    background-color: white;
+  } */
+
+/* 모달 컨테이너 스타일 */
+.modal3_1 .modal-content {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* 이미지 스타일 */
+.modal_child:nth-child(1) {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 카드 정보 스타일 */
+.modal_child:nth-child(2) {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* 버튼 스타일 */
+.btn-primary {
+    margin: auto;
+}

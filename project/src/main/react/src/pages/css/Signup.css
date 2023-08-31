@@ -30,6 +30,7 @@
   font-size: 32px;
   font-weight: 800;
   line-height: 100px;
+  margin-Top: 20%;
 }
 
 .signup7{
@@ -46,6 +47,11 @@
   background: #F5F5F8;
   height: 47px;
   flex-shrink: 0;
+}
+
+.signup9 {
+  background-color:  #F5F5F8;
+  line-height: 30px;
 }
 
 /* 입력창 양식 */
@@ -69,4 +75,5 @@
   font-weight: 600;
   line-height: 30px;
 }
+
 

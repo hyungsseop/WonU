@@ -12,6 +12,8 @@ import Card from './Components/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Recommend from './pages/Recommend';
 import Wandb from './Components/Wandb';
+import Detail from './pages/Detail';
+import Service from './pages/Service';
 
 function App() {
     return (
@@ -25,9 +27,11 @@ function App() {
                   <Route path="/first" element={<First />} />
                   <Route path="/mypage" element={<Mypage />} />
                   <Route path="/credit" element={<Credit />} />
-                  <Route path="/Card" element={<Card />} />
-                  <Route path="/Credit/recommend" element={<Recommend />} />
-                  <Route path="/Wandb" element={<Wandb />} />
+                  <Route path="/card" element={<Card />} />
+                  <Route path="/credit/recommend" element={<Recommend />} />
+                  <Route path="/wandb" element={<Wandb />} />
+                  <Route path="/service" element={<Service />} />
+                  <Route path="/credit/detail" element={<Detail />} />
               </Routes>
             </Router>
     );
