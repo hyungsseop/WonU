@@ -42,6 +42,7 @@ public class UserController {
                     .username(userDTO.getUsername())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
                     .gender(userDTO.getGender())
+                    .phoneNumber(userDTO.getPhoneNumber())
                     .birthday(userDTO.getBirthday())
                     .build();
             // UserService로 보내 추가 로직 검사후 생성
