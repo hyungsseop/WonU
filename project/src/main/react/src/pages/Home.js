@@ -1,20 +1,42 @@
-import { useState } from 'react';
 import '../App.css';
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, Carousel } from 'react-bootstrap';
 import { Routes, Route} from 'react-router-dom';
 import Credit from './Credit';
 import Modal2 from '../Components/Modal2';
 function Home() {
   return (
     <div>
-    {/* <div className="home-container"> */}
       <Routes>
         <Route
           path="/"
           element={
             <>
               <br />
-              <div className="main-bg"></div>
+              <div className = "banner">
+                <Carousel className="carousel-container">
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      src=".\images\slider01.jpg"
+                      alt="First slide"
+                    />
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      src=".\images\slider02.jpg"
+                      alt="Second slide"
+                    />
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      src=".\images\slider04.jpg"
+                      alt="Second slide"
+                    />
+                  </Carousel.Item>
+                </Carousel>
+              </div>
               <br />
               <div className="card-parent">
                 <Card style={{ width: '36rem' }}>
@@ -47,6 +69,7 @@ function Home() {
                   </Card.Body>
                 </Card>
               </div>
+              <br/><br/>
             </>
           }
         />

@@ -3,12 +3,10 @@
   }
     
   .mypage2 {
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: absolute;
-    top: 20%;
   }
     
   .mypage3 {

@@ -70,26 +70,6 @@
   word-Wrap: break-word;
 }
 
-.custom-datepicker {
-  width: 100%;
-  margin: auto;
-  padding: 6px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 1=px;
-  background-color: rgba(255, 255, 255, 0.87);
-  color: black;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.error-message {
-  color: red;
-  font-size: 15px;
-  margin-top: 4px;
-  width: 60%;
-  margin: auto;
-}
-
 .font-regist {
   color: black;
   font-Size: 15px;
@@ -105,15 +85,6 @@
   padding: 5px;
   width: 60%;
   margin: auto;
-}
-
-.main-bg {
-  height: 500px;
-  display: flex;
-  background-image: url('./slider01.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
 }
 
 .card-parent {
@@ -166,17 +137,6 @@
   flex-direction: row;
 }
 
-/* .main-card-img{
-  background-image: url('./images/recom_io.jpg');
-} */
-
-d-block w-100{
-  height: 300px;
-  background-image: url('./slider01.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -213,4 +173,14 @@ d-block w-100{
   display: flex;
   flex-direction: column; /* 자식 요소를 수직으로 배치 */
   align-items: center; /* 자식 요소를 수평 중앙에 배치 */
+}
+
+.carousel-container {
+  width: 100%;
+  margin: auto;
+}
+
+.banner{
+  height:auto;
+  
 }

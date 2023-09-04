@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
+    margin: auto;
   }
   
   .header-section {
@@ -15,32 +16,27 @@
   }
   
   .card-item {
-    width: 18rem;
+    width: 15rem;
     margin: 0 10px;
   }
   
   .footer-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
+    flex-wrap: wrap;
   }
   
-  .button1 {
-    margin-right: 10px;
-    width: 294px;
-    height: 62px;
+  .button1, .button2 {
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
-    background-color: #0066FF;
-  }
-
-  .button2 {
-    margin-right: 10px;
     width: 294px;
     height: 62px;
-    justify-content: center;
-    align-items: center;
     flex-shrink: 0;
     background-color: #0066FF;
+    margin: 0 10px; 
   }
 
   .recommended-title {

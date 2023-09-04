@@ -1,0 +1,18 @@
+.footer-container {
+    background-color: whitesmoke;
+    padding: 50px;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+  }
+
+  .content-wrap {
+    display: grid;
+    place-items: center;    
+    height: 100%;              
+    text-align: center;        
+  }
+
+  

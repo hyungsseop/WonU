@@ -35,7 +35,6 @@ function Credit() {
   }
 
   useEffect(() => {
-    // 카드사와 혜택에 따라 카드 정보를 필터링
     const newFilteredCards = card.filter((c) => {
       return (selectedCardCompanys.length === 0 || selectedCardCompanys.includes(c.companyId)) &&
              (selectedBenefits.length === 0 || selectedBenefits.includes(c.benefitId));

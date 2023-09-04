@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Link } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './css/Recommend.css';
@@ -90,7 +90,7 @@ function Recommend(props) {
         <div className="footer-section">
           <Button variant="primary" className="button1" onClick={handleGoHome}>추천 다시 받기</Button>
           <Button variant="primary" className="button2" onClick={handleShowModal}>마음에 들어요</Button>
-        </div>
+        </div><br/><br/>
           <Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
               <Modal.Title>서비스 평점 매기기</Modal.Title>

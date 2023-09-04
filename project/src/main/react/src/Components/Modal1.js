@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import './Modal1.css';
+import './css/Modal1.css';
 import Search from './Search';
-import { ModalBody, ModalFooter } from 'react-bootstrap';
+import { ModalBody} from 'react-bootstrap';
 
 function Modal1() {
   const [show, setShow] = useState(false);

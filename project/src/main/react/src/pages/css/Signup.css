@@ -3,10 +3,10 @@
 }
   
 .signup2 {
-  /* display: flex; */
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+
 }
   
 .signup3 {
@@ -44,13 +44,13 @@
 }
 
 .signup8 {
-  background: #F5F5F8;
+  background-color: #f9f9f9;
   height: 47px;
   flex-shrink: 0;
 }
 
 .signup9 {
-  background-color:  #F5F5F8;
+  background-color: #f9f9f9;
   line-height: 30px;
 }
 

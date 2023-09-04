@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button} from 'react-bootstrap';
 import './css/Detail.css';
 import card_info from './data.js';
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,6 @@ function Detail(props) {
     <div className="col-md-3">
       <div className='card_list'>
 
-        {/* 모달창 */}
         <Modal show={showModal} onHide={handleCloseModal} dialogClassName='modal3_1' size="lg">
           <Modal.Header className='modal_header' closeButton>
             <Modal.Title> 상세 보기</Modal.Title>
@@ -49,9 +48,9 @@ function Detail(props) {
       </div>
     </div>
           </Modal.Body>
-          {/* <Modal.Footer>
+          <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>닫기</Button>
-          </Modal.Footer> */}
+          </Modal.Footer>
         </Modal>
       </div>
     </div>

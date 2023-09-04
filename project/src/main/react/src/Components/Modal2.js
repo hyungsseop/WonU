@@ -2,14 +2,14 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import './Modal2.css';
+import './css/Modal2.css';
 import { useNavigate } from "react-router-dom";
 
 function Modal2() {
   const navigate = useNavigate();
   
   const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState(false); // 로딩 모달의 상태
+  const [loading, setLoading] = useState(false);
   const [darkenBackground, setDarkenBackground] = useState(false); 
 
   const handleSubmit = async (e) => {
@@ -20,7 +20,7 @@ function Modal2() {
 
     await new Promise(res => setTimeout(res, 2000));
 
-    setLoading(false); // 로딩 모달 숨기기
+    setLoading(false);
     navigate("/credit/recommend");
     setShow(false);
     setDarkenBackground(false);
@@ -32,19 +32,14 @@ function Modal2() {
         회원 추천 받기
       </Button>
       <div className={`modal-overlay ${darkenBackground ? 'darken' : ''}`}>
-      <Modal
-        show={show}
-        onHide={() => setShow(false)}
-        className="modal2_1"
-        aria-labelledby="example-custom-modal-styling-title"
-        centered={true}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-custom-modal-styling-title">
+      <Modal show={show} onHide={() => setShow(false)} className="modal2_1" aria-labelledby="example-custom-modal-styling-title" centered={true}>
+      <Modal.Header closeButton>
+        <br/>
+        <Modal.Title className="Modal-font">
           필요한 정보를 입력하세요
-          </Modal.Title>
-        </Modal.Header>
-
+        </Modal.Title>
+      </Modal.Header>
+        <br/>
         <Modal.Body>
           <p>
           필요한 정보를 입력하여 적합한 신용 카드와 카드 분석 보고서를 받으세요.

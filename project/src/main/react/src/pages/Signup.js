@@ -140,7 +140,7 @@ const Signup = () => {
                 required: '휴대폰 번호 항목은 필수 입력 정보입니다.',
                 pattern: {
                   value: /^[0-9]{10,11}$/,
-                  message: '숫자 10~11글자여야 합니다.'
+                  message: '-없이 입력해주세요.'
                 }
               })}
                 placeholder= "휴대전화번호를 입력해주세요"

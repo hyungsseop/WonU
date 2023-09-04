@@ -1,7 +1,6 @@
 import React from 'react';
-import { Navbar, Container, Nav, Modal, Button, FormControl } from 'react-bootstrap';
+import { Navbar, Container, Nav} from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { UncontrolledCollapse, CardBody, Card} from 'reactstrap';
 import Modal1 from '../Components/Modal1';
 
 function Header() {

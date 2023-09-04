@@ -1,13 +1,12 @@
-//Mypage.js
-
 import React from "react";
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import "./css/Mypage.css";
 import axios from "axios";
+import "./css/Mypage.css";
 
 const Mypage = () => {
   const [userData, setUserData] = useState({
+    id: localStorage.getItem('login-token'),
     userId: localStorage.getItem('login-id'),
     userPw: '',
     phoneNumber: '',
@@ -28,7 +27,7 @@ const Mypage = () => {
           userId: response.data.userId,
           userBirth: response.data.birthday,
           gender: response.data.gender,
-          phoneNumber: '01001010101' // Placeholder, update as needed
+          phoneNumber: response.data.phoneNumber
         });
         
         console.log('Update successful');
@@ -38,42 +37,45 @@ const Mypage = () => {
     return () => {
       completed = true;
     };
-    //query가 변할때 useEffect를 실행해야하는 시점이다
   }, []);
 
     const onSubmit = async ({userId}) => {
     try {
-      const response = await axios.post(
-        `http://localhost:8080/auth/mypageupdate/${userId}`, 
-      );
+      const response = axios.put(
+        `http://localhost:8080/auth/mypageupdate`,
+        {
+          id: userData.id,
+          userId:userData.userId,
+          password:userData.userPw,
+          username:userData.userName,
+          birthday:userData.userBirth,
+          gender: userData.gender,
+          phoneNumber: userData.phoneNumber,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
       if (response.status === 200) {
-        // 서버에서 성공적으로 처리된 경우에 대한 처리
-        console.log("업데이트에 성공했습니다.");
+        console.log("Update successful");
         alert("회원정보 업데이트에 성공했습니다.");
         window.location.href = '/';
-  
-        // Update the userData state
-        setUserData(prevData => ({
-          ...prevData,
-          userId: response.data.userId,
-          userBirth: response.data.birthday,
-          gender: response.data.gender,
-          phoneNumber: response.data.phoneNumber || "01001010101"
-        }));
-      } else {
-        // 서버에서 실패한 경우에 대한 처리
-        console.log("회원 정보 수정에 실패했습니다.");
+
+       } else {
+        console.log("Update failed");
       }
     } catch (error) {
-      // 네트워크 오류나 예외 발생 시에 대한 처리
-      console.error("에러나 예외가 발생했습니다.", error);
+      console.error("An error occurred", error);
     }
   };
 
+
+
   return (
     <div>
-      <section className="col-4 offset-md-4 mypage2">
+      <section className="mypage2">
         <div className="mypage-card">
           <div className="mypage6">About ME</div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,7 +127,6 @@ const Mypage = () => {
               {errors.confirmUserPw && <div className="mypage3">{errors.confirmUserPw.message}</div>}
             </div>
             
-            {/* 전화번호, 성별 및 생년월일 변경을 위한 필드 추가 */}
             <div className="mb-3">
               <label htmlFor="phoneNumber" className="mypage11">
                 전화번호
@@ -139,7 +140,7 @@ const Mypage = () => {
                   required: '휴대폰 번호 필드는 필수 입력 정보입니다.',
                   pattern: {
                     value: /^[0-9]{10,11}$/,
-                    message: '숫자 10~11자여야 합니다.'
+                    message: '-없이 입력해주세요.'
                   }
                 })}
                 
@@ -160,8 +161,8 @@ const Mypage = () => {
                 {...register('userBirth', {
                   required: '생년월일 필드는 필수 정보입니다',
                   pattern: {
-                    value: /^[0-9]{6}$/,
-                    message: '숫자 6자여야 합니다.'
+                    value: /^[0-9]{8}$/,
+                    message: '숫자 8자여야 합니다.'
                   }
                 })}
                 

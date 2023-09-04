@@ -33,7 +33,7 @@ const Login = () => {
       }
     } catch (error) {
       if (error.response) {
-        alert("아이디와 비밀번호가 일치하지 .");
+        alert("아이디와 비밀번호가 일치하지 않습니다.");
       } else {
         alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");
       }

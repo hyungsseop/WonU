@@ -10,26 +10,21 @@
     border-radius: 0;
 }
 
-.modal2_1 .modal-header {
-    padding: 50px 15px;
-}
-
 .modal2_1 .modal-title {
     text-align: center;
     width: 100%;
     color: #000;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Inter;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 700;
-    /* line-height: 20px; */
+    line-height: 0px;
 }
 
 .modal2_1 .modal-body {
     display: flex;
     justify-content: left; 
     flex-direction: column;
-    font-size: 20px;
 }
 
 .modal2_1 .modal-footer {
@@ -55,21 +50,19 @@
 }
 
 
-/* 반응 로딩 */
 
-/* Style the modal body with flexbox to arrange its children vertically */
 .Modal .Modal__Body {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Horizontally center the children */
-    justify-content: center; /* Vertically center the children */
+    align-items: center; 
+    justify-content: center; 
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Style for the "WON" title */
+
 .title {
     color: #06F;
     text-align: center;
@@ -80,16 +73,14 @@
     line-height: 60px;
 }
 
-/* Info text style */
 .info {
-    font-size: 1.2em; /* Medium size */
+    font-size: 1.2em;
     margin-bottom: 10px;
     text-align: center;
 }
 
-/* Note about timing */
 .note {
-    font-size: 0.9em; /* Smaller size */
+    font-size: 0.9em;
     color: #888888;
     text-align: center;
 }
@@ -100,6 +91,8 @@ body .loadingModal + .modal-backdrop {
 
 }
 
-
-
-
+/* 
+.modal2_1 .modal-header {
+    position: relative;
+  } */
+  
