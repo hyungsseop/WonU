@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "id")})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "cardNo")})
 public class CardInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int id;
+    private int cardNo;
 
     @Column(nullable = false)
     private String cardCorp;
@@ -30,8 +30,8 @@ public class CardInfo {
     @Column(nullable = false)
     private int overseasYn;
 
-    @Column(nullable = false)
-    private int overseasFee;
+    @Column
+    private Integer overseasFee;
 
     @Column(nullable = false)
     private int minLastMonth;
