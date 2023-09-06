@@ -27,6 +27,7 @@ const Signup = () => {
           userId:userId,
           password:userPw,
           username:userName,
+          phoneNumber:phoneNumber,
           birthday:userBirth,
           gender: gender,
         },

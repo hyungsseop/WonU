@@ -49,13 +49,73 @@
 }
 
 .card_list {
- padding: 15px;
- margin: 15px;
- display: inline-block;
- width: 220px;
-}
+ /* padding: 15px; */
+ /* margin: 15px; */
+ /* display: inline-block; */
+  /* width: 220px; */
+  justify-content: center;
+ text-align: center;  
+ object-fit: cover;
+ height: 53vh;
+ margin-bottom: 10px;
+ margin-top: 10px;
+} 
 
 .p {
   justify-content: center;
   text-align: center;
 }
+
+.credit1{
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Inter;
+  font-size: 33px;
+  font-style: sans-serif;
+  font-weight: 700;
+  line-height: 120px;
+  text-align: center;
+}
+
+.btn-group {
+  flex-wrap: wrap;
+}
+
+.btn-group .btn {
+  flex: 1 1 auto;
+  margin-bottom: 10px;
+}
+
+.toggle-btn, .toggle-btn1 {
+  background-color: #f5f5f5 !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+  margin-right: 10px;
+  width: 100px; 
+  height: 40px; 
+  font-size: 14px; 
+  padding: 10px 20px; 
+}
+
+/* .cardcom{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 20vh;
+  height: 5vh; 
+
+} */
+
+.card1{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 6vh;
+  margin-top: 15px;
+}
+
+.card2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 5.5vh;
+}
+
+

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import './css/Modal2.css';
 import { useNavigate } from "react-router-dom";
+import './css/Modal2.css';
 
 function Modal2() {
   const navigate = useNavigate();
@@ -11,7 +11,8 @@ function Modal2() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [darkenBackground, setDarkenBackground] = useState(false); 
-
+  const [job, setJob] = useState(''); // 첫번째 질문에 대한 상태
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Submitted");
@@ -49,6 +50,13 @@ function Modal2() {
               <Form.Label>1. 직업은 무엇입니까?</Form.Label>
               <Form.Control type="text" placeholder="직업을 입력하세요" />
             </Form.Group>
+            
+            {job === '학생' && (
+            <Form.Group>
+              <Form.Label>학년은 어떻게 되나요?</Form.Label>
+              <Form.Control type="text" placeholder="학년을 입력하세요" />
+            </Form.Group>
+          )}
 
             <Form.Group>
               <Form.Label>2. 현재 신용 카드를 가지고 있습니까?</Form.Label>

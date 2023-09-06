@@ -165,8 +165,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* 뷰포트의 전체 높이를 차지 */
-  width: 100vw; /* 뷰포트의 전체 너비를 차지 */
+  height: 100vh; 
+  width: 100vw; 
 }
 
 .centered-content {

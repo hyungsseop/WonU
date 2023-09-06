@@ -89,7 +89,7 @@ render() {
         <div>
           <Form.Control
             type="text"
-            maxLength="6"
+            maxLength="8"
             ref={(ref) => (this.birthDate = ref)}
             placeholder="생년월일"
             className="custom1-style"

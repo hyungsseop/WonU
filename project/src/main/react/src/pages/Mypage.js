@@ -134,19 +134,10 @@ const Mypage = () => {
               <input
                 type="text"
                 id="phoneNumber"
+                disabled
                 defaultValue={userData.phoneNumber}
                 className={`mypage10 ${errors.phoneNumber ? 'is-invalid' : ''}`}
-                {...register('phoneNumber', {
-                  required: '휴대폰 번호 필드는 필수 입력 정보입니다.',
-                  pattern: {
-                    value: /^[0-9]{10,11}$/,
-                    message: '-없이 입력해주세요.'
-                  }
-                })}
-                
-
               />
-              {errors.phoneNumber && <div className="mypage3">{errors.phoneNumber.message}</div>}
             </div>
 
             <div className="mb-3">
@@ -157,17 +148,9 @@ const Mypage = () => {
                 type="text"
                 id="userBirth"
                 defaultValue={userData.userBirth}
+                disabled
                 className={`mypage10 ${errors.userBirth ? 'is-invalid' : ''}`}
-                {...register('userBirth', {
-                  required: '생년월일 필드는 필수 정보입니다',
-                  pattern: {
-                    value: /^[0-9]{8}$/,
-                    message: '숫자 8자여야 합니다.'
-                  }
-                })}
-                
-              />
-              {errors.userBirth && <div className="mypage3">{errors.userBirth.message}</div>}
+              />              
             </div>
 
             <div className="mb-3">
@@ -176,29 +159,22 @@ const Mypage = () => {
               </label>
               <div className="mypage9">
                 <label>
-                  <input
-                    type="radio"
-                    value="male"
-                    checked={userData.gender === 'male'}
-                    onChange={e => setUserData({...userData, gender: e.target.value})}
-                    {...register('gender', {
-                      required: '성별을 선택해주세요.'
-                    })}
-                  /> 남성
+                <input
+                type="radio"
+                value="male"
+                checked={userData.gender === 'male'}
+                disabled
+              /> 남성
                 </label><br></br>
                 <label>
                   <input
                     type="radio"
                     value="female"
                     checked={userData.gender === 'female'}
-                    onChange={e => setUserData({...userData, gender: e.target.value})}
-                    {...register('gender', {
-                      required: '성별을 선택해주세요.'
-                    })}
+                    disabled
                   /> 여성
                 </label>
               </div>
-              {errors.gender && <div className="mypage3">{errors.gender.message}</div>}
             </div>  
 
             <div className="mypage13">

@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Modal, Button} from 'react-bootstrap';
 import './css/Detail.css';
-import card_info from './data.js';
-import { useNavigate } from "react-router-dom";
 
-function Detail(props) {
+function Detail({ card }) {  // card 정보를 props로 받습니다.
   const [showModal, setShowModal] = useState(false);
 
   const handleCloseModal = () => setShowModal(false);
@@ -12,50 +10,32 @@ function Detail(props) {
 
   return (
     <>
-        <button className='btn btn-outline-primary' onClick={handleShowModal}>상세 보기</button>
-    <div className="col-md-3">
-      <div className='card_list'>
-
-        <Modal show={showModal} onHide={handleCloseModal} dialogClassName='modal3_1' size="lg">
-          <Modal.Header className='modal_header' closeButton>
-            <Modal.Title> 상세 보기</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className='modal_body'>
-            <div className='modal_parent'> 
-              <div className='modal_child'> 
-              <img src="https://static11.samsungcard.com/wcms/home/scard/image/personal/b_AAP1483.png" 
-                height="250px" width="158px" alt='card'/>
-              </div>
-              <div className='modal_child'>
-                <h4>삼성카드 taptap-o</h4>
-                <p>연회비: 10,000원</p>
-                <p>혜택: #교통 #외식 #주유 #문화</p>
-                <button className='btn btn-primary'>카드 신청</button>
-              </div>
-            </div>
-            <div className='modal_parent'>
-            <div className='modal_child'>
-                <h4>이용 안내</h4>
-            </div>
-            <div className='modal_child'>
-                <p>이용 안내 내용을 추가하세요. 예를 들어, 카드의 사용 가능한 가맹점, 혜택 설명 등을 여기에 추가할 수 있습니다.
-                  배고픈데 무엇을 먹을지를 모르겠습니다. 3시에 회의해야해
-                </p>
-            </div>
-          </div>
-          <div> 
-        <div> 
-      </div>
-    </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>닫기</Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-    </div>
+      <button className='btn btn-outline-primary' onClick={handleShowModal}>상세 보기</button>
+      <Modal show={showModal} onHide={handleCloseModal} size="lg">
+        
+        <Modal.Header className='modal_header' closeButton>
+          <Modal.Title> 상세 보기</Modal.Title>
+        </Modal.Header>
+        <div className='detail1'>
+        <img src={card.card_image} alt={card.cardName} height="250px" width="158px"/>
+        </div>
+        <Modal.Body className='modal_body'>
+        <h4 className='detail2'>{card.cardName}</h4>  
+        <div className='detail3'>
+          <p>국내연회비: {card.domesticFee}</p>
+          <p>해외연회비: {card.overseasFee}</p>
+          <p>전월실적: {card.minLastMonth}</p>
+          <p>당월실적: {card.minThisMonth}</p>
+          <p>혜택: {card.benefitMate}</p>
+          <p>주요 혜택: {card.benefitMain}</p>
+        </div>
+        <div className='detail4'>
+        <button className='btn btn-primary' onClick={() => window.open(card.cardUrl, '_blank')}>카드 신청</button>
+        </div>
+        </Modal.Body>
+      </Modal>
     </>
-  )
+  );
 }
 
 export default Detail;
