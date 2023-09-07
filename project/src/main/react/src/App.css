@@ -183,6 +183,7 @@
 .carousel-container {
   width: 100%;
   margin: auto;
+  max-width:1240px;
 }
 
 .banner{
@@ -229,3 +230,7 @@
   font-family: "NanumSquareNeo-eHv";
   src: url("./fonts/NanumSquareNeo-eHv.ttf") format("truetype");
 }
+
+/* .btn.btn-primary {
+  font-family: "NanumSquareNeo-bRg";
+} */

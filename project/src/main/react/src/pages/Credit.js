@@ -23,13 +23,33 @@ function Credit() {
 
   const handleCardCompanyToggle = (selected1) => {
     console.log("handleCardCompanyToggle selected:", selected1);
-    setselectedCardCompanys(selected1);
-  };
 
-  const handleBenefitToggle = (selected2) => {
+    // If "전체" is selected and there are other selected items, only keep "전체".
+    if (selected1.includes('전체') && selected1.length > 1) {
+        setselectedCardCompanys(['전체']);
+    } else if (!selected1.includes('전체') && selectedCardCompanys.includes('전체')) {
+        // If any other item is selected and "전체" was previously selected, remove "전체".
+        setselectedCardCompanys(selected1);
+    } else {
+        setselectedCardCompanys(selected1);
+    }
+};
+
+const handleBenefitToggle = (selected2) => {
     console.log("handleBenefitToggle selected:", selected2);
-    setselectedBenefits(selected2);
-  };
+
+    // If "전체" is selected and there are other selected items, only keep "전체".
+    if (selected2.includes('전체') && selected2.length > 1) {
+        setselectedBenefits(['전체']);
+    } else if (!selected2.includes('전체') && selectedBenefits.includes('전체')) {
+        // If any other item is selected and "전체" was previously selected, remove "전체".
+        setselectedBenefits(selected2);
+    } else {
+        setselectedBenefits(selected2);
+    }
+};
+
+  
 
   useEffect(() => {
     const newFilteredCards = cardInfo.filter((card) => {
@@ -43,7 +63,7 @@ function Credit() {
   }, [selectedCardCompanys, selectedBenefits, cardInfo]);
 
   const cardCompanyItems = ['전체', '우리', '신한', 'KB국민', '현대', '롯데', '삼성'];
-  const benefitItems = ['전체', '외식', '대형마트', '카페', '편의점', '주유', '의료', '자동차정비', '숙박', '레저', '놀이공원', '소핑', '학원', '관람', '할인점', '자동차판매', '여행', '렌터카', '해외', '보험', '교통'];
+  const benefitItems = ['전체', '외식', '대형마트', '카페', '편의점', '주유', '의료', '자동차정비', '숙박', '레저', '놀이공원', '쇼핑', '학원', '관람', '할인점', '자동차판매', '여행', '렌터카', '해외', '보험', '교통'];
 
   return (
     <div className="container">
@@ -54,11 +74,13 @@ function Credit() {
       <p className='credit2'>혜택</p>
       <ToggleButtons items={benefitItems} selectedItems={selectedBenefits} handleToggle={handleBenefitToggle} startIndex={10} />
       <br/><br/>
+      <p className='credit2'>추천된 카드: {filteredCards.length}개</p>
       <div className="row">
         {filteredCards.map((card, i) => (
           <CardList card={card} key={i} />
         ))}
       </div>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
   );
 }

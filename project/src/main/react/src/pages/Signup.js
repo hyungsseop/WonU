@@ -19,6 +19,22 @@ const Signup = () => {
     setShowErrorModal(false);
   };
 
+//   const getAgeRange = (birthYear) => {
+//     const currentYear = new Date().getFullYear();
+//     const age = currentYear - birthYear;
+
+//     if (age >= 0 && age <= 9) return '0';
+//     if (age >= 10 && age <= 19) return '10';
+//     if (age >= 20 && age <= 29) return '20';
+//     if (age >= 30 && age <= 39) return '30';
+//     if (age >= 40 && age <= 49) return '40';
+//     if (age >= 50 && age <= 59) return '50';
+//     if (age >= 60 && age <= 69) return '60';
+//     if (age >= 70 && age <= 79) return '70';
+//     if (age >= 80 && age <= 89) return '80';
+//     if (age >= 90 && age <= 99) return '90';
+// }
+
   const onSubmit = async ({ userId, userPw, userName, userBirth, phoneNumber, gender }) => {
     try {
       const response = await axios.post(
@@ -30,6 +46,7 @@ const Signup = () => {
           phoneNumber:phoneNumber,
           birthday:userBirth,
           gender: gender,
+          // ageRange: ageRange,
         },
         {
           headers: {
@@ -163,7 +180,7 @@ const Signup = () => {
               {...register('userBirth', {
                 required: '생년월일 항목은 필수 입력 정보입니다',
                 pattern: {
-                  value: /^[0-9]{8}$/,
+                  value: /^[0-9]{4}$/,
                   message: '숫자 8글자여야 합니다.'
                 }
               })}
