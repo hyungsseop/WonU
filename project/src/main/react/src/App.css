@@ -112,6 +112,11 @@
   margin: 1px;
 }
 
+.home1{
+  font-family: "NanumSquareNeo-cBd";
+  line-height: 30px;
+}
+
 .card-sep {
   padding:1rem;
 }
@@ -183,4 +188,44 @@
 .banner{
   height:auto;
   
+}
+
+@font-face {
+  font-family: "WooridaumL";
+  src: url("./fonts/WooridaumL.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "WooridaumB";
+  src: url("./fonts/WooridaumB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "WooridaumR";
+  src: url("./fonts/WooridaumR.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareNeo-aLt";
+  src: url("./fonts/NanumSquareNeo-aLt.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareNeo-bRg";
+  src: url("./fonts/NanumSquareNeo-bRg.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareNeo-cbd";
+  src: url("./fonts/NanumSquareNeo-bRg.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareNeo-dEb";
+  src: url("./fonts/NanumSquareNeo-dEb.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NanumSquareNeo-eHv";
+  src: url("./fonts/NanumSquareNeo-eHv.ttf") format("truetype");
 }

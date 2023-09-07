@@ -14,7 +14,7 @@ function Detail({ card }) {  // card 정보를 props로 받습니다.
       <Modal show={showModal} onHide={handleCloseModal} size="lg">
         
         <Modal.Header className='modal_header' closeButton>
-          <Modal.Title> 상세 보기</Modal.Title>
+          <Modal.Title className='detail5'> 상세 보기</Modal.Title>
         </Modal.Header>
         <div className='detail1'>
         <img src={card.card_image} alt={card.cardName} height="250px" width="158px"/>

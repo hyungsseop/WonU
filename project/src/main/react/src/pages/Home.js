@@ -47,9 +47,9 @@ function Home() {
                   />
                   <Card.Body>
                     <Card.Text>
-                      비회원도 이용할 수 있는 신용카드 추천 서비스 <br />
+                      <div className='home1'>                      비회원도 이용할 수 있는 신용카드 추천 서비스 <br />
                       나에게 적합한 카드는 무엇일까요?
-                    </Card.Text>
+                      </div></Card.Text>
                     <Button href="/credit">기본 추천 받기</Button>
                   
                   </Card.Body>
@@ -62,9 +62,10 @@ function Home() {
                   />
                   <Card.Body>
                     <Card.Text>
+                    <div className='home1'>
                       나와 적합한 신용카드와 카드 분석 리포트까지 <br />
                       지금 바로 이용해보세요
-                    </Card.Text>
+                      </div></Card.Text>
                     <Modal2></Modal2>
                   </Card.Body>
                 </Card>

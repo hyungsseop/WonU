@@ -48,12 +48,12 @@ function Credit() {
   return (
     <div className="container">
       <h2 className="credit1">신용카드</h2>
-      <p>카드사</p>
+      <p className='credit2'>카드사</p>
       <ToggleButtons items={cardCompanyItems} selectedItems={selectedCardCompanys} handleToggle={handleCardCompanyToggle} startIndex={0} />
       <br />
-      <p>혜택</p>
+      <p className='credit2'>혜택</p>
       <ToggleButtons items={benefitItems} selectedItems={selectedBenefits} handleToggle={handleBenefitToggle} startIndex={10} />
-      <br/><br/><br/><br/>
+      <br/><br/>
       <div className="row">
         {filteredCards.map((card, i) => (
           <CardList card={card} key={i} />

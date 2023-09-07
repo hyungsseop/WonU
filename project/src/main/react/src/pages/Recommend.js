@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import First from './First';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -17,7 +18,6 @@ function Recommend(props) {
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
-  
 
 
   const cards = [
@@ -67,7 +67,7 @@ function Recommend(props) {
 
     return (
       <div className="main-container">
-        <h2 className="recommended-title"> 사회초년인 김피사 님을 위한 추천 신용카드</h2>
+        <h2 className="recommended-title"> 사회초년인 {localStorage.getItem("login-id")} 님을 위한 추천 신용카드</h2>
         <div className="header-section">
           {cards.map((card) => (
             <Card key={card.card_no} className="card-item">

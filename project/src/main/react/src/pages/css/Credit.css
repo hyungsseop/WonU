@@ -1,4 +1,4 @@
-/* 평소의 ToggleButton 색상 */
+평소의 ToggleButton 색상
 .toggle-btn {
   background-color: #f5f5f5 !important;
   color: #333 !important;
@@ -58,7 +58,7 @@
  object-fit: cover;
  height: 53vh;
  margin-bottom: 10px;
- margin-top: 10px;
+ margin-top: 30px;
 } 
 
 .p {
@@ -71,10 +71,14 @@
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Inter;
   font-size: 33px;
-  font-style: sans-serif;
+  font-family: "NanumSquareNeo-dEb";
   font-weight: 700;
   line-height: 120px;
   text-align: center;
+}
+
+.credit2{
+  font-family: "NanumSquareNeo-bRg";
 }
 
 .btn-group {
@@ -109,13 +113,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   height: 6vh;
-  margin-top: 15px;
+  margin-top: 20px;
+  font-family: "NanumSquareNeo-cbd";
+  font-size: 20px;
+  font-weight: 550;
 }
 
 .card2{
+  font-family: "NanumSquareNeo-bRg";
+  font-size: 16.5px;
+}
+
+
+.card3{
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 5.5vh;
+  height: 3vh;
+  font-family: "NanumSquareNeo-aLt";
+  font-size: 15px;
 }
 
 

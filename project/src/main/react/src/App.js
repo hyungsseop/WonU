@@ -13,7 +13,6 @@ import Recommend from './pages/Recommend';
 import Wandb from './Components/Wandb';
 import Cardlist from './pages/CardList';
 import Service from './pages/Service';
-import test from './pages/test'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Elastic from './Components/Elastic';
 function App() {
@@ -33,7 +32,6 @@ function App() {
                   <Route path="/elastic" element={<Elastic />} />
                   <Route path="/service" element={<Service />} />
                   <Route path="/cardlist" element={<Cardlist />} />
-                  <Route path="/test" element={<test />} />
                   {/* <Route path="/credit/detail" element={<Detail />} /> */}
               </Routes>
                 <Footer />
