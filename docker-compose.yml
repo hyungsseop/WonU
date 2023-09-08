@@ -88,19 +88,19 @@ services:
     depends_on:
       - elasticsearch
 
-  # nginx:
-  #   image: nginx
-  #   ports:
-  #   - "5600:5600"
-  #   volumes:
-  #   - ./nginx/:/etc/nginx/conf.d/
-  #   - ./nginx/:/var/log/nginx
-  #   links:
-  #   - kibana
-  #   networks:
-  #     - elk
-  #   depends_on:
-  #     - elasticsearch
+  nginx:
+    image: nginx
+    ports:
+    - "5600:5600"
+    volumes:
+    - ./nginx/:/etc/nginx/conf.d/
+    - ./nginx/:/var/log/nginx
+    links:
+    - kibana
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
       
 
 networks:

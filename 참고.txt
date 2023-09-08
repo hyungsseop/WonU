@@ -32,8 +32,6 @@ POST _reindex
     }
 }
 
-
-
 # 많은 csv 파일 logstash로 한번에 넣기
 https://renesys.tistory.com/148
 
@@ -46,3 +44,18 @@ GET logstash-card-customer-sample/_search
 {
   "track_total_hits": true
 }
+
+
+# anonymous user 만들어서 kibana dashboard out
+https://www.elastic.co/guide/en/kibana/8.9/kibana-privileges.html#kibana-feature-privileges
+
+# backup snapshot
+https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
+https://ongamedev.tistory.com/441
+
+# git 되돌리기
+https://bigexecution.tistory.com/140
+
+# kibana export
+
+https://sangchul.kr/entry/%EA%B8%B0%ED%83%80-exportimport-kibana-dashboards
