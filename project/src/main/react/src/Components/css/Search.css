@@ -22,6 +22,7 @@
     align-items: center;
     background-color: #FFF;
     height: 44px;
+    transition: background-color 0.2s;
 }
 
 
@@ -31,5 +32,8 @@
 
 
 .search:hover {
-    background-color: rgba(0,0,0,0.05); /* 호버시 약간의 회색색상 표시 */
+    background-color: rgba(0,0,0,0.05);
 }
+
+
+

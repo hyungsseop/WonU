@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
 import axios from 'axios';
 import './css/Credit.css';
-import Detail from './Detail.js';
 import CardList from './CardList';
 
 function Credit() {

@@ -15,6 +15,7 @@ import Cardlist from './pages/CardList';
 import Service from './pages/Service';
 import Elastic from './Components/Elastic';
 import Admin from './pages/Admin';
+import Searchcardlist from './Components/Searchcardlist'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/service" element={<Service />} />
                   <Route path="/cardlist" element={<Cardlist />} />
                   <Route path="/admin" element={<Admin />} />
+                  <Route path="/searchcardlist" element={<Searchcardlist />} />
               </Routes>
                 <Footer />
             </Router>

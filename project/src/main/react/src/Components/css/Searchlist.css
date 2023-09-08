@@ -1,0 +1,95 @@
+.searchlist1 {
+    text-align: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.searchlist2 {
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "NanumSquareNeo-dEb";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 6vh;
+    width: 30vh;
+}
+
+.searchlist3 {
+    text-align: left;
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: "NanumSquareNeo-cbd";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 35vh;
+}
+
+.searchlist4 {
+    text-align: center;
+    align-items: center;
+    
+}
+
+.searchlist5 {
+    text-align: center;
+    align-items: center;
+    font-family: "NanumSquareNeo-cbd";
+    
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -10px;
+}
+
+.grid-item {
+    flex-basis: calc(33.33% - 20px);
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px; /* 요소 주위에 여백 추가 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    border-radius: 10px; /* 요소의 모서리를 둥글게 만듦 */
+}
+
+.grid-item h4 {
+    margin-top: auto;
+}
+
+.searchlist1 .grid-item img {
+    margin-bottom: 20px;
+}
+
+.page-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 20px; /* 페이지 주위에 여백 추가 */
+    text-align: center; /* 페이지 내의 텍스트 가운데 정렬 */
+}
+
+.searchlist6 {
+    text-align: center;
+    align-items: center;
+    font-family: "NanumSquareNeo-dEb";
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.searchlist7 {
+    text-align: right;
+    align-items: center;
+    font-family: "NanumSquareNeo-cbd";
+    margin-right: 30px;
+}
+
+.searchlist8{
+    text-align: center;
+    align-items: center;
+    text-overflow: ellipsis;
+}
