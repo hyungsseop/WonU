@@ -113,3 +113,4 @@ https://sangchul.kr/entry/%EA%B8%B0%ED%83%80-exportimport-kibana-dashboards
 - sudo docker ps -a
 - sudo docker compose down
 - sudo docker compose build & sudo docker compose up
+  (에어플로우 등이 없다면 아침마다 인스턴스에 접속하여 위 두개 명령어 실행)
