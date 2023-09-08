@@ -59,3 +59,57 @@ https://bigexecution.tistory.com/140
 # kibana export
 
 https://sangchul.kr/entry/%EA%B8%B0%ED%83%80-exportimport-kibana-dashboards
+
+
+
+## git을 통한 배포
+
+1. ec2 생성 
+- t2.medium 이상
+- 탄력적 ip 생성
+- KEY 생성
+
+2. ec2에 연결하여 git clone
+- git clone 레퍼지토리명 
+- git checkout dashboard
+
+3. docker 설치
+- curl https://get.docker.com/ | sudo sh 
+
+4. docker compose 실행
+- docker compose build & sudo docker compose up
+
+5. 연결포트 열어주기
+- docker ps 로 열어야 하는 포트 확인
+- ec2인스턴스 -> 보안그룹 선택 -> 인바인드 규칙 편집
+  - 규칙 추가: tcp / 9200, 5601, 5600, 50000 / 0.0.0.0
+
+6. 키바나 접속
+퍼블릭IP주소:5601
+explore on my own 선택
+
+7. 이전 dashboard import
+Stack Management -> Saved Object -> import 선택
+import file 에 ndjson file upload
+https://sangchul.kr/entry/%EA%B8%B0%ED%83%80-exportimport-kibana-dashboards
+
+8. index 삽입
+원격 콘솔에서
+- sudo docker stop 로그스태시컨테이너ID
+- cd WonU
+- rm -rf df_6000_survey_random.csv/
+
+로컬 터미널에서 
+- keyparir 생성한 폴더에 df_6000_survey_random.csv 복사
+  - scp -i [pem파일경로] [업로드할 파일 이름] [ec2-user계정명]@[ec2 instance의 public DNS]:~/[경로]
+    예시: scp -i "elk-keypair.pem" -o StrictHostKeyChecking=no df_6000_survey_random.csv ubuntu@ec2-15-164-146-205.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/WonU/df_6000_survey_random.csv
+
+원격 콘솔에서
+- cd logstash/config
+- sudo apt-get install vim
+- vi pipelines.yml
+  - logstash1.yml로 파일명 변경
+  - :wq 
+- sudo docker ps -a
+- sudo docker compose down
+- sudo docker compose build & sudo docker compose up
