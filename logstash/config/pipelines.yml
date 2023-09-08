@@ -1,0 +1,3 @@
+- pipeline.id: database
+  pipeline.workers: 1
+  path.config: '../pipeline/logstash.conf' # docker 내부의 경로로 생성
