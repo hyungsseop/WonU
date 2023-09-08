@@ -11,3 +11,13 @@ monitoring.ui.container.elasticsearch.enabled: true
 #
 elasticsearch.username: kibana_system
 elasticsearch.password: ${KIBANA_SYSTEM_PASSWORD}
+
+xpack.security.authc.http.schemes: [apikey, bearer, basic]
+
+# xpack.security.loginHelp: "**Help** info with a [link](...)"
+xpack.security.authc.providers:
+  anonymous.anonymous1:
+    order: 0
+    credentials:
+      username: "elastic"
+      password: "woorifisa1!"
