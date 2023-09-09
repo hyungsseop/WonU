@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.Search {
+    width: 30%; 
+    padding: 10px;
+    margin-right: 0px; 
+    border-radius: 0; 
+    border: 0px solid #ccc;
+}
+
+.search {
+    background-color: transparent;
+    border: none; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+    height: 44px;
+    transition: background-color 0.2s;
+}
+
+
+.search:focus {
+    outline: none;
+}
+
+
+.search:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+
+

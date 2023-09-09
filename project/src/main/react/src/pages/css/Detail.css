@@ -1,0 +1,31 @@
+.detail1{
+    text-align: center;
+    align-items: center; 
+    margin-top: 50px;
+ }
+
+.detail2{
+   text-align: center;
+   align-items: center;
+   margin-top: 20px;
+   margin-bottom: 20px; 
+   font-family: "NanumSquareNeo-dEb";
+}
+
+.detail3{
+    text-align: left;
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: "NanumSquareNeo-cbd";
+}
+
+.detail4{
+  text-align: center;
+  align-items: center;
+}
+
+.detail5{
+  text-align: center;
+  align-items: center;
+  font-family: "NanumSquareNeo-cbd";
+}
