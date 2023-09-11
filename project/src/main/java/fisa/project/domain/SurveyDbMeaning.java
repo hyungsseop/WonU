@@ -5,33 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "userNo")})
-public class UserDelete {
-
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "surveyDbMeaningNo")})
+public class SurveyDbMeaning {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int userNo;
+    private Integer surveyDbMeaningNo;
 
     @Column(nullable = false)
-    private String userId;
+    private String columnName;
 
     @Column(nullable = false)
-    private String username;
+    private Integer domainValue;
 
     @Column(nullable = false)
-    private String phoneNumber;
-
-    @Column(nullable = false)
-    private String gender;
-
-    @Column(nullable = false)
-    private String birthday;
+    private String domainValueMeaning;
 }

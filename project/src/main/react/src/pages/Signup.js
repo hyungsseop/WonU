@@ -180,7 +180,7 @@ const Signup = () => {
               {...register('userBirth', {
                 required: '생년월일 항목은 필수 입력 정보입니다',
                 pattern: {
-                  value: /^[0-9]{4}$/,
+                  value: /^[0-9]{8}$/,
                   message: '숫자 8글자여야 합니다.'
                 }
               })}

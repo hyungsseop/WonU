@@ -14,10 +14,21 @@ const Mypage = () => {
     gender: ''
   });
   
-  const { register, handleSubmit, formState: { errors }, watch } = useForm({ mode: 'onChange' });
+  const [password, setPassword] = useState("");
+  const { register, handleSubmit, setValue, formState: { errors }, watch } = useForm({ mode: 'onChange' });
+  const handleDelete = () => {
+    const confirmed = window.confirm("정말 탈퇴하시겠습니까?");
+    
+    if (confirmed) {
+      deleteUser();
+    }
+  };
+  
 
   useEffect(() => {
     let completed = false;
+    setValue("userPw", "");
+    setValue("confirmUserPw", "");
     
     const get = async () => {
       const response = await axios.get(`http://localhost:8080/auth/mypage/${userData.userId}`);
@@ -39,35 +50,56 @@ const Mypage = () => {
     };
   }, []);
 
-    const onSubmit = async ({userId}) => {
-    try {
-      const response = axios.put(
-        `http://localhost:8080/auth/mypageupdate`,
-        {
-          id: userData.id,
-          userId:userData.userId,
-          password:userData.userPw,
-          username:userData.userName,
-          birthday:userData.userBirth,
-          gender: userData.gender,
-          phoneNumber: userData.phoneNumber,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
+    const handleInputChange = (e) => {
+      const { id, value } = e.target;
+      setUserData(prevState => ({ ...prevState, [id]: value }));
+  };
+
+    const onSubmit = async (data) => {
+      try {
+        const response = await axios.put(
+          `http://localhost:8080/auth/mypage/mypageupdate`,
+          {
+            password: data.userPw,
+            userId: userData.userId,
+            username: userData.username,
+            birthday: userData.userBirth,
+            phoneNumber: userData.phoneNumber,
+            gender: userData.gender
           },
-        });
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+    
+        // ...
+      } catch (error) {
+        console.error("An error occurred", error);
+      }
+    };
+  
 
+  const deleteUser = async () => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/auth/mypage/${userData.userId}/delete`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (response.status === 200) {
-        console.log("Update successful");
-        alert("회원정보 업데이트에 성공했습니다.");
-        window.location.href = '/';
-
-       } else {
-        console.log("Update failed");
+        console.log("User deleted successfully");
+        localStorage.removeItem('login-token');
+        localStorage.removeItem('login-id');
+        alert("회원 탈퇴에 성공했습니다.");
+        window.location.href = '/'; // 로그아웃 후 메인 페이지로 리다이렉트
+      } else {
+        console.log("User deletion failed");
+        alert("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
       }
     } catch (error) {
-      console.error("An error occurred", error);
+      console.error("An error occurred while deleting user", error);
     }
   };
 
@@ -99,6 +131,7 @@ const Mypage = () => {
               <input
                 type="password"
                 id="userPw"
+                onChange={handleInputChange}
                 className={`mypage10 ${errors.userPw ? 'is-invalid' : ''}`}
                 {...register("userPw", {
                   required: "비밀번호 항목은 필수 입력 정보입니다.",
@@ -116,6 +149,7 @@ const Mypage = () => {
                 비밀번호 확인
               </label>
               <input
+                onChange={e => setPassword(e.target.value)}
                 type="password"
                 id="confirmUserPw"
                 className={`mypage10 ${errors.confirmUserPw ? 'is-invalid' : ''}`}
@@ -178,7 +212,7 @@ const Mypage = () => {
             </div>  
 
             <div className="mypage13">
-              <span onClick={() => window.confirm("정말 탈퇴하시겠습니까?")} className="mypage14">회원 탈퇴하기</span>
+              <span onClick={handleDelete} className="mypage14">회원 탈퇴하기</span>
             </div><br/>
 
             <div className="text-center">

@@ -1,8 +1,8 @@
 package fisa.project.service;
 
 import fisa.project.domain.User;
-import fisa.project.domain.UserDelete;
-import fisa.project.repository.UserDeleteRepository;
+import fisa.project.domain.exitUser;
+import fisa.project.repository.ExitUserRepository;
 import fisa.project.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private UserDeleteRepository userDeleteRepository;
+    private ExitUserRepository exitUserRepository;
 
 
     public User create(final User user) {
@@ -32,17 +32,17 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public UserDelete delete(final User user) {
-        UserDelete userDelete = UserDelete.builder()
+    public exitUser delete(final User user) {
+        exitUser userDelete = exitUser.builder()
                 .userId(user.getUserId())
                 .username(user.getUsername())
                 .birthday(user.getBirthday())
                 .gender(user.getGender())
-                .phoneNumber(user.getPhoneNumber())
+                .phone(user.getPhone())
                 .build();
         userRepository.delete(user);
-        userDeleteRepository.save(userDelete);
-        return userDeleteRepository.save(userDelete);
+        exitUserRepository.save(userDelete);
+        return exitUserRepository.save(userDelete);
     }
 
     // usedId로
@@ -66,7 +66,7 @@ public class UserService {
         }
         originalUser.setUsername(user.getUsername());
         originalUser.setBirthday(user.getBirthday());
-        originalUser.setPhoneNumber(user.getPhoneNumber());
+        originalUser.setPhone(user.getPhone());
         originalUser.setGender(user.getGender());
 
         return userRepository.save(originalUser);

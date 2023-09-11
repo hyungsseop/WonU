@@ -1,7 +1,7 @@
 package fisa.project.controller;
 
 import fisa.project.domain.User;
-import fisa.project.domain.UserDelete;
+import fisa.project.domain.exitUser;
 import fisa.project.dto.ResponseDTO;
 import fisa.project.dto.UserDTO;
 import fisa.project.repository.UserRepository;
@@ -43,7 +43,7 @@ public class UserController {
                     .username(userDTO.getUsername())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
                     .gender(userDTO.getGender())
-                    .phoneNumber(userDTO.getPhoneNumber())
+                    .phone(userDTO.getPhone())
                     .birthday(userDTO.getBirthday())
                     .build();
             // UserService로 보내 추가 로직 검사후 생성
@@ -119,7 +119,7 @@ public class UserController {
                 .userId(user.getUserId())
                 .username(user.getUsername())
                 .birthday(user.getBirthday())
-                .phoneNumber(user.getPhoneNumber())
+                .phone(user.getPhone())
                 .gender(user.getGender())
                 .build();
         return ResponseEntity.ok().body(responseUserDTO);
@@ -136,7 +136,7 @@ public class UserController {
                     .userId(userDTO.getUserId())
                     .username(userDTO.getUsername())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
-                    .phoneNumber(userDTO.getPhoneNumber())
+                    .phone(userDTO.getPhone())
                     .gender(userDTO.getGender())
                     .birthday(userDTO.getBirthday())
                     .build();
@@ -158,7 +158,7 @@ public class UserController {
     @DeleteMapping("/mypage/{userId}/delete")
     public ResponseEntity<?> userdelete(@PathVariable("userId") String userId){
         User user = userRepository.findByUserId(userId);
-        UserDelete registeredUser = userService.delete(user);
+        exitUser registeredUser = userService.delete(user);
         return ResponseEntity.ok().body("탈퇴에 성공하였습니다.");
     }
 }
