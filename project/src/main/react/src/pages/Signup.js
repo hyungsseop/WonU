@@ -10,6 +10,24 @@ const Signup = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   
+  const calculateAge = (birthday) => {
+    const birthYear = parseInt(birthday.substring(0, 4), 10); // Assuming birthday format is YYYYMMDD
+    const currentYear = new Date().getFullYear();
+    return currentYear - birthYear + 1;
+  };
+  
+  const getAgeCategory = (age) => {
+    if (age >= 10 && age <= 19) return '20대 이하';
+    if (age >= 20 && age <= 29) return '20대';
+    if (age >= 30 && age <= 39) return '30대';
+    if (age >= 40 && age <= 49) return '40대';
+    if (age >= 50 && age <= 59) return '50대';
+    if (age >= 60 && age <= 89) return '60대 이상';
+    return ''; 
+  };
+  
+
+
   const handleCloseSuccessModal = () => {
     setShowSuccessModal(false);
     document.location.href = '/login';
@@ -19,34 +37,21 @@ const Signup = () => {
     setShowErrorModal(false);
   };
 
-//   const getAgeRange = (birthYear) => {
-//     const currentYear = new Date().getFullYear();
-//     const age = currentYear - birthYear;
-
-//     if (age >= 0 && age <= 9) return '0';
-//     if (age >= 10 && age <= 19) return '10';
-//     if (age >= 20 && age <= 29) return '20';
-//     if (age >= 30 && age <= 39) return '30';
-//     if (age >= 40 && age <= 49) return '40';
-//     if (age >= 50 && age <= 59) return '50';
-//     if (age >= 60 && age <= 69) return '60';
-//     if (age >= 70 && age <= 79) return '70';
-//     if (age >= 80 && age <= 89) return '80';
-//     if (age >= 90 && age <= 99) return '90';
-// }
-
   const onSubmit = async ({ userId, userPw, userName, userBirth, phoneNumber, gender }) => {
     try {
+      const userAge = calculateAge(userBirth);
+      const ageCategory = getAgeCategory(userAge);
+
       const response = await axios.post(
         "http://localhost:8080/auth/signup",
         {
           userId:userId,
+          userName:userName,
           password:userPw,
-          username:userName,
-          phoneNumber:phoneNumber,
+          gender: parseInt(gender, 10),
+          phone:phoneNumber,
           birthday:userBirth,
-          gender: gender,
-          // ageRange: ageRange,
+          ageCategory: ageCategory,
         },
         {
           headers: {
@@ -56,7 +61,8 @@ const Signup = () => {
       );
   
       console.log("회원가입에 성공했습니다.", response.data);
-      setShowSuccessModal(true);
+      alert("회원 가입에 성공했습니다.");
+      window.location.href = '/login';
     } catch (error) {
       console.error("회원가입에 실패했습니다. 잠시후 다시 시도해주세요.", error);
       setShowErrorModal(true);
@@ -71,7 +77,7 @@ const Signup = () => {
 
 
   return (
-    <div>
+    <div className="container-width">
     <section className="col-4 offset-md-4 signup2">
       <div className="signup-card">
       <div className="signup6">가입 정보 입력</div>
@@ -200,7 +206,7 @@ const Signup = () => {
               <label>
                 <input
                   type="radio"
-                  value="male"
+                  value="0"
                   {...register('gender', {
                     required: '성별을 선택해주세요.'
                   })}
@@ -209,7 +215,7 @@ const Signup = () => {
               <label >
                 <input
                   type="radio"
-                  value="female" 
+                  value="1" 
                   {...register('gender', {
                     required: '성별을 선택해주세요.'
                   })}
@@ -246,7 +252,7 @@ const Signup = () => {
               회원 가입하기
             </button>
           </div>
-            <br/><br/>
+            <br/><br/><br/><br/>
         </form>
       </div>
     </section>

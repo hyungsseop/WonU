@@ -32,7 +32,7 @@ public class exitUser {
     private String username;
 
     @Column(nullable = false)
-    private LocalDate birthday;
+    private String birthday;
 
     @Column(nullable = false)
     private Integer gender;

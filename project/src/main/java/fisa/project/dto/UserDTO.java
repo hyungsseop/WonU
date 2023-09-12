@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 public class UserDTO { // 회원가입(signup), 로그인(signin) controller에 사용
     private String id;
     private String userId;
-    private String username;
+    private String userName;
     private String password;
     private String phone;
     private Integer gender;
-    private LocalDate birthday;
+    private String birthday;
     private String ageCategory;
     private LocalDate joinDate;
     private LocalDateTime lastLoginDate;

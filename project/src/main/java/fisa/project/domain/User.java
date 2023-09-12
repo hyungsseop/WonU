@@ -18,10 +18,6 @@ import java.time.LocalDateTime;
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "userId")})
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Integer userNo;
-
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name="system-uuid",strategy = "uuid")
     private String id;
@@ -30,7 +26,7 @@ public class User {
     private String userId;
 
     @Column(nullable = false)
-    private String username;
+    private String userName;
 
     @Column(nullable = false)
     private String password;
@@ -42,7 +38,7 @@ public class User {
     private Integer gender;
 
     @Column(nullable = false)
-    private LocalDate birthday;
+    private String birthday;
 
     @Column(nullable = false)
     private String ageCategory;

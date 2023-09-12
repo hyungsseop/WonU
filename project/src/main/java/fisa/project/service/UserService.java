@@ -21,11 +21,11 @@ public class UserService {
 
 
     public User create(final User user) {
-        if (user == null || user.getUsername() == null) {
+        if (user == null || user.getUserName() == null) {
             throw new RuntimeException("Invalid arguments");
         }
-        final String username = user.getUsername();
-        if (userRepository.existsByUsername(username)) {
+        final String username = user.getUserName();
+        if (userRepository.existsByUserName(username)) {
             log.warn("중복회원", username);
             throw new RuntimeException("중복회원");
         }
@@ -35,7 +35,7 @@ public class UserService {
     public exitUser delete(final User user) {
         exitUser userDelete = exitUser.builder()
                 .userId(user.getUserId())
-                .username(user.getUsername())
+                .username(user.getUserName())
                 .birthday(user.getBirthday())
                 .gender(user.getGender())
                 .phone(user.getPhone())
@@ -64,7 +64,7 @@ public class UserService {
         if (user.getPassword() != null) {
             originalUser.setPassword(user.getPassword());
         }
-        originalUser.setUsername(user.getUsername());
+        originalUser.setUserName(user.getUserName());
         originalUser.setBirthday(user.getBirthday());
         originalUser.setPhone(user.getPhone());
         originalUser.setGender(user.getGender());

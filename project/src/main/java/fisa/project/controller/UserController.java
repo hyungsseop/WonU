@@ -14,6 +14,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 @Slf4j
 @RestController
 @RequestMapping("/auth")
@@ -38,20 +43,25 @@ public class UserController {
                 throw new RuntimeException("Invalid Password value.");
             }
             // 입력받은 dto를 entity 로 변환
+
             User user = User.builder()
                     .userId(userDTO.getUserId())
-                    .username(userDTO.getUsername())
+                    .userName(userDTO.getUserName())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
                     .gender(userDTO.getGender())
                     .phone(userDTO.getPhone())
                     .birthday(userDTO.getBirthday())
+                    .ageCategory(userDTO.getAgeCategory())
+                    .joinDate(LocalDate.now())
                     .build();
             // UserService로 보내 추가 로직 검사후 생성
+            System.out.println(user);
             User registeredUser = userService.create(user);
             //
             UserDTO responseUserDTO = UserDTO.builder()
                     .id(registeredUser.getId())
-                    .username(registeredUser.getUsername())
+                    .userName(registeredUser.getUserName())
+                    .joinDate(registeredUser.getJoinDate())
                     .build();
 
             return ResponseEntity.ok().body(responseUserDTO);
@@ -117,7 +127,7 @@ public class UserController {
         final UserDTO responseUserDTO = UserDTO.builder()
                 .id(user.getId())
                 .userId(user.getUserId())
-                .username(user.getUsername())
+                .userName(user.getUserName())
                 .birthday(user.getBirthday())
                 .phone(user.getPhone())
                 .gender(user.getGender())
@@ -134,7 +144,7 @@ public class UserController {
         if(originalUser.getId().equals(clientToken)){
             User user = User.builder()
                     .userId(userDTO.getUserId())
-                    .username(userDTO.getUsername())
+                    .userName(userDTO.getUserName())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
                     .phone(userDTO.getPhone())
                     .gender(userDTO.getGender())
