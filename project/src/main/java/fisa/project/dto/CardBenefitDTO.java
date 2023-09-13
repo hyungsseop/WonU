@@ -17,4 +17,5 @@ public class CardBenefitDTO {
     private String cardIntroLine;
     private String cardBenefit1;
     private String cardBenefit2;
+    private String pickingRate;
 }

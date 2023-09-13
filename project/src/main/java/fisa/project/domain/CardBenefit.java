@@ -33,4 +33,7 @@ public class CardBenefit {
     @Column
     private String cardBenefit2;
 
+    @Column
+    private String pickingRate;
+
 }
