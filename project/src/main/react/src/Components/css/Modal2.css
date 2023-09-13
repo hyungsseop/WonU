@@ -1,0 +1,142 @@
+.modal2_1 .modal-dialog {
+    max-height: 1000px;
+    max-width: 700px;
+    margin: auto;
+    width: 60%;
+}
+
+.modal2_1 .modal-content {
+    border-radius: 10px;
+    height: 600px;
+}
+
+.modal2_1 .modal-title {
+    text-align: center;
+    width: 100%;
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 0px;
+}
+
+.modal2_1 .modal-body {
+    display: flex;
+    justify-content: left; 
+    flex-direction: column;
+}
+
+.modal2_1 .modal-footer {
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+}
+
+/* .modalButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} */
+
+
+.modalButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute; /* positions the container at the bottom */
+    bottom: 0;          /* sets the distance from the bottom edge */
+    left: 0;            /* ensures it's aligned to the left edge, works in conjunction with width: 100% */
+}
+
+.modalButton {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+    display: inline-block;
+}
+
+
+
+
+.Modal .Modal__Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.title {
+    color: #06F;
+    text-align: center;
+    font-family: "NanumSquareNeo-eHv";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 60px;
+}
+
+.info {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: "NanumSquareNeo-cBd";
+}
+
+.note {
+    font-size: 0.9em;
+    color: #888888;
+    text-align: center;
+    font-family: "NanumSquareNeo-bRg";
+}
+
+body .loadingModal + .modal-backdrop {
+    opacity: 0.9 !important;
+    background-color: #000 !important;
+
+}
+
+.form1{
+    text-align: left;
+}
+
+.modalfont1{
+    font-family: "NanumSquareNeo-dEb";
+    font-size: 23px;
+    text-align: center;
+    align-items: center; 
+}
+
+.modalfont2{
+    font-family: "NanumSquareNeo-cBd";
+    font-size: 18px;
+    align-items: center; 
+    margin-left: 10px;
+}
+
+.modalfont3{
+    font-family: "NanumSquareNeo-cBd";
+    font-size: 16px;
+    align-items: center; 
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+/* .totalmodal{
+    width: 1200px;
+    height: 1200px;
+    align-items: center; 
+} */

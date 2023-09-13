@@ -1,0 +1,26 @@
+.Header1{
+  width: auto;
+  margin:0 auto;
+  padding: 46px;
+}
+  
+.Header2 {
+  max-width : 1440px;
+  margin: 0 auto;
+  display : flex;
+  color : white;
+  padding : 8px;
+  justify-content: space-around;
+  position: relative;
+}
+
+.Header3{
+  color: white;
+  text-align: center;
+  font-family: Inter;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 24px; /* 60% */
+}
+

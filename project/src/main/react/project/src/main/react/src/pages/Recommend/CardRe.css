@@ -1,0 +1,23 @@
+.custom-toggle-group {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .custom-toggle-button {
+    flex: 1;
+    border: none;
+    border-right: 1px solid #ccc;
+    background-color: transparent;
+    transition: background-color 0.2s;
+  }
+  
+  .custom-toggle-button:last-child {
+    border-right: none;
+  }
+  
+  .custom-toggle-button.active {
+    background-color: #007bff;
+    color: white;
+  }

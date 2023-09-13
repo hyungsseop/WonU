@@ -1,0 +1,51 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin: auto;
+  }
+  
+  .header-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 20px;
+  }
+  
+  .card-item {
+    width: 15rem;
+    margin: 0 10px;
+  }
+  
+  .footer-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .button1, .button2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 294px;
+    height: 62px;
+    flex-shrink: 0;
+    background-color: #0066FF;
+    margin: 0 10px; 
+  }
+
+  .recommended-title {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Inter', sans-serif;
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100px;
+    letter-spacing: -0.24px;
+  }
