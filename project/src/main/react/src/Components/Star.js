@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import 'font-awesome/css/font-awesome.min.css';
+import './css/Star.css';
 
-const Star = () => {
+const Star = ({ onRatingChange }) => {
   const [rating, setRating] = useState(0);
-
-  const handleStarClick = (newRating) => {
-    setRating(newRating);
+  const handleStarClick = (i) => {
+    setRating(i);
+    onRatingChange(i)
   };
 
   const renderStars = () => {
@@ -12,29 +15,26 @@ const Star = () => {
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
         stars.push(
-          <span key={i} onClick={() => handleStarClick(i)} style={{cursor: 'pointer'}}>
-            ★
-          </span>
+          <i key={i} onClick={() => handleStarClick(i)} className="fa fa-star star-icon star-filled"></i>
         );
       } else {
         stars.push(
-          <span key={i} onClick={() => handleStarClick(i)} style={{cursor: 'pointer'}}>
-            ☆
-          </span>
+          <i key={i} onClick={() => handleStarClick(i)} className="fa fa-star-o star-icon star-empty"></i>
         );
       }
     }
     return stars;
-  };
+};
 
-  return (
-    <div>
-      <label htmlFor="rating">Enter your rating: </label>
-      <div id="rating" name="rating">
-        {renderStars()}
-      </div>
+return (
+  <div className="custom-font" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <label htmlFor="rating" className="modal-header">서비스 평점을 입력해주세요 </label>
+    <div id="rating" name="rating">
+      <br/>
+      {renderStars()}
     </div>
-  );
+    </div>
+  );  
 };
 
 export default Star;

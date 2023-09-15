@@ -2,30 +2,47 @@
     text-align: center;
     align-items: center; 
     margin-top: 50px;
+    
  }
 
 .detail2{
    text-align: center;
    align-items: center;
    margin-top: 20px;
-   margin-bottom: 20px; 
+   margin-bottom: 15px; 
    font-family: "NanumSquareNeo-dEb";
+   font-size: 35px;
 }
 
 .detail3{
-    text-align: left;
-    margin-left: 20px;
-    font-size: 15px;
+    /* text-align: left; */
+    text-align: center;
+    align-items: center;
+    /* margin-left: 30px; */
+    font-size: 17px;
     font-family: "NanumSquareNeo-cbd";
+    margin-top: 35px;
 }
 
 .detail4{
   text-align: center;
   align-items: center;
+  font-family: "NanumSquareNeo-bRg";
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .detail5{
   text-align: center;
   align-items: center;
   font-family: "NanumSquareNeo-cbd";
+}
+
+.application-button {
+  font-size: 20px;   
+  padding: 15px 30px;    
+  width: 200px;           
+  height: auto;
+  text-align: center;
+  align-items: center;
 }

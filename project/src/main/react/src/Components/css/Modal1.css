@@ -10,6 +10,7 @@
     padding: 0;
     margin: 0;
     background-color: #06F;
+    font-family: "NanumSquareNeo-bRg";
   }
   
 .custom-modal .modal-header {
@@ -22,7 +23,7 @@
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Inter;
   font-size: 11px;
-  font-style: normal;
+  font-family: "NanumSquareNeo-bRg";
   font-weight: 400;
   line-height: 15px; /* 136.364% */
   letter-spacing: -0.24px;

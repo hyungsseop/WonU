@@ -5,7 +5,7 @@ import "./css/Signup.css";
 import Modal from 'react-bootstrap/Modal';
 
 const Signup = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: 'onChange' });
+  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({ mode: 'onChange' });
   const [isUserIdAvailable, setUserIdAvailable] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -16,6 +16,8 @@ const Signup = () => {
     return currentYear - birthYear + 1;
   };
   
+  const password = watch("userPw");
+
   const getAgeCategory = (age) => {
     if (age >= 10 && age <= 19) return '20대 이하';
     if (age >= 20 && age <= 29) return '20대';
@@ -45,12 +47,12 @@ const Signup = () => {
       const response = await axios.post(
         "http://localhost:8080/auth/signup",
         {
-          userId:userId,
-          userName:userName,
-          password:userPw,
+          userId: userId,
+          userName: userName,
+          password: userPw,
           gender: parseInt(gender, 10),
-          phone:phoneNumber,
-          birthday:userBirth,
+          phone: phoneNumber,
+          birthday: userBirth,
           ageCategory: ageCategory,
         },
         {
@@ -59,7 +61,6 @@ const Signup = () => {
           },
         }
       );
-  
       console.log("회원가입에 성공했습니다.", response.data);
       alert("회원 가입에 성공했습니다.");
       window.location.href = '/login';
@@ -91,7 +92,7 @@ const Signup = () => {
             <input
               type="text"
               id="userId"
-              className={`signup10 ${errors.userId || !isUserIdAvailable ? 'is-invalid' : ''}`}
+              className={`signup10 ${errors.userId ? 'is-invalid' : ''}`}
               {...register("userId", {
                 required: "아이디 항목은 필수 입력 정보입니다",
                 pattern: {
@@ -101,9 +102,6 @@ const Signup = () => {
               })}
               placeholder="아이디를 입력해주세요"
             />
-            {!isUserIdAvailable && (
-              <div className="signup3">이미 사용 중인 아이디입니다.</div>
-            )}
             {errors.userId && (
               <div className="signup3">{errors.userId.message}</div>
             )}
@@ -151,6 +149,23 @@ const Signup = () => {
               <div className="signup3">
                 {errors.userPw.message}
               </div>
+            }
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="userPwConfirm" className="signup11">비밀번호 확인</label>
+            <input
+              type="password"
+              id="userPwConfirm"
+              className={`signup10 ${errors.userPwConfirm ? 'is-invalid' : ''}`}
+              {...register('userPwConfirm', {
+                validate: value =>
+                  value === password || '비밀번호가 일치하지 않습니다.'
+              })}
+              placeholder="비밀번호를 다시 입력해주세요"
+            />
+            {errors.userPwConfirm && 
+              <div className="signup3">{errors.userPwConfirm.message}</div>
             }
           </div>
 

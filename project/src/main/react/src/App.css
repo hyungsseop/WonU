@@ -231,6 +231,6 @@
   src: url("./fonts/NanumSquareNeo-eHv.ttf") format("truetype");
 }
 
-/* .btn.btn-primary {
+.btn.btn-primary {
   font-family: "NanumSquareNeo-bRg";
-} */
+}

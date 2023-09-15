@@ -128,7 +128,7 @@
 .card3{
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 3vh;
+  height: 5vh;
   font-family: "NanumSquareNeo-aLt";
   font-size: 15px;
 }

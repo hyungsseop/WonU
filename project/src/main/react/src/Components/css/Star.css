@@ -1,0 +1,39 @@
+.modal-header,
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star-icon {
+  cursor: pointer;
+  font-size: 24px; /* 수정된 부분 */
+  margin: 0 3px;
+}
+
+.star-filled {
+  color: gold;
+}
+
+.star-empty {
+  color: gray;
+}
+
+.custom-font {
+  font-family: 'NanumSquareNeo-cbd';
+}
+
+.button-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* take the full width of its container */
+    margin-top: 10px; /* optional: add some space above the button */
+  }
+  
+.title-font {
+    font-family: 'NanumSquareNeo-cbd';
+    font-size: 24px; 
+    text-align: center;
+}
+  

@@ -19,7 +19,7 @@
   padding: 0px;
   font-family: Roboto;
   font-size: 16px;
-  font-style: normal;
+  font-family:"NanumSquareNeo-cbd";
   line-height: 60px;
   margin: 0 auto;
 }
@@ -27,7 +27,7 @@
 .login6{
   color: #000;
   text-align: center;
-  font-family: Inter;
+  font-family:"NanumSquareNeo-dEb";
   font-size: 32px;
   font-weight: 800;
   line-height: 50px;
@@ -64,7 +64,7 @@
 .login11{
   color: #000;
   text-align: center;
-  font-family: Roboto;
+  font-family:"NanumSquareNeo-cbd";
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -79,10 +79,15 @@
 
 .login13{
   color: #000;
-  font-family: Roboto;
+  font-family:"NanumSquareNeo-cbd";
   font-size: 16px;
   font-style: normal;
   font-weight: 800;
   line-height: 18px;
   text-decoration: none;
+}
+
+.login-card{
+  width: 1000px;
+  font-family:"NanumSquareNeo-cbd";
 }

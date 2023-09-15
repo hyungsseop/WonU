@@ -9,7 +9,7 @@ const Mypage = () => {
     id: localStorage.getItem('login-token'),
     userId: localStorage.getItem('login-id'),
     userPw: '',
-    phoneNumber: '',
+    phone: '',
     userBirth: '',
     gender: ''
   });
@@ -35,10 +35,11 @@ const Mypage = () => {
       
       if (!completed) {
         setUserData({
+          id: response.data.id,
           userId: response.data.userId,
           userBirth: response.data.birthday,
-          gender: response.data.gender,
-          phoneNumber: response.data.phoneNumber
+          gender: response.data.gender.toString(),
+          phone: response.data.phone
         });
         
         console.log('Update successful');
@@ -55,30 +56,37 @@ const Mypage = () => {
       setUserData(prevState => ({ ...prevState, [id]: value }));
   };
 
-    const onSubmit = async (data) => {
-      try {
-        const response = await axios.put(
-          `http://localhost:8080/auth/mypage/mypageupdate`,
-          {
-            password: data.userPw,
-            userId: userData.userId,
-            username: userData.username,
-            birthday: userData.userBirth,
-            phoneNumber: userData.phoneNumber,
-            gender: userData.gender
+  const onSubmit = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/auth/mypage/${userData.userId}/update`,
+        {
+          id:userData.id,
+          password: userData.userPw,
+          userId: userData.userId,
+          username: userData.userName,
+          birthday: userData.userBirth,
+          phone: userData.phone,
+          gender: userData.gender
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-    
-        // ...
-      } catch (error) {
-        console.error("An error occurred", error);
+        }
+      );
+      if (response.status === 200) { 
+        alert("회원정보 수정이 완료했습니다.");
+        window.location.href = '/'; 
+      } else {
+        alert("회원정보 수정에 실패했습니다. 다시 시도해주세요.");
       }
-    };
+  
+    } catch (error) {
+      console.error("An error occurred", error);
+    }
+  };
+  
   
 
   const deleteUser = async () => {
@@ -169,7 +177,7 @@ const Mypage = () => {
                 type="text"
                 id="phoneNumber"
                 disabled
-                defaultValue={userData.phoneNumber}
+                defaultValue={userData.phone}
                 className={`mypage10 ${errors.phoneNumber ? 'is-invalid' : ''}`}
               />
             </div>
@@ -195,16 +203,16 @@ const Mypage = () => {
                 <label>
                 <input
                 type="radio"
-                value="male"
-                checked={userData.gender === 'male'}
+                value="0"
+                checked={userData.gender === '0'}
                 disabled
               /> 남성
                 </label><br></br>
                 <label>
                   <input
                     type="radio"
-                    value="female"
-                    checked={userData.gender === 'female'}
+                    value="1"
+                    checked={userData.gender === '1'}
                     disabled
                   /> 여성
                 </label>

@@ -9,11 +9,13 @@ function Credit() {
     axios.get('http://localhost:8080/cardInfo')
       .then(response => {
         setCardInfo(response.data);
+        localStorage.setItem('cardInfo', JSON.stringify(response.data));
       })
       .catch(error => {
         console.error('API 호출 중 에러 발생: ', error);
       });
   }, []);
+
 
   const [cardInfo, setCardInfo] = useState([]);
   const [filteredCards, setFilteredCards] = useState([]);
@@ -37,11 +39,9 @@ function Credit() {
 const handleBenefitToggle = (selected2) => {
     console.log("handleBenefitToggle selected:", selected2);
 
-    // If "전체" is selected and there are other selected items, only keep "전체".
     if (selected2.includes('전체') && selected2.length > 1) {
         setselectedBenefits(['전체']);
     } else if (!selected2.includes('전체') && selectedBenefits.includes('전체')) {
-        // If any other item is selected and "전체" was previously selected, remove "전체".
         setselectedBenefits(selected2);
     } else {
         setselectedBenefits(selected2);
@@ -52,11 +52,14 @@ const handleBenefitToggle = (selected2) => {
 
   useEffect(() => {
     const newFilteredCards = cardInfo.filter((card) => {
+      const hasBenefitcate = card.benefitcate && Array.isArray(card.benefitCate);
+      
       return (
         (selectedCardCompanys.includes('전체') || selectedCardCompanys.includes(card.cardCorp)) &&
-        (selectedBenefits.includes('전체') || selectedBenefits.some(benefit => card.benefitMate.includes(benefit)))
+        (selectedBenefits.includes('전체') || selectedBenefits.some(benefit => card.benefitCate.includes(benefit)))
       );
     });
+    
   
     setFilteredCards(newFilteredCards);
   }, [selectedCardCompanys, selectedBenefits, cardInfo]);

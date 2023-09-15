@@ -1,6 +1,6 @@
 .modal2_1 .modal-dialog {
     max-height: 1000px;
-    max-width: 700px;
+    max-width: 730px;
     margin: auto;
     width: 60%;
 }
@@ -139,4 +139,13 @@ body .loadingModal + .modal-backdrop {
     width: 1200px;
     height: 1200px;
     align-items: center; 
+} */
+
+/* .modalfont4{
+    font-family: "NanumSquareNeo-cBd";
+    font-size: 18px;
+    align-items: center; 
+    margin-left: -15px;
+    margin-bottom: 10px;
+    font-weight: bold;
 } */

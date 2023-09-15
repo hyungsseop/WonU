@@ -131,23 +131,26 @@ public class UserController {
                 .phone(user.getPhone())
                 .gender(user.getGender())
                 .build();
+        System.out.println(responseUserDTO);
         return ResponseEntity.ok().body(responseUserDTO);
     }
 
-    @PutMapping("/mypageupdate")
+    @PostMapping("/mypage/{userId}/update")
     public ResponseEntity<?> myPageUpdate(@RequestBody UserDTO userDTO){
         String clientToken = userDTO.getId();
         final User originalUser = userRepository.findByUserId(userDTO.getUserId());
+        System.out.println(originalUser);
+        System.out.println(userDTO);
         System.out.println(clientToken);
         System.out.println(originalUser.getId());
         if(originalUser.getId().equals(clientToken)){
             User user = User.builder()
-                    .userId(userDTO.getUserId())
-                    .userName(userDTO.getUserName())
+                    .userId(originalUser.getUserId())
+                    .userName(originalUser.getUserName())
                     .password(passwordEncoder.encode(userDTO.getPassword()))
-                    .phone(userDTO.getPhone())
-                    .gender(userDTO.getGender())
-                    .birthday(userDTO.getBirthday())
+                    .phone(originalUser.getPhone())
+                    .gender(originalUser.getGender())
+                    .birthday(originalUser.getBirthday())
                     .build();
 
             userService.updateUser(user);

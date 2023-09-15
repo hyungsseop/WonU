@@ -1,14 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; 
 import axios from "axios";
 import "./css/Login.css";
 
 
+
 const API = "http://localhost:8080/auth/login";
 
-const Login = () => {
+const Login = ({onLogin}) => {
   const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'onChange' });
+  const navigate = useNavigate();
 
   const onSubmit = async ({userId, userPw }) => {
     try {
@@ -26,7 +28,12 @@ const Login = () => {
         localStorage.setItem('login-token', response.data.token);
         localStorage.setItem('login-id', response.data.userId)
         alert("로그인에 성공했습니다.");
-        document.location.href = '/';
+        if (userId === "admin") {  
+          navigate('/admin');
+        } else {
+          navigate('/'); 
+        }
+        onLogin(response.data.token);
 
       } else {
         alert("서버 오류. 나중에 다시 시도해주세요.");

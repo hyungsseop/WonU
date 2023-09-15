@@ -1,0 +1,32 @@
+.cardbenefit1{
+    text-align: center;
+    align-items: center;
+    margin-left: 20px;
+    font-weight: 800px;
+    font-size: 19px;
+    color: blue;
+    font-family: "NanumSquareNeo-dEb";
+    margin-bottom: -2px;
+}
+
+.cardbenefit2{
+    margin-left: 20px;
+    text-align: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "NanumSquareNeo-bRg";
+    /* margin-bottom: 30px; */
+}
+
+.benefits-container {
+    text-align: center; 
+}
+
+.benefits-container p.cardbenefit2 {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;  
+    font-size: 15px;
+    font-family: "NanumSquareNeo-bRg";
+}

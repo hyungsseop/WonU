@@ -18,17 +18,19 @@
 
 .searchlist3 {
     text-align: left;
+    margin-top: 50px;
     margin-left: 20px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: "NanumSquareNeo-cbd";
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 35vh;
+    height: 13vh;
 }
 
 .searchlist4 {
     text-align: center;
     align-items: center;
+    font-family: "NanumSquareNeo-cbd";
     
 }
 
@@ -92,4 +94,14 @@
     text-align: center;
     align-items: center;
     text-overflow: ellipsis;
+    font-family: "NanumSquareNeo-cbd";
+}
+
+.searchlist9 {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "NanumSquareNeo-cbd";
 }

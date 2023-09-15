@@ -86,7 +86,6 @@ const handleNextClick = () => {
   setStep(step + 1);
 };
 
-
   const handleFirstClick = () => {
     if (card_own_yn === '1') {
       setStep(6);
@@ -97,7 +96,11 @@ const handleNextClick = () => {
     } 
   };
   
+  const [responseData, setResponseData] = useState(null);
+
+
   const dataToSend = {
+    userId: localStorage.getItem('login-id'),
     cardOwnYn: parseInt(card_own_yn),
     cardPurpose: parseInt(card_purpose),
     preferBenefit: parseInt(prefer_benefit),
@@ -108,17 +111,6 @@ const handleNextClick = () => {
     lastMonthExpense: parseInt(last_monthly_expense),
     thisMonthExpense: parseInt(this_monthly_expense)
   };
-  try {
-    const response = axios.post("http://localhost:8080/survey/regist", dataToSend);
-    if (response.data.success) {
-      console.log("Data sent successfully", response.data);
-    } else {
-      console.error("Error sending data", response.data.message);
-    }
-  } catch (error) {
-    console.error("There was an error sending the data", error);
-  }
-
 
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -136,7 +128,33 @@ const handleNextClick = () => {
     setLoading(true);
     setDarkenBackground(true);
 
-    await new Promise(res => setTimeout(res, 2000));
+    try {
+      const response = await axios.post(
+          "http://localhost:8080/survey/regist", 
+          dataToSend,
+          {
+              headers: {
+                  "Content-Type": "application/json",
+              }
+          }
+      );
+      await new Promise(res => setTimeout(res, 2000));
+
+      const responseBody = JSON.parse(response.data.body);
+      setResponseData(responseBody.card); 
+    
+    if (response.data.statusCodeValue === 200) { // 응답 상태 코드가 200인 경우
+        console.log("Data sent successfully", responseBody);
+        console.log("Server Response:", response.data);
+        localStorage.setItem('cardData', JSON.stringify(responseBody.card));
+    } else {
+        console.error("Error sending data", responseBody.message);
+    }
+} catch (error) {
+    console.error("There was an error sending the data", error);
+} 
+
+  
 
     setLoading(false);
     navigate("/credit/recommend");
@@ -168,7 +186,7 @@ const handleNextClick = () => {
           
           {step === 1 && (
             <Form.Group className='modalfont3'>
-              <Form.Label>1. 현재 신용카드를 가지고 계신가요?</Form.Label>
+              <Form.Label className='modalfont4'>1. 현재 신용카드를 가지고 계신가요?</Form.Label>
               <Form.Check
                 type="radio"
                 label="예"

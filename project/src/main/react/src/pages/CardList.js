@@ -15,7 +15,7 @@ function CardList(props) {
         {/* <p>전월실적: {props.card.minLastMonth}</p> */}
         {/* <p>당월실적: {props.card.minThisMonth}</p> */}
         <p className="card3">혜택: {props.card.benefitMain}</p>
-        {/* <p>혜택: {props.card.benefitMate}</p> */}
+        {/* <p>혜택: {props.card.benefitcate}</p> */}
         {/* <p>카드정보: {props.card.cardUrl}</p> */}
         <Detail card={props.card}></Detail>
       </div>

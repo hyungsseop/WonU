@@ -24,7 +24,7 @@ function Modal1() {
         <Modal.Header closeButton>
           <Search closeModal={handleCloseModal} />
         </Modal.Header>
-        <ModalBody>추천 검색어 #우리카드 | # 사회초년생 | # 대학생 | # 혜택푸짐 | # 우리FIS</ModalBody>
+        <ModalBody>추천 검색어 # 우리카드 | # 카드의정석 | # 대학생 | # 혜택푸짐 | # 우리FIS</ModalBody>
       </Modal>
     </>
   );

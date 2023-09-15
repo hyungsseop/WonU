@@ -14,7 +14,7 @@ function Home() {
               <br />
               <div className = "banner">
                 <Carousel className="carousel-container">
-                  <Carousel.Item>
+                  <Carousel.Item className="carousel1">
                     <img
                       className="d-block w-100"
                       src=".\images\slider01.jpg"
