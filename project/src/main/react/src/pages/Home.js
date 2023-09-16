@@ -17,21 +17,21 @@ function Home() {
                   <Carousel.Item className="carousel1">
                     <img
                       className="d-block w-100"
-                      src=".\images\slider01.jpg"
+                      src=".\images\slider11.png"
                       alt="First slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src=".\images\slider02.jpg"
+                      src=".\images\slider22.png"
                       alt="Second slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
-                      src=".\images\slider04.jpg"
+                      src=".\images\slider33.png"
                       alt="Second slide"
                     />
                   </Carousel.Item>

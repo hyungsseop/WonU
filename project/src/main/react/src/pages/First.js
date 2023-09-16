@@ -21,17 +21,22 @@ const First = () => {
       if (response.status === 200) {
         localStorage.setItem('userData', JSON.stringify(response.data)); //이거 고침
         navigate('/mypage');  
-      } else {
+      } else if (response.status === 401) { // 401: Unauthorized (비밀번호 불일치 시 가정)
         alert("비밀번호가 일치하지 않습니다.");
+      } else {
+        // 그 외의 다른 응답 상태에 대한 처리
+        alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");
       }
     } catch (error) {
-        if (error.response) {
-        } else {
-          console.log(error);
-          alert("오류가 발생했습니다. 나중에 다시 시도해주세요.");
-          document.location.href = '/mypage';
-        }
+      if (error.response) {
+        // 서버로부터의 응답에 오류가 포함된 경우
+        alert(error.response.data.message || "오류가 발생했습니다. 나중에 다시 시도해주세요.");
+      } else {
+        console.log(error);
+        alert("비밀번호가 일치하지 않습니다.");
+        document.location.href = '/mypage';
       }
+    }
   };
 
   return (

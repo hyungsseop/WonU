@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import Test from '../Components/test';
+import Test2 from '../Components/test2';
 import CardBenefits from '../Components/Cardbenefit';
 import { Link } from 'react-router-dom'; 
 import './css/Carddisplay.css';
@@ -24,7 +25,7 @@ const CardDisplay = (props) => {
 
     return (
         <div>
-            <h2 className='recommended-title'>WONU {localStorage.getItem('login-id')} 님을 위한 추천 신용카드</h2>
+            <h2 className='recommended-title'>WONU 회원 {localStorage.getItem('login-id')}님을 위한 추천 신용카드</h2>
             {cardData ? (
                 Object.entries(cardData)
                 .map(([cardName, cardDetails]) => {
@@ -44,16 +45,18 @@ const CardDisplay = (props) => {
                     <div key={cardName}>
                         <ul>
                             <MDBCardTitle className='modal-title'>{cardName}</MDBCardTitle>
-                            <MDBCard style={{ maxWidth: '740px', marginBottom: '20px' }}>
+                            <MDBCard style={{ maxWidth: '1024px', marginBottom: '20px' }}>
                                 <MDBRow className='g-0'>
                                     <MDBCol md='3'>
-                                        <Test card={{ cardName: cardName }} />
+                                        <Test card={{ cardName: cardName }} className='carddisplay3'/>
                                     </MDBCol>
-                                    <MDBCol md='9'>
-                                        <MDBCardBody style={{ padding: '20px' }}>
-                                            <MDBCardText>
-                                                <small className='text-muted'>
+                                    <MDBCol md='8'>
+                                        <MDBCardBody style={{  marginLeft: '30px'  }}>
+                                            <MDBCardText className='carddisplay1'>
+                                                <small className='carddisplay1'>
                                                     <CardBenefits cardName={cardName} />
+                                                    <br/>
+                                                    <li><Test2 card={{ cardName: cardName }} /></li>
                                                     <li>WONU만의 피킹률: {isNaN(할인율) ? "N/A" : `${할인율}%`}</li>
                                                     <li>총사용금액: {cardDetails["총사용금액"]}</li>
                                                     <li>할인합계: {cardDetails["할인합계"]}</li>
@@ -76,7 +79,7 @@ const CardDisplay = (props) => {
             ) : (
                 <p>Loading...</p>
             )}
-
+            <div className='carddisplay2'>
             {cardData && (
                             <Link 
                                 to="#" 
@@ -90,6 +93,8 @@ const CardDisplay = (props) => {
                             </Link>
                         )}
                         <br />
+                    </div>
+                    <br/><br/>
                     </div>
                 );
             };

@@ -6,6 +6,17 @@ import './css/Modal2.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
+function generateRandomId() {
+  const length = 10;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
+  }
+  return result;
+}
+
 function Modal2() {
   const navigate = useNavigate();
   const [card_own_yn, setCard_own_yn] = useState('');
@@ -109,9 +120,11 @@ const handleNextClick = () => {
     preferDesign: parseInt(prefer_design),
     cardYearFee: parseInt(card_year_fee),
     lastMonthExpense: parseInt(last_monthly_expense),
-    thisMonthExpense: parseInt(this_monthly_expense)
+    thisMonthExpense: parseInt(this_monthly_expense),
+    //submissionId: generateRandomId(),
   };
 
+  localStorage.setItem('submissionId', dataToSend.submissionId);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [darkenBackground, setDarkenBackground] = useState(false); 
@@ -147,6 +160,7 @@ const handleNextClick = () => {
         console.log("Data sent successfully", responseBody);
         console.log("Server Response:", response.data);
         localStorage.setItem('cardData', JSON.stringify(responseBody.card));
+        console.log("Data to Send:", dataToSend);
     } else {
         console.error("Error sending data", responseBody.message);
     }

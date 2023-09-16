@@ -14,7 +14,7 @@ import Cardlist from './pages/CardList';
 import CardDisplay from './pages/CardDisplay';
 import Service from './pages/Service';
 import Elastic from './Components/Elastic';
-import Test from './Components/test';
+import Test2 from './Components/test2';
 import Admin from './pages/Admin';
 import Searchcardlist from './Components/Searchcardlist'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,7 +52,7 @@ function App() {
                   <Route path="/admin" element={<Admin />} />
                   <Route path="/carddisplay" element={<CardDisplay />} />
                   <Route path="/searchcardlist" element={<Searchcardlist />} />
-                  <Route path="/test" element={<Test />} />
+                  <Route path="/test2" element={<Test2 />} />
               </Routes>
               {
                 !['/admin', '/user_info', '/card_info'].includes(window.location.pathname) 
