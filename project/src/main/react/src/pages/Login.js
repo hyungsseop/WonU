@@ -1,3 +1,4 @@
+//login
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom"; 
@@ -25,6 +26,7 @@ const Login = ({onLogin}) => {
       if (response.status === 200) {
         console.log(response.data)
         console.log(localStorage)
+        localStorage.setItem('id', response.data.id);
         localStorage.setItem('login-token', response.data.token);
         localStorage.setItem('login-id', response.data.userId)
         alert("로그인에 성공했습니다.");

@@ -83,6 +83,7 @@ public class UserController {
         if(user != null) {
             final String token = tokenProvider.create(user);
             final UserDTO responseUserDTO = UserDTO.builder()
+                    .id(user.getId())
                     .userId(user.getUserId())
                     .token(token)
                     .build();
@@ -139,10 +140,10 @@ public class UserController {
     public ResponseEntity<?> myPageUpdate(@RequestBody UserDTO userDTO){
         String clientToken = userDTO.getId();
         final User originalUser = userRepository.findByUserId(userDTO.getUserId());
-        System.out.println(originalUser);
         System.out.println(userDTO);
+        System.out.println(originalUser.getId().equals(clientToken));
+        //System.out.println(originalUser.getId());
         System.out.println(clientToken);
-        System.out.println(originalUser.getId());
         if(originalUser.getId().equals(clientToken)){
             User user = User.builder()
                     .userId(originalUser.getUserId())

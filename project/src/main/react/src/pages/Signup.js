@@ -61,6 +61,10 @@ const Signup = () => {
           },
         }
       );
+      localStorage.setItem("userName", userName);
+      localStorage.setItem("gender", gender);
+      localStorage.setItem("phoneNumber", phoneNumber);
+      localStorage.setItem("userBirth", userBirth);
       console.log("회원가입에 성공했습니다.", response.data);
       alert("회원 가입에 성공했습니다.");
       window.location.href = '/login';

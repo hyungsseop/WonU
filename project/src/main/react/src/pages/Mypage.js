@@ -1,3 +1,4 @@
+//mypage
 import React from "react";
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
@@ -6,12 +7,13 @@ import "./css/Mypage.css";
 
 const Mypage = () => {
   const [userData, setUserData] = useState({
-    id: localStorage.getItem('login-token'),
+    id: localStorage.getItem('id'),
     userId: localStorage.getItem('login-id'),
+    userName: localStorage.getItem('userName'),
     userPw: '',
-    phone: '',
-    userBirth: '',
-    gender: ''
+    phoneNumber: localStorage.getItem('phoneNumber'),
+    userBirth: localStorage.getItem('userBirth'),
+    gender: localStorage.getItem('gender'),
   });
   
   const [password, setPassword] = useState("");
@@ -35,14 +37,20 @@ const Mypage = () => {
       
       if (!completed) {
         setUserData({
-          id: response.data.id,
           userId: response.data.userId,
           userBirth: response.data.birthday,
           gender: response.data.gender.toString(),
-          phone: response.data.phone
+          phoneNumber: response.data.phone
         });
         
-        console.log('Update successful');
+        console.log('회원 정보 가져오기는 성공')
+        console.log('id:', userData.id);
+        console.log('userid:', response.data.userId);
+        console.log('userName:', userData.userName);
+        console.log('userPw:', userData.userPw);
+        console.log('phoneNumber:', response.data.phone);
+        console.log('userBirth:', response.data.birthday);
+        console.log('gender:', response.data.gender.toString());
       }
     };
     get();
@@ -56,18 +64,18 @@ const Mypage = () => {
       setUserData(prevState => ({ ...prevState, [id]: value }));
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async ({ id, userId, userPw, userName, userBirth, phoneNumber, gender }) => {
     try {
       const response = await axios.post(
         `http://localhost:8080/auth/mypage/${userData.userId}/update`,
         {
-          id:userData.id,
-          password: userData.userPw,
-          userId: userData.userId,
-          username: userData.userName,
-          birthday: userData.userBirth,
-          phone: userData.phone,
-          gender: userData.gender
+          id: localStorage.getItem('id'),
+          userId: localStorage.getItem('login-id'),
+          userName: localStorage.getItem('userName'),
+          password: userPw,
+          birthday: localStorage.getItem('userBirth'),
+          phone: localStorage.getItem('phoneNumber'),
+          gender:localStorage.getItem('gender')
         },
         {
           headers: {
@@ -80,10 +88,19 @@ const Mypage = () => {
         window.location.href = '/'; 
       } else {
         alert("회원정보 수정에 실패했습니다. 다시 시도해주세요.");
+        window.location.href = '/'; 
       }
   
     } catch (error) {
       console.error("An error occurred", error);
+      alert("오류가 발생했습니다. 다시 시도해주세요.");
+      console.log('id:', localStorage.getItem('id'));
+      console.log('userId:',  localStorage.getItem('login-id')); 
+      console.log('userName:', localStorage.getItem('userName')); 
+      console.log('password:', userPw); 
+      console.log('phoneNumber:', localStorage.getItem('phoneNumber'));
+      console.log('userBirth:', localStorage.getItem('userBirth'));
+      console.log('gender:',  localStorage.getItem('gender'));
     }
   };
   
@@ -139,6 +156,7 @@ const Mypage = () => {
               <input
                 type="password"
                 id="userPw"
+                name="userPw"
                 onChange={handleInputChange}
                 className={`mypage10 ${errors.userPw ? 'is-invalid' : ''}`}
                 {...register("userPw", {
@@ -177,7 +195,7 @@ const Mypage = () => {
                 type="text"
                 id="phoneNumber"
                 disabled
-                defaultValue={userData.phone}
+                defaultValue={userData.phoneNumber}
                 className={`mypage10 ${errors.phoneNumber ? 'is-invalid' : ''}`}
               />
             </div>
