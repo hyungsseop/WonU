@@ -34,15 +34,16 @@ function Recommend(props) {
 
   const handleSubmitRating = async () => {
     try {
-      const submissionId = localStorage.getItem('submissionId'); // submissionId 가져오기
 
-      const response = await axios.post('YOUR_SERVER_ENDPOINT', {
-        survey_satisfy: currentRating,
-        submissionId: submissionId,
-      });
+      // const response = await axios.post('YOUR_SERVER_ENDPOINT', {
+      //   survey_satisfy: currentRating,
+      //   submissionId: submissionId,
+      // });
 
-      alert('서비스 평점이 정상적으로 제출되었습니다. 더 좋은 서비스로 찾아뵙겠습니다.');
+      alert('서비스 평점이 정상적으로 제출되었습니다.\n더 좋은 서비스로 찾아뵙겠습니다.');
+
       handleCloseModal();
+      // navigate('/');
     } catch (error) {
       console.error('Error submitting rating:', error);
       alert('현재 네트워크가 불안정합니다. 잠시 후 다시 시도해주세요.');

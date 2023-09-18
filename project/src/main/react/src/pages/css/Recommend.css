@@ -1,11 +1,11 @@
-.main-container {
+/* .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
+  height: 100vh;
   margin: auto;
-}
+} */
 
 .header-section {
   /* display: flex; 옥석오빠 전달*/
@@ -67,6 +67,7 @@
   font-weight: 700;
   line-height: 100px;
   letter-spacing: -0.24px;
+  margin-top: 15px;
 }
 
 .modal-title {

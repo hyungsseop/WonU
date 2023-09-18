@@ -6,16 +6,16 @@ import './css/Modal2.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-function generateRandomId() {
-  const length = 10;
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    result += characters.charAt(randomIndex);
-  }
-  return result;
-}
+// function generateRandomId() {
+//   const length = 10;
+//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   let result = '';
+//   for (let i = 0; i < length; i++) {
+//     const randomIndex = Math.floor(Math.random() * characters.length);
+//     result += characters.charAt(randomIndex);
+//   }
+//   return result;
+// }
 
 function Modal2() {
   const navigate = useNavigate();
@@ -151,14 +151,13 @@ const handleNextClick = () => {
               }
           }
       );
-      await new Promise(res => setTimeout(res, 2000));
+      await new Promise(res => setTimeout(res, 4000));
 
       const responseBody = JSON.parse(response.data.body);
       setResponseData(responseBody.card); 
     
     if (response.data.statusCodeValue === 200) { // 응답 상태 코드가 200인 경우
         console.log("Data sent successfully", responseBody);
-        console.log("Server Response:", response.data);
         localStorage.setItem('cardData', JSON.stringify(responseBody.card));
         console.log("Data to Send:", dataToSend);
     } else {
@@ -178,7 +177,7 @@ const handleNextClick = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)}>
+      <Button variant="primary" className='custom3-button' onClick={() => setShow(true)}>
         회원 추천 받기
       </Button>
       <div className={`modal-overlay ${darkenBackground ? 'darken' : ''}`}>
@@ -745,7 +744,7 @@ const handleNextClick = () => {
         <Modal.Body className="Modal__Body">
             <div className="title">WON</div>
             <div className="info">필수 정보를 바탕으로 추천 중입니다.<br/> 잠시만 기다려 주세요.</div>
-            <div className="note">고객 맞춤 추천을 위해 최대 N분까지 소요 될 수 있습니다.</div>
+            <div className="note">고객 맞춤 추천을 위해 최대 3분까지 소요 될 수 있습니다.</div>
         </Modal.Body>
         </Modal>
     </>

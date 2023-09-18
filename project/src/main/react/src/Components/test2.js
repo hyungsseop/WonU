@@ -24,8 +24,8 @@ function Test2({ card }) {
                 .filter(cardInfo => cardInfo.cardName === card.cardName)  // 특정 cardName에 해당하는 카드만 필터링
                 .map(cardInfo => (
                   <div key={cardInfo.cardNo}>
-                    <div>주요 혜택: {cardInfo.benefitCate}</div>
-                    <div>연회비: {cardInfo.domesticFee}</div>
+                    <li className='carddisplay7'>주요 혜택: {cardInfo.benefitCate}</li>
+                    <li className='carddisplay7'>연회비: {cardInfo.domesticFee}</li>
                   </div>
               ))}
             </div>

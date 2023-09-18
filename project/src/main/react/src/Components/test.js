@@ -24,7 +24,12 @@ function Test({ card }) {
               .filter(cardInfo => cardInfo.cardName === card.cardName)  // 특정 cardName에 해당하는 카드만 필터링
               .map(cardInfo => (
                 <div key={cardInfo.cardNo}>
-                  <img src={cardInfo.card_image} alt={cardInfo.cardName} height="225px" width="158px" />
+                  {/* <div className='test2'> */}
+                  <img className='test1'
+                    src={cardInfo.card_image}
+                    alt={cardInfo.cardName}
+                  />
+                {/* </div> */}
                 </div>
             ))}
           </div>

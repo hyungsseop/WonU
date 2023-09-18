@@ -234,3 +234,28 @@
 .btn.btn-primary {
   font-family: "NanumSquareNeo-bRg";
 }
+
+.custom3-button {
+  background-color: #0066FF;
+  color: white;
+  align-items: auto;
+  width: 30%;
+  height: auto;
+  font-size: 25px;
+  margin: auto;
+  display: block;
+  margin: 'auto'
+}
+
+.card-body{
+  height: auto;
+}
+
+.carddisplay7{
+  align-items: center; 
+  text-align: left; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2vh;
+  margin-left: 10px;
+}

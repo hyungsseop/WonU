@@ -25,7 +25,8 @@ const CardDisplay = (props) => {
 
     return (
         <div>
-            <h2 className='recommended-title'>WONU 회원 {localStorage.getItem('login-id')}님을 위한 추천 신용카드</h2>
+           <h2 className='recommended-title'>WONU 회원 {localStorage.getItem('login-id')}님을 위한 추천 신용카드</h2>
+            <div className='card-container'>
             {cardData ? (
                 Object.entries(cardData)
                 .map(([cardName, cardDetails]) => {
@@ -42,61 +43,67 @@ const CardDisplay = (props) => {
                 .sort((a, b) => b.할인율 - a.할인율) 
                 .slice(0, visibleCards)
                 .map(({ cardName, 할인율, cardDetails }) => (
-                    <div key={cardName}>
-                        <ul>
+                    <div key={cardName} className='card-item'>
+                        <div className="container text-center" >
                             <MDBCardTitle className='modal-title'>{cardName}</MDBCardTitle>
-                            <MDBCard style={{ maxWidth: '1024px', marginBottom: '20px' }}>
-                                <MDBRow className='g-0'>
-                                    <MDBCol md='3'>
-                                        <Test card={{ cardName: cardName }} className='carddisplay3'/>
-                                    </MDBCol>
-                                    <MDBCol md='8'>
-                                        <MDBCardBody style={{  marginLeft: '30px'  }}>
+                            <MDBCard style={{ maxWidth: '1240px', marginBottom: '20px', minHeight: "420px" }}>
+                                {/* <MDBRow className='g-0'> */}
+                                    {/* <MDBCol md='3'> */}
+                                        {/* <Test card={{ cardName: cardName }} className='carddisplay3'/> */}
+                                    {/* </MDBCol> */}
+                                    {/* <MDBCol md='8'> */}
+                                    <div className='carddisplay4'>
+                                    <Test card={{ cardName: cardName }} className='carddisplay3'/>
+                                    </div>
+                                    <div classname="cardbodydisplay">
+                                        <MDBCardBody classname="cardbodydisplay">
                                             <MDBCardText className='carddisplay1'>
                                                 <small className='carddisplay1'>
+                                                    <div className='carddisplay8'>
                                                     <CardBenefits cardName={cardName} />
-                                                    <br/>
-                                                    <li><Test2 card={{ cardName: cardName }} /></li>
-                                                    <li>WONU만의 피킹률: {isNaN(할인율) ? "N/A" : `${할인율}%`}</li>
-                                                    <li>총사용금액: {cardDetails["총사용금액"]}</li>
-                                                    <li>할인합계: {cardDetails["할인합계"]}</li>
+                                                    </div>
+                                                    {/* <br/> */}
+                                                    <li className='carddisplay9'>WONU만의 피킹률: {isNaN(할인율) ? "N/A" : `${할인율}%`}</li>
+                                                    <li className='carddisplay7'>총사용금액: {cardDetails["총사용금액"]}</li>
+                                                    <li className='carddisplay7'>할인합계: {cardDetails["할인합계"]}</li>
                                                     {Object.entries(cardDetails)
                                                         .filter(([detailName, detailValue]) => detailValue !== 0 && detailName !== "할인합계" && detailName !== "총사용금액")
                                                         .map(([detailName, detailValue]) => (
-                                                            <li key={detailName}>
+                                                            <li className='carddisplay7' key={detailName}>
                                                                 {detailName}: {detailValue}
                                                             </li>
                                                         ))}
+                                                    <Test2 className='carddisplay7' card={{ cardName: cardName }} />
                                                 </small>
                                             </MDBCardText>
                                         </MDBCardBody>
-                                    </MDBCol>
-                                </MDBRow>
+                                    {/* </MDBCol> */}
+                                {/* </MDBRow> */}
+                                </div>
                             </MDBCard>
-                        </ul>
+                            </div>
                     </div>
                 ))
             ) : (
                 <p>Loading...</p>
             )}
-            <div className='carddisplay2'>
-            {cardData && (
-                            <Link 
-                                to="#" 
-                                className="recommend1" 
-                                onClick={(e) => {
-                                    e.preventDefault();  // Prevent default behavior of the link
-                                    handleButtonClick();  // handleButtonClick 함수 호출
-                                }}
-                            >
-                                {visibleCards === 3 ? '카드 더 보기↓': '간략히 보기↑' }
-                            </Link>
-                        )}
-                        <br />
-                    </div>
-                    <br/><br/>
-                    </div>
-                );
-            };
-
+             </div>
+    <div className='carddisplay2'>
+      {cardData && (
+        <Link
+          to="#"
+          className="recommend1"
+          onClick={(e) => {
+            e.preventDefault(); // Prevent default behavior of the link
+            handleButtonClick(); // handleButtonClick 함수 호출
+          }}
+        >
+          {visibleCards === 3 ? '카드 더 보기↓' : '간략히 보기↑'}
+        </Link>
+      )}
+    </div>
+    <br /><br />
+  </div>
+);
+}
 export default CardDisplay;

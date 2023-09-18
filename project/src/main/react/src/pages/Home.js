@@ -50,7 +50,7 @@ function Home() {
                       <div className='home1'>                      비회원도 이용할 수 있는 신용카드 추천 서비스 <br />
                       나에게 적합한 카드는 무엇일까요?
                       </div></Card.Text>
-                    <Button href="/credit">기본 추천 받기</Button>
+                    <Button className='custom3-button' href="/credit">기본 추천 받기</Button>
                   
                   </Card.Body>
                 </Card>
